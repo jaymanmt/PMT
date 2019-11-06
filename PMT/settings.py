@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'accounts',
     'shop',
     'basket',
@@ -116,15 +117,34 @@ USE_L10N = True
 
 USE_TZ = True
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTH_USER_MODEL = 'accounts.MyUser' 
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
-
 )
+
+LOGIN_REDIRECT_URL = '/accounts/login'
+LOGIN_URL = '/accounts/login'
+LOGOUT_REDIRECT_URL = '/accounts/logout'
+
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+MAILGUN_ACCESS_KEY=os.environ["MAILGUN_ACCESS_KEY"]
+MAILGUN_SERVER_NAME=os.environ["MAILGUN_SERVER_NAME"]
+DEFAULT_FROM_EMAIL="no-reply@mail.sgmuaythai.org"
+FROM_EMAIL="no-reply@mail.sgmuaythai.org"
+
+
+STRIPE_PUBLISHABLE_KEY = os.environ["STRIPE_PUBLISHABLE_KEY"]
+STRIPE_SECRET_KEY = os.environ["STRIPE_SECRET_KEY"]

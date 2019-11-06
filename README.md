@@ -12,3 +12,10 @@ To get started, create some files, play with the terminal,
 or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
 
 Happy coding!
+
+
+add crispy forms instructions:
+https://simpleisbetterthancomplex.com/tutorial/2018/08/13/how-to-use-bootstrap-4-forms-with-django.html
+
+set customised password reset forms:
+https://wsvincent.com/django-user-authentication-tutorial-password-reset/

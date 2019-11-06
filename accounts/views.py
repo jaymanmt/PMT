@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, reverse, redirect
 from django.contrib import auth, messages
 from .forms import UserLoginForm, UserRegistrationForm
 from .models import MyUser
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
