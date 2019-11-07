@@ -9,4 +9,4 @@ class MyUser(AbstractUser):
     injuries = models.TextField(max_length=1000, blank=True, default="")
     mobile = models.CharField(max_length=50, blank=False, default="")
     def __str__(self):
-        return str(self.first_name) + str(self.last_name)
+        return str(self.username)

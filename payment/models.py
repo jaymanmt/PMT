@@ -12,4 +12,4 @@ class Charge(models.Model):
     date = models.DateField()
 
     def __str__(self):
-        return "{}-{}-{}".format(self.id, self.date, self.full_name)
+        return "{} - {} - {}".format(self.id, self.full_name, self.date)

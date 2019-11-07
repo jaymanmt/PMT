@@ -1,0 +1,13 @@
+{%extends 'base.template.html'%}
+{%block content%}
+<h1>My Basket</h1>
+<ul>
+{%for item in all_basket_items%}
+<li>
+    {{item.product}}
+    {{item.quantity_to_buy}}
+    <a href="{% url 'removefrombasket' bkt_item_id=item.id %}"></a>
+</li>
+{%endfor%}
+</ul>
+{%endblock%}

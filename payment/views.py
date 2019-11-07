@@ -28,5 +28,5 @@ def pay_here(request):
             currency='sgd',
             source=stripe_token
         )
-        return HttpResponse("Thank you for your donation")
+        return HttpResponse("Thank you for your purchase")
         
