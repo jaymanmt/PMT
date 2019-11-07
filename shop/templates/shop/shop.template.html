@@ -1,0 +1,13 @@
+{%extends 'base.template.html'%}
+
+{%block title%} <h1>In Stock Now</h1>{%endblock%}
+
+{%block content%}
+
+{%for i in items%}
+
+{{i.price}}
+
+{%endfor%}
+
+{%endblock%}

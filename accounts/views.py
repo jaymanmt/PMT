@@ -3,10 +3,9 @@ from django.contrib import auth, messages
 from .forms import UserLoginForm, UserRegistrationForm
 from .models import MyUser
 from django.contrib.auth.decorators import login_required
+from PMT.views import home
 
 # Create your views here.
-def home(request):
-    return render(request, 'base.template.html')
 
 def logout(request):
     auth.logout(request)
