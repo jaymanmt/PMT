@@ -22,7 +22,6 @@ def pay_here(request):
     if request.method == 'GET':
         transaction = Transaction()
         transaction.owner = request.user
-        # transaction.basket_items = basketItem.objects.filter(owner=request.user)
         transaction.status = 'pending'
         transaction.date = timezone.now()
         transaction.save()
@@ -32,6 +31,7 @@ def pay_here(request):
             invoice_item = InvoiceItem()
             invoice_item.transaction = transaction
             invoice_item.product = item.product
+            invoice_item.quantity = item.quantity_to_buy
             invoice_item.sku = item.product.sku
             invoice_item.name = item.product.product_name
             invoice_item.price = item.product.price
@@ -79,11 +79,19 @@ def pay_here(request):
                         )
                         
                     if customer.paid:
+                        
                         order = order_form.save(commit=False)
                         order.date=timezone.now()
                         order.save()
                         transaction.status = 'approved'
+                        transaction.charge = order
                         transaction.save()
+                        
+                        invoice_items = InvoiceItem.objects.filter(transaction_id=transaction.id)
+                        for each_item in invoice_items:
+                            each_item.product.stock_level -= each_item.quantity
+                            each_item.product.save()
+                        
                     
                         basket_items = basketItem.objects.filter(owner = request.user).delete()
                         return render(request, 'payment/thankyou.html')

@@ -33,11 +33,12 @@ class Transaction(models.Model):
 
 class InvoiceItem(models.Model):
     product = models.ForeignKey('shop.Item', on_delete=models.CASCADE, null=True)
+    quantity = models.IntegerField(blank=False)
     sku = models.CharField(max_length=200, blank=False)
     price = models.IntegerField(blank=False)
     name = models.CharField(max_length=200, blank=False)
     transaction = models.ForeignKey('Transaction', on_delete=models.CASCADE)
     def __str__(self):
-        return str(self.id)
+        return str(self.transaction) + str(self.product)
     
     
