@@ -7,4 +7,4 @@ class basketItem(models.Model):
     quantity_to_buy = models.IntegerField(blank=False, default=0)
     
     def __str__(self):
-        return str(self.product) + " x " + str(self.quantity_to_buy)
+        return str(self.owner) + " - " + str(self.product) + "x" + str(self.quantity_to_buy)

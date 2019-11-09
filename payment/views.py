@@ -60,7 +60,7 @@ def pay_here(request):
         if transaction.status != 'pending':
             return HttpResponse('payment has already been made, please check your bank account')
         else:
-            #stripe id is part of forms with a hidden widget
+            #stripe id is retrieved from the forms through a hidden widget
             stripeToken = request.POST['stripe_id']
             
             # set the secret key for the Stripe API
@@ -77,7 +77,7 @@ def pay_here(request):
                     customer = stripe.Charge.create(
                         amount = amount,
                         currency='sgd',
-                        description='Payment',
+                        description='Stripe Payment Form',
                         card=stripeToken
                         )
                         
@@ -90,21 +90,23 @@ def pay_here(request):
                         transaction.charge = order
                         transaction.save()
                         
+                        #updating stock levels of the shop
                         invoice_items = InvoiceItem.objects.filter(transaction_id=transaction.id)
                         for each_item in invoice_items:
                             each_item.product.stock_level -= each_item.quantity
                             each_item.product.save()
-                        
-                    
+                            
+                        #empty the user's shop basket
                         basket_items = basketItem.objects.filter(owner = request.user).delete()
                         return render(request, 'payment/thankyou.html')
                     else:
                         messages.error(request, "Your card has been declined")
                 except stripe.error.CardError:
-                        messages.error(request, "Your card was declined!")
+                        messages.error(request, "Payment was unsuccessful, please check your card details!")
                 
             else:
-                 return render(request, 'payment/paying.html', {
+                messages.error(request, "An error has occured while processing your payment, please fill in the form again")
+                return render(request, 'payment/paying.html', {
                 'order_form' : order_form,
                 'payment_form' : payment_form,
                 'total_cost' : total_cost,

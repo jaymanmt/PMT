@@ -29,7 +29,7 @@ class Transaction(models.Model):
     owner = models.ForeignKey('accounts.MyUser', on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
-        return 'Tx No. ' + str(self.id)
+        return str(self.id)
 
 class InvoiceItem(models.Model):
     product = models.ForeignKey('shop.Item', on_delete=models.CASCADE, null=True)
@@ -39,6 +39,6 @@ class InvoiceItem(models.Model):
     name = models.CharField(max_length=200, blank=False)
     transaction = models.ForeignKey('Transaction', on_delete=models.CASCADE)
     def __str__(self):
-        return 'Part of Transaction No. ' + str(self.transaction)
+        return 'In Tx: ' + str(self.transaction) + str(self.product)
     
     
