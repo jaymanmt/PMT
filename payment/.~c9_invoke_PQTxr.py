@@ -18,15 +18,12 @@ def calculate_bkt_cost(request):
 
 
 def pay_here(request):
-
+    ##to prevent the same transaction from being created over again if the user refreshes the page. 
     if request.method == 'GET':
-        #prevents the empty transactions from being created over and over again from page refreshes 
-        delete_previous_transactions = Transaction.objects.filter(owner=request.user).delete()
         transaction = Transaction()
-        transaction.owner = request.user
+        transaction.owner == request.user:
         transaction.status = 'pending'
         transaction.date = timezone.now()
-        
         transaction.save()
         
         basket_items = basketItem.objects.filter(owner=request.user)
