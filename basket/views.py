@@ -35,6 +35,7 @@ def addtobasket(request, product_id):
     return redirect(reverse('shop'))
 
 def removefrombasket(request, bkt_item_id):
-    existing_bkt_item = basketItem.objects.get(pk=bkt_item_id)
-    existing_bkt_item.delete()
-    return redirect(reverse('shop'))
+    existing_bkt_item = basketItem.objects.filter(pk=bkt_item_id)
+    for each_bkt_item in existing_bkt_item:
+        each_bkt_item.delete()
+    return redirect(reverse('showbasket'))

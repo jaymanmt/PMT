@@ -6,7 +6,7 @@
 <li>
     {{item.product}}
     {{item.quantity_to_buy}}
-    <a href="{% url 'removefrombasket' bkt_item_id=item.id %}"></a>
+    <a href="{% url 'removefrombasket' bkt_item_id=item.id %}">remove</a>
 </li>
 {%endfor%}
 </ul>

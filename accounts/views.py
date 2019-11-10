@@ -21,11 +21,13 @@ def login(request):
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
             #if there is a user and pw that matches
-            messages.success(request, "You have successfully logged in")
+            
             if user:
+                messages.success(request, "You have successfully logged in")
                 auth.login(user=user, request=request)
                 return redirect(reverse('home'))
             else:
+                messages.error(request, "We couldn't find a match, please try again.")
                 return redirect(reverse('login'))
     else:
         form = UserLoginForm()

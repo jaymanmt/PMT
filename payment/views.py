@@ -18,8 +18,13 @@ def calculate_bkt_cost(request):
 
 
 def pay_here(request):
-
+    
     if request.method == 'GET':
+        total_cost = calculate_bkt_cost(request)
+        total_cost_in_dollars = round(total_cost/100, 2)
+        if total_cost == 0:
+            return HttpResponse('empty basket')
+        
         #prevents the empty transactions from being created over and over again from page refreshes 
         delete_previous_transactions = Transaction.objects.filter(owner=request.user).delete()
         transaction = Transaction()
@@ -41,8 +46,7 @@ def pay_here(request):
             invoice_item.save()
         
         
-        total_cost = calculate_bkt_cost(request)
-        total_cost_in_dollars = round(total_cost/100, 2)
+        
         order_form = OrderForm()
         payment_form = PaymentForm()
         
@@ -55,6 +59,7 @@ def pay_here(request):
             "transaction":transaction
         })
     else:
+
         transaction_id = request.POST['transaction_id']
         transaction = Transaction.objects.get(pk=transaction_id)
         if transaction.status != 'pending':
