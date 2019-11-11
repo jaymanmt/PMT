@@ -38,3 +38,15 @@
     background-color: #f17e5c;
     border-color: #f17e5c;
 }
+
+#login-btn{
+    background-color: #ffd23f;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    border-radius: 5px;
+    border-color: #ffd23f;
+}
+#login-btn:hover{
+    background-color: #d1ac34 !important;
+    border-color: #ffd23f;
+}
