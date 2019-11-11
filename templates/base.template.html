@@ -44,15 +44,15 @@
                         <a style= "color: white" class="nav-link" href="{% url "shop" %}">Shop</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a style= "color: white" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Action
+                        <a style= "color:#ec4e20" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {% if request.user.username %}Welcome back {{request.user.username}}{% endif %}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a style= "color: white" class="dropdown-item" href="{% url "showbasket" %}">My Basket</a>
-                            <a style= "color: white" class="dropdown-item" href="{% url "profile" %}">My Profile</a>
-                            <a style= "color: white" class="dropdown-item" href="{% url "password_reset" %}">Reset Password</a>
-                            <div style= "color: white"  class="dropdown-divider"></div>
-                            <a style= "color: white" class="dropdown-item" href="{% url "logout" %}">Logout</a>
+                            <a style= "color: black" class="dropdown-item" href="{% url "showbasket" %}">My Basket</a>
+                            <a style= "color: black" class="dropdown-item" href="{% url "profile" %}">My Profile</a>
+                            <a style= "color: black" class="dropdown-item" href="{% url "password_reset" %}">{%if user.is_authenticated%}Change your Password{%endif%}{%if not user.is_authenticated%}Reset Password{%endif%}</a>
+                            <div style= "color: black"  class="dropdown-divider"></div>
+                            <a style= "color: black" class="dropdown-item" href="{% url "logout" %}">Logout</a>
                         </div>
                     </li>
                     {%endif%}
@@ -66,10 +66,6 @@
             {%endfor%}
         </div>
         {%endif%}
-        
-        {% if request.user.username %}
-        Logged In As:{{request.user.username}}
-        {% endif %}
         
         {% block title %}{% endblock %}
         {%block content%}{%endblock%}

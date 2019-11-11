@@ -25,7 +25,7 @@ def login(request):
             if user:
                 messages.success(request, "You have successfully logged in")
                 auth.login(user=user, request=request)
-                return redirect(reverse('home'))
+                return redirect(reverse('shop'))
             else:
                 messages.error(request, "We couldn't find a match, please try again.")
                 return redirect(reverse('login'))

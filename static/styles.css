@@ -40,6 +40,7 @@
 }
 
 #login-btn{
+    color: black;
     background-color: #ffd23f;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
