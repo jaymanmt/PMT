@@ -19,3 +19,6 @@ https://simpleisbetterthancomplex.com/tutorial/2018/08/13/how-to-use-bootstrap-4
 
 set customised password reset forms:
 https://wsvincent.com/django-user-authentication-tutorial-password-reset/
+
+animate on scroll functionality
+https://michalsnik.github.io/aos/

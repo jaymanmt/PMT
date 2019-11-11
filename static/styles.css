@@ -1,3 +1,18 @@
-body{
-    background-color: azure;
+.nav-link{
+    color:white;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.nav-link:hover{
+    color:red !important;
+}
+
+.navbar-brand{
+    color: white;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+.navbar-brand:hover{
+    color:red !important;
 }
