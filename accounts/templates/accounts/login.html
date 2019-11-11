@@ -1,13 +1,17 @@
-{%extends 'base.template.html' %}{%block content%}
-
-    <h1>Login Here:</h1>
+{%extends 'base.template.html' %}
+{%block title%}
+<h1>Welcome Back!</h1>
+{%endblock%}
+{%block content%}
+<div style="display:flex">
     <form method="POST">
         {%csrf_token%}
         {{form.as_p}}
-        {%if not user.is_authenticated%}
-        <a class="nav-link" href="{% url 'password_reset' %}">Forgot your password?</a>
-        {%endif%}
         <input type="submit" name="login-btn" value="Login"/>
     </form>
+    {%if not user.is_authenticated%}
+    <a href="{% url 'password_reset' %}">Forgot your password?</a>
+    {%endif%}
+</div>
 
 {%endblock%}

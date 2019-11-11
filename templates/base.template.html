@@ -1,7 +1,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 <!doctype html>
-<html lang="en">
+<html lang="en" style="width:100%">
 
 <head>
     <!-- Required meta tags -->
@@ -9,13 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Animate on Scroll CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet"  href="{% static 'styles.css' %}" type="text/css" />
     <title>Hello, world!</title>
 </head>
 
-<body>
+<body style="width:100%">
     <div {%block bg-img%}{%endblock%}>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0,0,0,0.2); font-size:1em;" role="navigation">
             <a style= "padding: 30px;color: white" class="navbar-brand" href="{% url 'home' %}">Muay Thai Personal Training</a>
