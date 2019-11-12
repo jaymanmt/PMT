@@ -9,6 +9,7 @@ from .models import Transaction, InvoiceItem
 
 # Create your views here.
 
+#function to calculate total cost in basket of the current user 
 def calculate_bkt_cost(request):
     basket_items = basketItem.objects.filter(owner = request.user)
     amount = 0
@@ -27,6 +28,7 @@ def pay_here(request):
         
         #prevents the empty transactions from being created over and over again from page refreshes 
         delete_previous_transactions = Transaction.objects.filter(owner=request.user).delete()
+        
         transaction = Transaction()
         transaction.owner = request.user
         transaction.status = 'pending'

@@ -7,6 +7,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Animate on Click-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <!-- Animate on Scroll CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- FontAwesome CDN -->
@@ -42,6 +44,9 @@
                     {%if user.is_authenticated%}
                     <li class="nav-item">
                         <a style= "color: white" class="nav-link" href="{% url "shop" %}">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style= "color: white" class="nav-link jumping-btn" href="{% url "showbasket" %}">My Basket</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a style= "color:#ec4e20" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

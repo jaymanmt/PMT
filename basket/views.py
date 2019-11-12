@@ -32,7 +32,7 @@ def addtobasket(request, product_id):
         # increases its quantity
         existing_bkt_item.quantity_to_buy += 1
         existing_bkt_item.save()
-    return redirect(reverse('shop'))
+    return redirect(reverse('shop')+'?added=1')
 
 def removefrombasket(request, bkt_item_id):
     existing_bkt_item = basketItem.objects.filter(pk=bkt_item_id)

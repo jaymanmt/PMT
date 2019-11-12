@@ -22,3 +22,6 @@ https://wsvincent.com/django-user-authentication-tutorial-password-reset/
 
 animate on scroll functionality
 https://michalsnik.github.io/aos/
+
+animate on click functionality
+https://github.com/daneden/animate.css
