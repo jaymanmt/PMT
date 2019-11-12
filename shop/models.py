@@ -4,6 +4,7 @@ from django.db import models
 class Item(models.Model):
     product_name = models.CharField(max_length=80, blank=False)
     sku = models.CharField(max_length=60, blank=False)
+    sessions = models.IntegerField(blank=False)
     description = models.CharField(max_length=1000, blank=True, default="")
     price = models.IntegerField(blank=False)
     stock_level = models.IntegerField(blank=False)

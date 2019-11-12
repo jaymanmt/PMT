@@ -43,10 +43,10 @@
                     {%endif%}
                     {%if user.is_authenticated%}
                     <li class="nav-item">
-                        <a style= "color: white" class="nav-link" href="{% url "shop" %}">Shop</a>
+                        <a style= "color: white" class="nav-link" href="{% url "shop" %}"><i style="font-size: 1.3em;" class="fas fa-shopping-cart"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a style= "color: white" class="nav-link jumping-btn" href="{% url "showbasket" %}">My Basket <span style="font-size: 0.8em;">({{basketcounter}})</span></a>
+                        <a style= "padding-bottom: 0;color: white" class="nav-link jumping-btn" href="{% url "showbasket" %}"><i style="font-size: 1.3em;" class="fas fa-shopping-basket"></i> <span style="font-size:0.8em;">({{basketcounter}})</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a style= "color:#ec4e20" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
