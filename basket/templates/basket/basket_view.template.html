@@ -52,7 +52,7 @@ style="background-color: #373f51;"
                 {{item.quantity_to_buy}} 
             </td>
             <td>
-                <a style="{% if item.product.sku == '000001' and item.quantity_to_buy >= 1 %}display:none; {%endif%} text-decoration:none; font-size:1.2em; color: lightgreen;" href="{%url 'addtobasket' product_id=item.product.id%}"><i class="fas fa-cart-plus"></i></a>
+                <a style="{% if item.product.sku == '000001' and item.quantity_to_buy >= 1 %}display:none; {%endif%} text-decoration:none; font-size:1.2em; color: lightgreen;" href="{%url 'addtobasketfrombasket' product_id=item.product.id%}"><i class="fas fa-cart-plus"></i></a>
             </td>
             <td class="bkt-table-col" style="text-align:center;">
                 {% widthratio item.product.sessions 1 item.quantity_to_buy %}
