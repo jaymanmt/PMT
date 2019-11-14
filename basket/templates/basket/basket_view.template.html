@@ -6,7 +6,7 @@ style="background-color: #373f51;"
 {%block content%}
 <div style="display:flex; flex-direction: column; align-items:center;">
     <h1>My Basket</h1>
-    <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 20px; display: flex; justify-content:center">
+    <table style="min-height: 500px; color: white; padding: 3px;background-color: #373f51; margin-top: 20px; display: flex; justify-content:center">
         <tr style="color: black; padding: 0;" class="bkt-table-row bkt-table-rowhead">
             
             <th class="bkt-table-col">
@@ -20,6 +20,9 @@ style="background-color: #373f51;"
             </th>
             <th class="bkt-table-col">
                 Unit Price
+            </th>
+            <th>
+                
             </th>
             <th style="text-align:center;" class="bkt-table-col">
                 Quantity
@@ -49,11 +52,14 @@ style="background-color: #373f51;"
             <td class="bkt-table-col" style="text-align:center;">
                 $ {% widthratio item.product.price 100 1 %}
             </td>
+            <td>
+                <a style="{% if item.product.sku == '000001' and item.quantity_to_buy <= 1 %}display:none; {%endif%} text-decoration:none; font-size:1.2em; color: red;" href="{%url 'removefrombasketfrombasket' product_id=item.product.id%}"><i class="fas fa-minus"></i></a>
+            </td>
             <td class="bkt-table-col" style="text-align:center;">
                 {{item.quantity_to_buy}} 
             </td>
             <td>
-                <a style="{% if item.product.sku == '000001' and item.quantity_to_buy >= 1 %}display:none; {%endif%} text-decoration:none; font-size:1.2em; color: lightgreen;" href="{%url 'addtobasketfrombasket' product_id=item.product.id%}"><i class="fas fa-cart-plus"></i></a>
+                <a style="{% if item.product.sku == '000001' and item.quantity_to_buy >= 1 %}display:none; {%endif%} text-decoration:none; font-size:1.2em; color: lightgreen;" href="{%url 'addtobasketfrombasket' product_id=item.product.id%}"><i class="fas fa-plus"></i></a>
             </td>
             <td class="bkt-table-col" style="text-align:center;">
                 {% widthratio item.product.sessions 1 item.quantity_to_buy %}
