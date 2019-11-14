@@ -6,7 +6,7 @@ style="background-color: #373f51;"
 {%block content%}
 <div style="display:flex; flex-direction: column; align-items:center;">
     <h1>My Basket</h1>
-    <table style="min-height: 500px; color: white; padding: 3px;background-color: #373f51; margin-top: 20px; display: flex; justify-content:center">
+    <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 20px; display: flex; justify-content:center">
         <tr style="color: black; padding: 0;" class="bkt-table-row bkt-table-rowhead">
             
             <th class="bkt-table-col">
@@ -15,13 +15,13 @@ style="background-color: #373f51;"
             <th class="bkt-table-col">
                 Product
             </th>
-            <th class="bkt-table-col">
+            <th class="bkt-table-col disposable-col">
                 Description
             </th>
             <th class="bkt-table-col">
                 Unit Price
             </th>
-            <th>
+            <th class="disposable-col">
                 
             </th>
             <th style="text-align:center;" class="bkt-table-col">
@@ -36,6 +36,9 @@ style="background-color: #373f51;"
             <th class="bkt-table-col">
                 Total Cost
             </th>
+            <th style="text-align:center;" class="bkt-table-col">
+                Discounts
+            </th>
         </tr>
         {%for item in all_basket_items%}
         <tr style="padding: 0;" class="bkt-table-row">
@@ -46,20 +49,20 @@ style="background-color: #373f51;"
             <td class="bkt-table-col">
                 {{item.product}} 
             </td>
-            <td class="bkt-table-col">
+            <td class="bkt-table-col disposable-col">
                 {{item.product.description}}
             </td>
             <td class="bkt-table-col" style="text-align:center;">
                 $ {% widthratio item.product.price 100 1 %}
             </td>
-            <td>
-                <a style="{% if item.product.sku == '000001' and item.quantity_to_buy <= 1 %}display:none; {%endif%} text-decoration:none; font-size:1.2em; color: red;" href="{%url 'removefrombasketfrombasket' product_id=item.product.id%}"><i class="fas fa-minus"></i></a>
+            <td class= "disposable-col">
+                <a style="{% if item.product.sku == '000001' and item.quantity_to_buy <= 1 %}display:none; {%endif%} text-decoration:none; font-size:1em; color: #ffd23f;" href="{%url 'removefrombasketfrombasket' product_id=item.product.id%}"><i class="fas fa-minus"></i></a>
             </td>
             <td class="bkt-table-col" style="text-align:center;">
                 {{item.quantity_to_buy}} 
             </td>
             <td>
-                <a style="{% if item.product.sku == '000001' and item.quantity_to_buy >= 1 %}display:none; {%endif%} text-decoration:none; font-size:1.2em; color: lightgreen;" href="{%url 'addtobasketfrombasket' product_id=item.product.id%}"><i class="fas fa-plus"></i></a>
+                <a style="{% if item.product.sku == '000001' and item.quantity_to_buy >= 1 %}display:none; {%endif%} text-decoration:none; font-size:1em; color: #ffd23f;" href="{%url 'addtobasketfrombasket' product_id=item.product.id%}"><i class="fas fa-plus"></i></a>
             </td>
             <td class="bkt-table-col" style="text-align:center;">
                 {% widthratio item.product.sessions 1 item.quantity_to_buy %}
@@ -67,13 +70,33 @@ style="background-color: #373f51;"
             <td class="bkt-table-col" style="text-align:center;">
                 $ {% calculate_total item.quantity_to_buy item.product.price %}
             </td>
+            {% if item.quantity_to_buy >= 5 %}
+            <td>
+                10% off discount applied! 
+            </td>
+            {%endif%}
         </tr>
         {%endfor%}
     </table>
 </div>
-<div style="display:flex; flex-direction: column; align-items:flex-end; margin-right: 10%">
-    <h5>Amount Due: {{total_cost}}</h5>
-    <a href="{% url 'pay_here' %}">Checkout</a>
+<div style="min-height: 500px; display:flex; flex-direction: column; align-items:center; margin-left: 50%;">
+    <table style="color: white;">
+        <tr style="padding: 0;" class="bkt-table-row">
+            <td>
+                <h6>Checkout</h6>
+            </td>
+        </tr>
+        <tr style="padding: 0;" class="bkt-table-row">
+            <td style="font-size: 1.5em;">
+                Amount Due: $ {{total_cost}}
+            </td>
+        </tr>
+        <tr style="padding: 0;" class="bkt-table-row">
+            <td>
+                <a style="text-decoration: none; border-bottom: 1px #ffd23f solid; color: #ffd23f; font-size: 1.5em;" href="{% url 'pay_here' %}">Make Payment</a> <i style="color: #ffd23f; font-size: 1.5em;" class="far fa-hand-point-left"></i>
+            </td>
+        </tr>
+    </table>
 </div>
 
 {%endblock%}

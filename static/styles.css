@@ -66,8 +66,11 @@
     margin:10px;
 }
 
-@media only screen and (max-width: 415px){
+@media only screen and (max-width: 600px){
     .bkt-table-col{
-    padding:5px;
+    padding:0px;
+    }
+    .disposable-col{
+        display:none;
     }
 }
