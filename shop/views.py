@@ -1,9 +1,17 @@
 from django.shortcuts import render
 from .models import Item
 from payment.models import InvoiceItem
+from basket.models import basketItem
 # Create your views here.
 
 def shop(request):
+    bkt_starter_bool = True
+    bkt_check_starter = basketItem.objects.filter(owner=request.user)
+    for basket_item in bkt_check_starter:
+        if basket_item.product.sku == '000001':
+            bkt_starter_bool = False
+        
+    
     added = request.GET.get('added')
     items = Item.objects.filter()
     starter_check = False
@@ -14,5 +22,6 @@ def shop(request):
     return render(request, 'shop/shop.template.html',{
         "items":items,
         "starter_check": starter_check,
-        'added': added
+        'added': added,
+        'bkt_starter_bool': bkt_starter_bool
     })

@@ -3,18 +3,24 @@ from .models import basketItem
 from shop.models import Item
 # Create your views here.
 def showbasket(request):
+    
+    each_item_total_cost = 0
+    each_item_dict_price = {}
+    each_item_dict_sessions = {}
     total_cost = 0
     number_of_bkt_items = 0
+    
     all_basket_items = basketItem.objects.filter(owner=request.user)
     for each_item in all_basket_items:
         number_of_bkt_items+=1
         total_cost+=each_item.product.price * each_item.quantity_to_buy
-    
     total_cost = total_cost/100
     return render(request, "basket/basket_view.template.html", {
         "all_basket_items":all_basket_items,
         "total_cost":total_cost,
-        "number_of_bkt_items":number_of_bkt_items
+        "number_of_bkt_items":number_of_bkt_items,
+        "each_item_dict_price":each_item_dict_price,
+        "each_item_dict_sessions":each_item_dict_sessions
     })
     
 def addtobasket(request, product_id):

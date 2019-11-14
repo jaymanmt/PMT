@@ -52,3 +52,22 @@
     background-color: #d1ac34 !important;
     border-color: #ffd23f;
 }
+
+.bkt-table-rowhead{
+    background-color: #ffd23f;
+}
+
+.bkt-table-row{
+    border-bottom: 1px #ffd23f solid;
+}
+
+.bkt-table-col{
+    padding:10px;
+    margin:10px;
+}
+
+@media only screen and (max-width: 415px){
+    .bkt-table-col{
+    padding:5px;
+    }
+}

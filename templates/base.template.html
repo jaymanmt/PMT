@@ -22,7 +22,7 @@
 <body style="width:100%">
     <div {%block bg-img%}{%endblock%}>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0,0,0,0.2); font-size:1em;" role="navigation">
-            <a style= "padding: 30px;color: white" class="navbar-brand" href="{% url 'home' %}">Muay Thai Personal Training</a>
+            <a style= "padding: 30px;color: white" class="navbar-brand" href="{% url 'home' %}">PMT</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -46,7 +46,7 @@
                         <a style= "color: white" class="nav-link" href="{% url "shop" %}"><i style="font-size: 1.3em;" class="fas fa-shopping-cart"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a style= "padding-bottom: 0;color: white" class="nav-link jumping-btn" href="{% url "showbasket" %}"><i style="font-size: 1.3em;" class="fas fa-shopping-basket"></i> <span style="font-size:0.8em;">({{basketcounter}})</span></a>
+                        <a style= "padding-bottom: 0;color: white" class="nav-link jumping-btn" href="{% url "showbasket" %}"><i style="font-size: 1.3em;" class="fas fa-shopping-basket"></i> <span style="font-size:0.8em;">({{total_quantity}})</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a style= "color:#ec4e20" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

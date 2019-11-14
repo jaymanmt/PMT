@@ -1,52 +1,72 @@
 {%extends 'base.template.html'%}
+{%block bg-img%}
+style="background-color: #373f51;"
+{%endblock%}
 {%block content%}
-<h1>My Basket</h1>
-<table style="display: flex; justify-content:center">
-    <tr>
-        <th>
-            Product
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            Unit Price
-        </th>
-        <th style="text-align:center;">
-            Quantity
-        </th>
-        <th>
-            Total
-        </th>
-    </tr>
-    {%for item in all_basket_items%}
-    <tr>
-        <td>
-            {{item.product}} <a style=""href="{% url 'removefrombasket' bkt_item_id=item.id %}"> <i style="color:red" class="fas fa-minus-circle"></i></a>
-        </td>
-        <td>
-            {{item.product.description}}
-        </td>
-        <td>
-            {{item.product.price}}
-        </td>
-        <td style="text-align:center;">
-            {{item.quantity_to_buy}}
-        </td>
-        <td>
-            total amounts
-        </td>
-    </tr>
-    {%endfor%}
-</table>
+<div style="display:flex; flex-direction: column; align-items:center;">
+    <h1>My Basket</h1>
+    <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 20px; display: flex; justify-content:center">
+        <tr style="color: black; padding: 0;" class="bkt-table-row bkt-table-rowhead">
+            
+            <th class="bkt-table-col">
+                
+            </th>
+            <th class="bkt-table-col">
+                Product
+            </th>
+            <th class="bkt-table-col">
+                Description
+            </th>
+            <th class="bkt-table-col">
+                Unit Price
+            </th>
+            <th style="text-align:center;" class="bkt-table-col">
+                Quantity
+            </th>
+            <th>
+                
+            </th>
+            <th style="text-align:center;" class="bkt-table-col">
+                Total Sessions
+            </th>
+            <th class="bkt-table-col">
+                Total Cost
+            </th>
+        </tr>
+        {%for item in all_basket_items%}
+        <tr style="padding: 0;" class="bkt-table-row">
+            
+            <td class="bkt-table-col">
+                <a style=""href="{% url 'removefrombasket' bkt_item_id=item.id %}"> <i style="text-align:left; color:#ec4e20" class="fas fa-minus-circle"></i></a>
+            </td>
+            <td class="bkt-table-col">
+                {{item.product}} 
+            </td>
+            <td class="bkt-table-col">
+                {{item.product.description}}
+            </td>
+            <td class="bkt-table-col" style="text-align:center;">
+                {{item.product.price}}
+            </td>
+            <td class="bkt-table-col" style="text-align:center;">
+                {{item.quantity_to_buy}} 
+            </td>
+            <td>
+                <a style="{% if item.product.sku == '000001' and item.quantity_to_buy >= 1 %}display:none; {%endif%} text-decoration:none; font-size:1.2em; color: lightgreen;" href="{%url 'addtobasket' product_id=item.product.id%}"><i class="fas fa-cart-plus"></i></a>
+            </td>
+            <td class="bkt-table-col" style="text-align:center;">
+                {% widthratio item.product.sessions 1 item.quantity_to_buy %}
+            </td>
+            <td class="bkt-table-col" style="text-align:center;">
+                {% widthratio item.product.price 1 item.quantity_to_buy %}
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+<div style="display:flex; flex-direction: column; align-items:flex-end; margin-right: 10%">
+    <h5>Amount Due: {{total_cost}}</h5>
+    <a href="{% url 'pay_here' %}">Checkout</a>
+</div>
 
-<li>
-    {{item.product}}
-    {{item.quantity_to_buy}}
-    
-</li>
-
-</ul>
-<h5>Amount Due: {{total_cost}}</h5>
-<a href="{% url 'pay_here' %}">Checkout</a>
 {%endblock%}

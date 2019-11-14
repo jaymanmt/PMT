@@ -30,7 +30,7 @@ style= "background-image: url('{% static 'images/hero.jpg'%}'); background-size:
                 <a style="box-shadow:1px 1px 3px black;" href="{%url "register" %}" class="btn btn-primary basket-btn">Register to Purchase</a>
                 {%endif%}
                 {%if user.is_authenticated%}
-                <a style="box-shadow:1px 1px 3px black;"class="btn btn-primary basket-btn" href="{%url 'addtobasket' product_id=i.id%}">Add to my Basket</a>
+                <a {% if bkt_starter_bool == False and i.sku == '000001' %} onclick="return false;" {%endif%} style="{% if bkt_starter_bool == False and i.sku == '000001' %} text-decoration:line-through; {%endif%}box-shadow:1px 1px 3px black;"class="btn btn-primary basket-btn" href="{%url 'addtobasket' product_id=i.id%}">Add to my Basket</a>
                 {%endif%}
             </div>
             
