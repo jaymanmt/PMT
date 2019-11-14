@@ -19,7 +19,7 @@ style= "background-image: url('{% static 'images/hero.jpg'%}'); background-size:
             </div>
             
             <div class="card-body" style="min-height: 400px; background-color: #373f51; color: white;">
-                <h2>${%if i.product_name == "Starter's Package"%}<strike>100</strike>{%endif%} {{i.price}}</h2>
+                <h2>${% if i.sku == "000001" %}<strike>100</strike>{%endif%} {% widthratio i.price 100 1 %}</h2>
                 <h5>for {{i.sessions}} session(s)</h5>
                 <p class="card-text">{{i.description}}</p>
                 <p>SKU: {{i.sku}}</p>

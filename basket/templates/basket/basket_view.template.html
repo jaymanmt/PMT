@@ -1,4 +1,5 @@
 {%extends 'base.template.html'%}
+{% load custom_tags %}
 {%block bg-img%}
 style="background-color: #373f51;"
 {%endblock%}
@@ -46,7 +47,7 @@ style="background-color: #373f51;"
                 {{item.product.description}}
             </td>
             <td class="bkt-table-col" style="text-align:center;">
-                {{item.product.price}}
+                $ {% widthratio item.product.price 100 1 %}
             </td>
             <td class="bkt-table-col" style="text-align:center;">
                 {{item.quantity_to_buy}} 
@@ -58,7 +59,7 @@ style="background-color: #373f51;"
                 {% widthratio item.product.sessions 1 item.quantity_to_buy %}
             </td>
             <td class="bkt-table-col" style="text-align:center;">
-                {% widthratio item.product.price 1 item.quantity_to_buy %}
+                $ {% calculate_total item.quantity_to_buy item.product.price %}
             </td>
         </tr>
         {%endfor%}

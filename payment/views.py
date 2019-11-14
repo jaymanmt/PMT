@@ -11,23 +11,26 @@ from .models import Transaction, InvoiceItem
 
 #function to calculate total cost in basket of the current user 
 def calculate_bkt_cost(request):
-    basket_items = basketItem.objects.filter(owner = request.user)
-    amount = 0
-    for item in basket_items:
-        amount += item.product.price* item.quantity_to_buy
-    return amount
 
+    total_cost = 0
+
+    all_basket_items = basketItem.objects.filter(owner=request.user)
+    for each_item in all_basket_items:
+
+        total_cost+=each_item.calculate_total()
+    
+    return total_cost
 
 def pay_here(request):
     
     if request.method == 'GET':
         total_cost = calculate_bkt_cost(request)
-        total_cost_in_dollars = round(total_cost/100, 2)
+        total_cost_for_payment = total_cost*100
         if total_cost == 0:
             return HttpResponse('empty basket')
         
-        #prevents the empty transactions from being created over and over again from page refreshes 
-        delete_previous_transactions = Transaction.objects.filter(owner=request.user).delete()
+        #prevents the pending transactions from being created over and over again from page refreshes 
+        delete_previous_transactions = Transaction.objects.filter(owner=request.user,status='pending').delete()
         
         transaction = Transaction()
         transaction.owner = request.user
@@ -42,9 +45,14 @@ def pay_here(request):
             invoice_item.transaction = transaction
             invoice_item.product = item.product
             invoice_item.quantity = item.quantity_to_buy
+            if item.quantity_to_buy >=5:
+                price_to_discount = item.product.price
+                invoice_item.price = price_to_discount*0.9
+            else:
+                invoice_item.price = item.product.price * item.quantity_to_buy
             invoice_item.sku = item.product.sku
             invoice_item.name = item.product.product_name
-            invoice_item.price = item.product.price
+            
             invoice_item.save()
         
         
@@ -57,7 +65,7 @@ def pay_here(request):
             "stripe_public_key": settings.STRIPE_PUBLISHABLE_KEY,
             "order_form": order_form,
             "payment_form":payment_form,
-            "total_cost_in_dollars":total_cost_in_dollars,
+            "total_cost_for_payment":total_cost_for_payment,
             "transaction":transaction
         })
     else:
@@ -79,7 +87,7 @@ def pay_here(request):
             if order_form.is_valid() and payment_form.is_valid():
                 try:
                     amount = 0
-                    amount = request.POST['total_cost']
+                    amount = request.POST['total_cost_for_payment']
 
                     customer = stripe.Charge.create(
                         amount = amount,

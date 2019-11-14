@@ -37,9 +37,9 @@
 
     {% csrf_token %}
     
-    <input type='hidden' value='{{total_cost}}' name='total_cost'/>
+    <input type='hidden' value='{{total_cost_for_payment}}' name='total_cost_for_payment'/>
     <input type="hidden" value='{{transaction.id}}' name = 'transaction_id'/>
-    <p>Amount due: {{total_cost_in_dollars}}</p>
+    <p>Amount due: {{total_cost}}</p>
     <div class="form-group col-md-12">
         <input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
     </div>
