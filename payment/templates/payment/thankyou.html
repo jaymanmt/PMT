@@ -1,5 +1,16 @@
 {%extends 'base.template.html'%}
-
+{% load crispy_forms_tags %}
+{% load static %}
+{%block bg-img%}
+style="background-color: #373f51"
+{%endblock%}
 {%block title%}
-<h1>Thank you for your purchase, I hope you'll enjoy them (:</h1>
+<div>
+    <h1>Thank you for your purchase</h1>
+    <h3>
+        I will be in touch shortly! 
+    </h3>
+</div>
+
+
 {%endblock%}

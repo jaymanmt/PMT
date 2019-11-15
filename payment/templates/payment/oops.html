@@ -1,0 +1,23 @@
+{%extends 'base.template.html'%}
+{% load crispy_forms_tags %}
+{% load static %}
+{%block bg-img%}
+style="background-color: #373f51"
+{%endblock%}
+{%block title%}
+<div style="min-height: 700px; color: #ffd23f; font-size: 3em;">
+    <ul style="list-style: none;">
+        <li>
+            <i class="fas fa-exclamation-circle"></i> OOPS! 
+        </li>
+        <li>
+            An error has occured. Please try again. 
+        </li>
+        <li>
+            If this error continues to occur, please contact me directly. <a href="#"><i style="color: #ffd23f;"class="fas fa-user"></i></a>
+        </li>
+    </ul>
+</div>
+
+
+{%endblock%}

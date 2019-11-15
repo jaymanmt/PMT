@@ -28,9 +28,10 @@ def pay_here(request):
     
     if request.method == 'GET':
         total_cost = calculate_bkt_cost(request)
-        total_cost_integer = int(total_cost)
+        total_cost_integer = int(total_cost*100)
         if total_cost == 0:
-            return HttpResponse('empty basket')
+            messages.error(request, "Your basket is empty, please add an item to proceed")
+            return render(request, 'payment/oops.html')
             
         #convert to two decimal places string
         total_cost = "{:.2f}".format(total_cost)
@@ -76,7 +77,8 @@ def pay_here(request):
         transaction_id = request.POST['transaction_id']
         transaction = Transaction.objects.get(pk=transaction_id)
         if transaction.status != 'pending':
-            return HttpResponse('payment has already been made, please check your bank account')
+            messages.error(request, "It seems like you have already made payment for this. Please check your bank account")
+            return render(request, 'payment/oops.html')
         else:
             #stripe id is retrieved from the forms through a hidden widget
             stripeToken = request.POST['stripe_id']
@@ -119,9 +121,10 @@ def pay_here(request):
                         return render(request, 'payment/thankyou.html')
                     else:
                         messages.error(request, "Your card has been declined")
+                        return render(request, 'payment/oops.html')
                 except stripe.error.CardError:
-                        messages.error(request, "Payment was unsuccessful, please check your card details!")
-                
+                    messages.error(request, "Payment was unsuccessful, please check your card details")
+                    return render(request, 'payment/oops.html')
             else:
                 messages.error(request, "An error has occured while processing your payment, please fill in the form again")
                 return render(request, 'payment/paying.html', {
