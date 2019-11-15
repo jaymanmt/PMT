@@ -1,9 +1,11 @@
 from django.shortcuts import render, HttpResponse, reverse, redirect
 from django.contrib import auth, messages
 from .forms import UserLoginForm, UserRegistrationForm
-from .models import MyUser
+from .models import MyUser, ReferralCode
 from django.contrib.auth.decorators import login_required
 from PMT.views import home
+from django.utils.crypto import get_random_string
+from django.utils import timezone
 
 # Create your views here.
 
@@ -42,7 +44,14 @@ def register(request):
             form.save()
             user = auth.authenticate(username=request.POST['username'], password=request.POST['password2'])
             if user:
+                unique_id = get_random_string(length=10)
+                code = ReferralCode()
+                code.discount = unique_id
+                code.active = True
+                code.save()
                 auth.login(user=user, request=request)
+                user.referral_code = code
+                user.save()
                 messages.success(request,"You have registered successfully")
             else:
                 messages.error(request, "Your registration has failed")

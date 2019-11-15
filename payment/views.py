@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 import stripe
 from django.conf import settings
-from .forms import OrderForm, PaymentForm
+from .forms import OrderForm, PaymentForm 
 from basket.models import basketItem
 from django.utils import timezone
 from django.contrib import messages
@@ -63,6 +63,7 @@ def pay_here(request):
         
         order_form = OrderForm()
         payment_form = PaymentForm()
+
         
         return render(request, 'payment/paying.html', {
             "total_cost":total_cost,
@@ -76,6 +77,7 @@ def pay_here(request):
 
         transaction_id = request.POST['transaction_id']
         transaction = Transaction.objects.get(pk=transaction_id)
+        
         if transaction.status != 'pending':
             messages.error(request, "It seems like you have already made payment for this. Please check your bank account")
             return render(request, 'payment/oops.html')
@@ -104,6 +106,7 @@ def pay_here(request):
                     if customer.paid:
                         
                         order = order_form.save(commit=False)
+                        order.amount = amount
                         order.date=timezone.now()
                         order.save()
                         transaction.status = 'approved'

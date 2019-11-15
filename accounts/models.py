@@ -1,7 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 
 # Create your models here.
+def three_weeks_later():
+    return timezone.now() + timezone.timedelta(days=21)
+    
 class MyUser(AbstractUser):
     first_name= models.CharField(max_length=80, blank=False, default="")
     last_name= models.CharField(max_length=80, blank=False, default="")
@@ -14,9 +18,9 @@ class MyUser(AbstractUser):
         return str(self.username)
     
 class ReferralCode(models.Model):
-    discount_code = models.CharField(max_length=80, blank=False, default="")
-    expiry = models.DateField()
-    active = models.BooleanField(blank=False)
+    discount = models.CharField(max_length=15, blank=False, default="")
+    expiry = models.DateTimeField(default=three_weeks_later)
+    active = models.BooleanField(blank=False, null=True)
     
     
     def __str__(self):
