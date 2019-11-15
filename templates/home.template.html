@@ -4,38 +4,22 @@
 style= "background-image: url('{% static 'images/hero.jpg'%}'); background-size: cover; background-position: top;  background-repeat: no-repeat;")
 {%endblock%}
 {%block content%}
-<div style="color: white; text-align: center;" class = "container-fluid">
-    <div class="row" style="margin-top:40px">
-        <div class='col-3'></div>
-        <h1 style="color: #f8333c; text-shadow:2px 2px black">
-            Personal Training with Muay Thai. 
-        </h1>
+<div>
+    <h4 style="color: #f8333c; text-shadow:2px 2px black;">
+        Muay Thai Personal Training. 
+    </h4>
+</div>
+<div style="color: white; text-align: center; display:flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10%;">
+    <div style="background-color:rgba(0,0,0,0.5); padding: 20px; margin-top: 80px; color: #ffd23f;">
+        <h2>Get 30% off the starter's package today!</h2>
     </div>
-    <div class="row">
-        <div class='col-6'></div>
-        <h3 style="color:#44af69; text-shadow:2px 2px black">
-            Feel empowered with new skills.
-        </h3>
-    </div>
-    <div class="row">
-        <div class='col-9'></div>
-        <h4 style="color:#228cdb; text-shadow:2px 2px black;" >
-            An experience about YOU.
-        </h4>
-    </div>
-    <div class = "row" style="margin-top: 80px; padding-bottom: 200px;">
-
-        <div class = "col" style="background-color:rgba(0,0,0,0.5); padding: 20px;">
-            <h2>Login and get 30% off the starter's package today! <a id="cta" style="color:black; padding: 8px; text-decoration:none;"href="{%url "register"%}">Register</a></h2>
-        </div>
-    </div>
-    <div class = "row">
-        <div class="col-9"></div>
-        <div class="col" style="padding: 10px;">
-            <h4 class= "col">Read More </h4>
-            <i style="font-size: 3em;"class="fas fa-angle-double-down"></i>
-        </div>
-    </div>
+</div>
+<div>
+    <h3 style="text-align: center; margin-top: 3%;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "register"%}"> Register Now </a></h3>
+</div>
+<div style="padding: 10px; color: white; text-align: center;">
+    <h4>Read More </h4>
+    <i style="font-size: 3em;"class="fas fa-angle-double-down"></i>
 </div>
 
 

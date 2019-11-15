@@ -69,9 +69,14 @@ def partner(request):
     return render(request, 'accounts/partner.html')
     
 def user_profile(request):
-    user = MyUser.objects.get(email=request.user.email)
+    #search by email in object as each email is unique to each user
+    user = MyUser.objects.filter(email=request.user.email).first()
     return render(request, 'accounts/profile.html', {
         "profile":user
     })
+    
+def edit_profile(request):
+    if request.method == "POST":
+        pass
 
 #to add a POST in order to do CRU_ on the user's profile

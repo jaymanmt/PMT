@@ -28,3 +28,6 @@ https://github.com/daneden/animate.css
 
 Stripe branding 
 https://stripe.com/en-sg/newsroom/brand-assets
+
+how to show images from objects on django:
+https://stackoverflow.com/questions/9498012/how-to-display-images-from-model-in-django
