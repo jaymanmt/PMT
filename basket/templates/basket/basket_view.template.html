@@ -36,9 +36,6 @@ style="background-color: #373f51;"
             <th class="bkt-table-col">
                 Total Cost
             </th>
-            <th style="text-align:center;" class="bkt-table-col">
-                Discounts
-            </th>
         </tr>
         {%for item in all_basket_items%}
         <tr style="padding: 0;" class="bkt-table-row">
@@ -68,22 +65,17 @@ style="background-color: #373f51;"
                 {% widthratio item.product.sessions 1 item.quantity_to_buy %}
             </td>
             <td class="bkt-table-col" style="text-align:center;">
-                $ {% calculate_total item.quantity_to_buy item.product.price %}
+                $ {% calculate_total_tag item.quantity_to_buy item.product.price %}
             </td>
-            {% if item.quantity_to_buy >= 5 %}
-            <td>
-                10% off discount applied! 
-            </td>
-            {%endif%}
         </tr>
         {%endfor%}
     </table>
 </div>
-<div style="min-height: 500px; display:flex; flex-direction: column; align-items:center; margin-left: 50%;">
+<div style="display:flex; flex-direction: column; align-items:center; margin-left: 50%; margin-top: 10px;">
     <table style="color: white;">
         <tr style="padding: 0;" class="bkt-table-row">
             <td>
-                <h6>Checkout</h6>
+                Checkout
             </td>
         </tr>
         <tr style="padding: 0;" class="bkt-table-row">
@@ -93,7 +85,35 @@ style="background-color: #373f51;"
         </tr>
         <tr style="padding: 0;" class="bkt-table-row">
             <td>
-                <a style="text-decoration: none; border-bottom: 1px #ffd23f solid; color: #ffd23f; font-size: 1.5em;" href="{% url 'pay_here' %}">Make Payment</a> <i style="color: #ffd23f; font-size: 1.5em;" class="far fa-hand-point-left"></i>
+                <a style="text-decoration: none; color: #ffd23f; font-size: 1.5em;" href="{% url 'pay_here' %}">Make Payment</a> <i style="color: #ffd23f; font-size: 1.5em;" class="far fa-hand-point-left"></i>
+            </td>
+        </tr>
+    </table>
+</div>
+<div style="min-height: 500px; display:flex; flex-direction: column; align-items:center; margin-right: 50%; margin-top: 10px;">
+    <table style="padding: 10%; color:white;">
+        <tr>
+            <td>
+                
+            </td>
+            <td style="font-size: 2em; color: #ffd23f;">
+                Did you KNOW?
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <i style="color: #ffd23f;" class="fas fa-check-circle"></i>
+            </td>
+            <td>
+                Buy 5 packages, and get 10% off! 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <i style="color: #ffd23f;" class="fas fa-check-circle"></i>
+            </td>
+            <td>
+                After purchase, you will be contacted within 1-2 business days!
             </td>
         </tr>
     </table>

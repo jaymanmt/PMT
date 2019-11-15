@@ -11,7 +11,7 @@ style= "background-image: url('{% static 'images/hero.jpg'%}'); background-size:
     <div class="flex-container" style="display:flex; flex-direction:row; flex-wrap: wrap; justify-content: space-around;">
         {%for i in items%}
         
-        <div class="card" style="border-radius: 25px; flex-basis: 400px; margin:12px; width:100%; text-align: center; {%if starter_check and i.sku == '000001' %}display:none;{%endif%}">
+        <div class="card" style="box-shadow: 3px 3px 5px; border-radius: 25px; flex-basis: 400px; margin:12px; width:100%; text-align: center; {%if starter_check and i.sku == '000001' %}display:none;{%endif%}">
             
             <div style="background-color: #ffd23f; border-top-left-radius: 25px;border-top-right-radius: 25px; padding:12px;">
                 <h2 class="card-title">{{i.product_name}}</h2>

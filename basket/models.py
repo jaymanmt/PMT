@@ -8,11 +8,7 @@ class basketItem(models.Model):
     
     def __str__(self):
         return str(self.owner) + " - " + str(self.product) + "x" + str(self.quantity_to_buy)
-#calculate the 10% discount if the quantitiy of a basket item is above 5. 
+# calculate the 10% discount if the quantity of a particular  basket item is above 5. 
     def calculate_total(self):
-        if self.quantity_to_buy >= 5:
-            discounted_cost = ((self.quantity_to_buy*self.product.price)/100)*0.9
-            return int(discounted_cost)
-        else:
-            new_cost = (self.quantity_to_buy*self.product.price)/100
-            return int(new_cost)
+        new_cost = (self.quantity_to_buy*self.product.price)/100
+        return int(new_cost)
