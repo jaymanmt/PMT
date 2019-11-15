@@ -79,7 +79,9 @@ def removefrombasketfrombasket(request, product_id):
     # if the product already exists in the user's shopping basket
     existing_bkt_item = basketItem.objects.filter(owner=request.user, product=product).first()
     
-    # decreases its quantity
+    # decreases its quantity and if statement to avoid user decreasing quantity below 0. 
+    if existing_bkt_item.quantity_to_buy <= 0:
+        return redirect(reverse('showbasket')+'?added=1')
     existing_bkt_item.quantity_to_buy -= 1
     existing_bkt_item.save()
     return redirect(reverse('showbasket')+'?added=1')
