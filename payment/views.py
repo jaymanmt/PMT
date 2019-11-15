@@ -13,11 +13,14 @@ from .models import Transaction, InvoiceItem
 def calculate_bkt_cost(request):
 
     total_cost = 0
-
+    number_of_items = 0
     all_basket_items = basketItem.objects.filter(owner=request.user)
     for each_item in all_basket_items:
-
+        number_of_items+= each_item.quantity_to_buy
         total_cost+=each_item.calculate_total()
+    
+    if number_of_items >= 5:
+        total_cost = total_cost * 0.9
     
     return total_cost
 
@@ -25,10 +28,12 @@ def pay_here(request):
     
     if request.method == 'GET':
         total_cost = calculate_bkt_cost(request)
-        total_cost_for_payment = total_cost*100
+        total_cost_integer = int(total_cost)
         if total_cost == 0:
             return HttpResponse('empty basket')
-        
+            
+        #convert to two decimal places string
+        total_cost = "{:.2f}".format(total_cost)
         #prevents the pending transactions from being created over and over again from page refreshes 
         delete_previous_transactions = Transaction.objects.filter(owner=request.user,status='pending').delete()
         
@@ -55,17 +60,15 @@ def pay_here(request):
             
             invoice_item.save()
         
-        
-        
         order_form = OrderForm()
         payment_form = PaymentForm()
         
         return render(request, 'payment/paying.html', {
             "total_cost":total_cost,
+            "total_cost_integer":total_cost_integer,
             "stripe_public_key": settings.STRIPE_PUBLISHABLE_KEY,
             "order_form": order_form,
             "payment_form":payment_form,
-            "total_cost_for_payment":total_cost_for_payment,
             "transaction":transaction
         })
     else:

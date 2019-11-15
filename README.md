@@ -25,3 +25,6 @@ https://michalsnik.github.io/aos/
 
 animate on click functionality
 https://github.com/daneden/animate.css
+
+Stripe branding 
+https://stripe.com/en-sg/newsroom/brand-assets

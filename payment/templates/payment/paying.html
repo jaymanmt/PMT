@@ -7,7 +7,7 @@ style="background-color: #373f51"
 {%endblock%}
 
 {%block title%}
-<h1>Please confirm your payment</h1>
+<h1 style="text-align: center;">Please confirm your payment</h1>
 {%endblock%}
 
 {%block footer_js %}
@@ -26,7 +26,7 @@ style="background-color: #373f51"
 {%block content %}
 <div style="color: white; display: flex; justify-content: center;">
     <form role="form" method="POST" id="payment-form" style="border-radius: 3px; margin-right:1em; margin-left:1em; min-width:375px; background-color: rgba(0,0,0,0.2); padding: 20px;">
-        <legend style="color: #ffd23f">Payment Details</legend>
+        <legend style="color: #ffd23f">Payment Details<img style="margin-left: 2em;"src="{% static 'images/powered_by_stripe.png' %}"></img></legend>
     
         <div class='alert alert-danger' id='credit-card-errors' style='display:none'>
             <p id='stripe-error-message'></p>
@@ -42,11 +42,12 @@ style="background-color: #373f51"
     
         {% csrf_token %}
         
-        <input type='hidden' value='{{total_cost_for_payment}}' name='total_cost_for_payment'/>
+        <input type='hidden' value='{{total_cost_integer}}' name='total_cost_for_payment'/>
         <input type="hidden" value='{{transaction.id}}' name = 'transaction_id'/>
-        <p>Amount due: {{total_cost}}</p>
+        <p style="font-size: 1.3em;">Amount due: $ {{total_cost}}</p>
         <div class="form-group">
-            <input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+            <input class=" btn" style="box-shadow: 2px 2px 5px; background-color: #ffd23f;"id="submit_payment_btn" name="commit" type="submit" value="Make Payment">
+            <img style="margin-left: 2em;"src="{% static 'images/powered_by_stripe.png' %}"></img>
         </div>
     </form>
 </div>

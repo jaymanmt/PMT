@@ -20,14 +20,14 @@ style= "background-image: url('{% static 'images/hero.jpg'%}'); background-size:
             
             <div class="card-body" style="min-height: 400px; background-color: #373f51; color: white;">
                 <h2>${% if i.sku == "000001" %}<strike>100</strike>{%endif%} {% widthratio i.price 100 1 %}</h2>
-                <h5>for {{i.sessions}} session(s)</h5>
+                <h5>{{i.sessions}} x session(s)</h5>
                 <p class="card-text">{{i.description}}</p>
                 <p>SKU: {{i.sku}}</p>
             </div>
             <hr style="margin:0; padding:0">
             <div style="background-color: #373f51; border-bottom-left-radius: 25px ; border-bottom-right-radius: 25px; padding: 15px; width:100%">
                 {%if not user.is_authenticated%}
-                <a style="box-shadow:1px 1px 3px black;" href="{%url "register" %}" class="btn btn-primary basket-btn">Register to Purchase</a>
+                <a style="box-shadow:1px 1px 3px black;" href="{%url "register" %}" class="btn btn-primary basket-btn">Register/Login to Purchase</a>
                 {%endif%}
                 {%if user.is_authenticated%}
                 <a {% if bkt_starter_bool == False and i.sku == '000001' %} onclick="return false;" {%endif%} style="{% if bkt_starter_bool == False and i.sku == '000001' %} text-decoration:line-through; {%endif%}box-shadow:1px 1px 3px black;"class="btn btn-primary basket-btn" href="{%url 'addtobasket' product_id=i.id%}">Add to my Basket</a>
