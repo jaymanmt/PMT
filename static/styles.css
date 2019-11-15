@@ -74,3 +74,27 @@
         display:none;
     }
 }
+
+#payment{
+    color: #ffd23f;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+#payment:hover{
+    color: #d1ac34 !important;
+}
+
+#payment-pointer{
+    animation-name: pointing;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 2;
+}
+@keyframes pointing {
+    0% {transform: translateX(0px)}
+    25% {transform: translateX(8px)}
+    50% {transform: translateX(0px)}
+    75% {transform: translateX(8px)}
+    100% {transform: translateX(0px)}
+}

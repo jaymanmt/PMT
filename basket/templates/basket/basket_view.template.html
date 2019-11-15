@@ -75,17 +75,25 @@ style="background-color: #373f51;"
     <table style="color: white;">
         <tr style="padding: 0;" class="bkt-table-row">
             <td>
-                Checkout
+                Total Amount: $ {{original_cost}}
             </td>
         </tr>
+        {%if number_of_items >= 5%}
+        <tr>
+            <td>
+                10% Discount Applied ! 
+            </td>
+        </tr>
+        {%endif%}
         <tr style="padding: 0;" class="bkt-table-row">
             <td style="font-size: 1.5em;">
-                Amount Due: $ {{total_cost}}
+                Final Amount: $ {{total_cost}}
             </td>
         </tr>
+        
         <tr style="padding: 0;" class="bkt-table-row">
             <td>
-                <a style="text-decoration: none; color: #ffd23f; font-size: 1.5em;" href="{% url 'pay_here' %}">Make Payment</a> <i style="color: #ffd23f; font-size: 1.5em;" class="far fa-hand-point-left"></i>
+                <a id= "payment" style="text-decoration: none; font-size: 1.5em;" href="{% url 'pay_here' %}">Make Payment</a> <i id="payment-pointer" style="color: #ffd23f; font-size: 1.5em;" class="far fa-hand-point-left"></i>
             </td>
         </tr>
     </table>

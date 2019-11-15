@@ -13,19 +13,23 @@ def showbasket(request):
     all_basket_items = basketItem.objects.filter(owner=request.user)
     for each_item in all_basket_items:
         number_of_bkt_items+=1
-        number_of_items+= number_of_bkt_items*each_item.quantity_to_buy
+        number_of_items+= each_item.quantity_to_buy
         total_cost+=each_item.calculate_total()
-        
+    
+    original_cost = total_cost    
     if number_of_items >= 5:
         total_cost = total_cost * 0.9
         
     #convert to two decimal places string
     total_cost = "{:.2f}".format(total_cost)
-
+    original_cost = "{:.2f}".format(original_cost)
+    
     return render(request, "basket/basket_view.template.html", {
         "all_basket_items":all_basket_items,
         "total_cost":total_cost,
-        "number_of_bkt_items":number_of_bkt_items
+        "number_of_bkt_items":number_of_bkt_items,
+        "number_of_items":number_of_items,
+        "original_cost":original_cost
     })
     
 def addtobasket(request, product_id):
