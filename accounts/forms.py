@@ -37,3 +37,16 @@ class UserRegistrationForm(UserCreationForm):
         if password1 != password2:
             raise forms.ValidationError('passwords do not match, please try again')
         return password2
+
+class UserEditProfile(forms.Form):
+    class Meta(MyUser):
+        model = MyUser
+        fields = ['first_name','last_name','mobile','email','username','injuries',]
+        
+    def clean_email(self):
+        User = get_user_model()
+        provided_email = self.cleaned_data.get('email')
+        #using the Django ORM to check for existing emails of the same name that was entered
+        if User.objects.filter(email=provided_email):
+            raise forms.ValidationError('This email is currently being used')
+        return provided_email

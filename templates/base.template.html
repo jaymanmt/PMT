@@ -54,7 +54,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a style= "color: black" class="dropdown-item" href="{% url "showbasket" %}">My Basket</a>
-                            <a style= "color: black" class="dropdown-item" href="{% url "profile" %}">My Profile</a>
+                            <a style= "color: black" class="dropdown-item" href="{% url "user_profile" id=user.id %}">My Profile</a>
                             <a style= "color: black" class="dropdown-item" href="{% url "password_reset" %}">{%if user.is_authenticated%}Change your Password{%endif%}{%if not user.is_authenticated%}Reset Password{%endif%}</a>
                             <div style= "color: black"  class="dropdown-divider"></div>
                             <a style= "color: black" class="dropdown-item" href="{% url "logout" %}">Logout</a>

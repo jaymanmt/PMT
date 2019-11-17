@@ -1,6 +1,6 @@
-from django.shortcuts import render, HttpResponse, reverse, redirect
+from django.shortcuts import render, HttpResponse, reverse, redirect, get_object_or_404
 from django.contrib import auth, messages
-from .forms import UserLoginForm, UserRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm, UserEditProfile
 from .models import MyUser, ReferralCode
 from django.contrib.auth.decorators import login_required
 from PMT.views import home
@@ -68,15 +68,29 @@ def register(request):
 def partner(request):
     return render(request, 'accounts/partner.html')
     
-def user_profile(request):
-    #search by email in object as each email is unique to each user
-    user = MyUser.objects.filter(email=request.user.email).first()
-    return render(request, 'accounts/profile.html', {
-        "profile":user
-    })
+def user_profile(request, id):
+        
+    get_user = get_object_or_404(MyUser, pk=id)
     
-def edit_profile(request):
     if request.method == "POST":
-        pass
+        if "update_first_name" in request.POST:
+            update_first_name = request.POST["update_first_name"]
+            get_user.first_name = update_first_name
+            get_user.save()
+        elif "update_mobile" in request.POST:
+            update_mobile = request.POST["update_mobile"]
+            get_user.mobile = update_mobile
+            get_user.save()
+        
+        return render(request, 'accounts/profile.html')
+
+    else:
+            
+        #search by email in object as each email is unique to each user
+        user = MyUser.objects.filter(email=request.user.email).first()
+        return render(request, 'accounts/profile.html', {
+            "profile":user
+        })
+    
 
 #to add a POST in order to do CRU_ on the user's profile

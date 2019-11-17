@@ -66,6 +66,16 @@
     margin:10px;
 }
 
+.profile-table-row{
+    border-bottom: 1px #ffd23f solid;
+}
+
+.profile-table-col{
+    padding:10px;
+    margin:10px;
+
+}
+
 @media only screen and (max-width: 600px){
     .bkt-table-col{
     padding:0px;
@@ -97,4 +107,30 @@
     50% {transform: translateX(0px)}
     75% {transform: translateX(8px)}
     100% {transform: translateX(0px)}
+}
+
+.edit_profile{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    background-color: #373f51;
+    box-shadow: none; 
+    border: none;
+    color: white;
+}
+
+.update-button{
+    background-color: transparent;
+    border: 1px #ffd23f solid;
+    color: #ffd23f;
+    padding: 0.3em;
+    border-radius: 3px;
+}
+.cancel-update-button{
+    visibility:hidden;
+}
+
+input{
+    width: 40%;
 }

@@ -7,64 +7,107 @@ style="background-color: #373f51"
 {%endblock%}
 
 {%block title%}
-<h1 style="text-align: center; color: #ffd23f; ">Your Profile</h1>
+<h1 style="color: #ffd23f; text-align:center;">My Profile</h1>
 {%endblock%}
 
 {%block content%}
 {%if user.is_authenticated%}
-<div style="color: #ffd23f; display:flex; flex-direction: column; align-items: center;">
-    <img style="width: 150px; height: 150px; border-radius: 100px; background-color: white;"src="{{ user.photo.url }}"/>
-    <div style="width:100%; display:flex; flex-direction: row; justify-content: space-around;">
-        <table>
+
+
+<div style="color: #ffd23f; display:flex; flex-direction: column;">
+    
+    <div style=" display: flex; flex-direction: column; align-items:center;">
+        <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 20px; width: 600px; text-align:center;">
             <tr>
                 <td>
-                    Name:
-                </td>
-                <td>
-                    {{user.first_name}} {{user.last_name}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Mobile:
-                </td>
-                <td>
-                    {{user.mobile}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Email:
-                </td>
-                <td>
-                    {{user.email}}
+                    <img style="width: 150px; height: 150px; border-radius: 100px; background-color: white;"src="{{ user.photo.url }}"/>
                 </td>
             </tr>
         </table>
-        <table>
-            <tr>
-                <td>
-                    Injuries:
+        <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 2em; width:600px;">
+            <tr class="profile-table-row">
+                <td class="profile-table-col" style="color: #ffd23f;">
+                    <i class="fas fa-user"></i>
+                    <p style="font-size: 0.7em;">Name</p>
                 </td>
-                <td>
-                    {{user.injuries}}
+                <td class="profile-table-col" >
+                    <p id="no_show_edit_name">{{user.first_name}}</p>
+                </td>
+                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_name">
+                    <p><form method= 'POST'> 
+                    {%csrf_token%}
+                    <input class="edit_profile" type="text" name="update_first_name" placeholder="{{user.first_name}}"/>
+                    <button class="update-button" name="update_first_name" type="submit">Update</button>
+                    </form></p>
+                </td>
+                <td class="profile-table-col">
+                    <p><a class="cancel-update-button"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
+                </td>
+                <td class="profile-table-col">
+                    <p><a class="edit_profile" href="#"><i class="fas fa-pen-nib"></i></a></p>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    About me:
+            <tr class="profile-table-row">
+                <td class="profile-table-col" style="color: #ffd23f;">
+                    <i class="fas fa-phone"></i>
+                    <p style="font-size: 0.7em;">Mobile</p>
                 </td>
-                <td>
-                    {{user.self_depict}}
+                <td class="profile-table-col">
+                    <p>{{user.mobile}}</p>
                 </td>
             </tr>
+            <tr class="profile-table-row">
+                <td class="profile-table-col" style="color: #ffd23f;">
+                    <i class="far fa-envelope"></i> 
+                    <p style="font-size: 0.7em;">Email</p>
+                </td>
+                <td class="profile-table-col">
+                    <p>test email</p>
+                </td>
+            </tr>
+            <tr class="profile-table-row">
+                <td class="profile-table-col" style="color: #ffd23f;">
+                    <i class="fas fa-briefcase-medical"></i>
+                    <p style="font-size: 0.7em;">Injuries</p>
+                </td>
+                <td class="profile-table-col">
+                    <p>test injuries</p>
+                </td>
+            </tr>
+            <tr class="profile-table-row">
+                <td class="profile-table-col" style="color: #ffd23f;">
+                    <i class="fas fa-info"></i>
+                    <p style="font-size: 0.7em;">More Info</p>
+                </td>
+                <td class="profile-table-col">
+                    <p>test info</p>
+                </td>
+            </tr>
+
         </table>
     </div>
-    
 
     <form method='POST'  enctype="multipart/form-data">
     add profile picture
     </form>
 </div>
 {%endif%}
+{%endblock%}
+{% block footer_js %}
+<script>
+    $(document).ready(function() {
+          $(".edit_profile").click(function display_edit() {
+            $("#no_show_edit_name").css({"visibility":"hidden","z-index": "-10"})
+            $("#show_edit_name").css("visibility","visible")
+            $(".cancel-update-button").css("visibility","visible")
+            $("input").focus()
+          });
+          $(".cancel-update-button").click(function no_display_edit() {
+            $("#no_show_edit_name").css("visibility","visible");
+            $("#show_edit_name").css("visibility","hidden")
+            $(".cancel-update-button").css("visibility","hidden")
+          });
+        });
+</script>
+
 {%endblock%}
