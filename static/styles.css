@@ -83,6 +83,9 @@
     .disposable-col{
         display:none;
     }
+    input{
+    width: 25%;
+}
 }
 
 #payment{
@@ -127,10 +130,6 @@
     padding: 0.3em;
     border-radius: 3px;
 }
-.cancel-update-button{
-    visibility:hidden;
-}
-
 input{
-    width: 40%;
+    width: 50%;
 }

@@ -24,27 +24,38 @@ style="background-color: #373f51"
                 </td>
             </tr>
         </table>
-        <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 2em; width:600px;">
+        <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 2em;">
             <tr class="profile-table-row">
                 <td class="profile-table-col" style="color: #ffd23f;">
                     <i class="fas fa-user"></i>
-                    <p style="font-size: 0.7em;">Name</p>
+                    <p style="font-size: 0.7em;">First Name</p>
                 </td>
                 <td class="profile-table-col" >
-                    <p id="no_show_edit_name">{{user.first_name}}</p>
+                    <p id="no_show_edit_1">{{user.first_name}}</p>
                 </td>
-                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_name">
-                    <p><form method= 'POST'> 
-                    {%csrf_token%}
-                    <input class="edit_profile" type="text" name="update_first_name" placeholder="{{user.first_name}}"/>
-                    <button class="update-button" name="update_first_name" type="submit">Update</button>
-                    </form></p>
+                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_1">
+                    <p>
+                        <form method= 'POST'> 
+                            {%csrf_token%}
+                            <input class="edit_profile" type="text" name="update_first_name" placeholder="{{user.first_name}}"/>
+                            <button class="update-button" value="update_first_name" type="submit">Update</button>
+                        </form>
+                    </p>
                 </td>
                 <td class="profile-table-col">
-                    <p><a class="cancel-update-button"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
+                    <p><a style="visibility: hidden;" id="cancel-update-1"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
                 </td>
                 <td class="profile-table-col">
                     <p><a class="edit_profile" href="#"><i class="fas fa-pen-nib"></i></a></p>
+                </td>
+            </tr>
+            <tr class="profile-table-row">
+                <td class="profile-table-col" style="color: #ffd23f;">
+                    <i class="far fa-user"></i>
+                    <p style="font-size: 0.7em;">Last Name</p>
+                </td>
+                <td class="profile-table-col">
+                    <p>{{user.last_name}}</p>
                 </td>
             </tr>
             <tr class="profile-table-row">
@@ -97,15 +108,15 @@ style="background-color: #373f51"
 <script>
     $(document).ready(function() {
           $(".edit_profile").click(function display_edit() {
-            $("#no_show_edit_name").css({"visibility":"hidden","z-index": "-10"})
-            $("#show_edit_name").css("visibility","visible")
-            $(".cancel-update-button").css("visibility","visible")
+            $("#no_show_edit_1").css({"visibility":"hidden"})
+            $("#show_edit_1").css("visibility","visible")
+            $("#cancel-update-1").css("visibility","visible")
             $("input").focus()
           });
-          $(".cancel-update-button").click(function no_display_edit() {
-            $("#no_show_edit_name").css("visibility","visible");
-            $("#show_edit_name").css("visibility","hidden")
-            $(".cancel-update-button").css("visibility","hidden")
+          $("#cancel-update-1").click(function no_display_edit() {
+            $("#no_show_edit_1").css("visibility","visible");
+            $("#show_edit_1").css("visibility","hidden")
+            $("#cancel-update-1").css("visibility","hidden")
           });
         });
 </script>
