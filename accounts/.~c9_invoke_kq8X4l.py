@@ -3,7 +3,6 @@ from django.contrib import auth, messages
 from .forms import UserLoginForm, UserRegistrationForm, UserEditProfile
 from .models import MyUser, ReferralCode
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import get_user_model
 from PMT.views import home
 from django.utils.crypto import get_random_string
 from django.utils import timezone
@@ -76,37 +75,23 @@ def user_profile(request, id):
     if request.method == "POST":
         if "update_first_name" in request.POST:
             update_first_name = request.POST["update_first_name"]
-            get_user.first_name = update_first_name
-            get_user.save()
+            if update_first_name == "":
+                pass
+            else:
+                get_user.first_name = update_first_name
+                get_user.save()
         elif "update_last_name" in request.POST:
             update_last_name = request.POST["update_last_name"]
-            get_user.last_name = update_last_name
-            get_user.save()
+            if update_last_name == "":
+                pass
+            else:
+                get_user.last_name = update_last_name
+                get_user.save()
         elif "update_mobile" in request.POST:
             update_mobile = request.POST["update_mobile"]
             get_user.mobile = update_mobile
             get_user.save()
-        elif "update_email" in request.POST:
-            # User = get_user_model()
-            # update_email = request.POST["update_email"]
-            # provided_email = update_email.cleaned_data.get('update_email')
-            # # using the Django ORM to check for existing emails of the same name that was entered
-            # if User.objects.filter(email=provided_email):
-            #     messages.error(request, "This email is taken")
-            # else:
-            #     get_user.email = provided_email
-            #     get_user.save()
-            update_email = request.POST["update_email"]
-            get_user.email = update_email
-            get_user.save()
-        elif "update_injuries" in request.POST:
-            update_injuries = request.POST["update_injuries"]
-            get_user.injuries = update_injuries
-            get_user.save()
-        elif "update_self_depict" in request.POST:
-            update_self_depict = request.POST["update_self_depict"]
-            get_user.self_depict = update_self_depict
-            get_user.save()
+        
         return render(request, 'accounts/profile.html')
 
     else:

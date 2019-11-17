@@ -7,7 +7,8 @@ style="background-color: #373f51"
 {%endblock%}
 
 {%block title%}
-<h1 style="color: #ffd23f; text-align:center;">My Profile</h1>
+<h1 style="color: #ffd23f; text-align:center;">My Profile</h1> 
+<button type="button" style="color:white;"class="btn btn-sm" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services.">My Privacy?</button>
 {%endblock%}
 
 {%block content%}
@@ -26,18 +27,18 @@ style="background-color: #373f51"
         </table>
         <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 2em;">
             <tr class="profile-table-row">
-                <td class="profile-table-col" style="color: #ffd23f;">
+                <td class="profile-table-col" style="color: #ffd23f; width:2em;">
                     <i class="fas fa-user"></i>
                     <p style="font-size: 0.7em;">First Name</p>
                 </td>
                 <td class="profile-table-col" >
-                    <p id="no_show_edit_1">{{user.first_name}}</p>
+                    <div id="no_show_edit_1">{{user.first_name}}</div>
                 </td>
                 <td class="profile-table-col" style="visibility:hidden;" id="show_edit_1">
                     <p>
                         <form method= 'POST'> 
-                            {%csrf_token%}
-                            <input class="edit_profile" type="text" name="update_first_name" placeholder="{{user.first_name}}"/>
+                        {%csrf_token%}
+                            <input class="edit_profile_box" type="text" name="update_first_name" placeholder="{{user.first_name}}"/>
                             <button class="update-button" value="update_first_name" type="submit">Update</button>
                         </form>
                     </p>
@@ -46,58 +47,133 @@ style="background-color: #373f51"
                     <p><a style="visibility: hidden;" id="cancel-update-1"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
                 </td>
                 <td class="profile-table-col">
-                    <p><a class="edit_profile" href="#"><i class="fas fa-pen-nib"></i></a></p>
+                    <p><a class="edit_profile" id="edit_profile1"><i class="fas fa-pen-nib"></i></a></p>
                 </td>
             </tr>
             <tr class="profile-table-row">
-                <td class="profile-table-col" style="color: #ffd23f;">
+                <td class="profile-table-col" style="color: #ffd23f; width:2em;">
                     <i class="far fa-user"></i>
                     <p style="font-size: 0.7em;">Last Name</p>
                 </td>
+                <td class="profile-table-col" >
+                    <div id="no_show_edit_2">{{user.last_name}}</div>
+                </td>
+                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_2">
+                    <p>
+                        <form method= 'POST'> 
+                        {%csrf_token%}
+                            <input class="edit_profile_box" type="text" name="update_last_name" placeholder="{{user.last_name}}"/>
+                            <button class="update-button" value="update_last_name" type="submit">Update</button>
+                        </form>
+                    </p>
+                </td>
                 <td class="profile-table-col">
-                    <p>{{user.last_name}}</p>
+                    <p><a style="visibility: hidden;" id="cancel-update-2"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
+                </td>
+                <td class="profile-table-col">
+                    <p><a class="edit_profile" id="edit_profile2"><i class="fas fa-pen-nib"></i></a></p>
                 </td>
             </tr>
             <tr class="profile-table-row">
-                <td class="profile-table-col" style="color: #ffd23f;">
+                <td class="profile-table-col" style="color: #ffd23f; width:2em;">
                     <i class="fas fa-phone"></i>
                     <p style="font-size: 0.7em;">Mobile</p>
                 </td>
+                <td class="profile-table-col" >
+                    <div id="no_show_edit_3">{{user.mobile}}</div>
+                </td>
+                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_3">
+                    <p>
+                        <form method= 'POST'> 
+                        {%csrf_token%}
+                            <input class="edit_profile_box" type="text" name="update_mobile" placeholder="{{user.mobile}}"/>
+                            <button class="update-button" value="update_mobile" type="submit">Update</button>
+                        </form>
+                    </p>
+                </td>
                 <td class="profile-table-col">
-                    <p>{{user.mobile}}</p>
+                    <p><a style="visibility: hidden;" id="cancel-update-3"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
+                </td>
+                <td class="profile-table-col">
+                    <p><a class="edit_profile" id="edit_profile3"><i class="fas fa-pen-nib"></i></a></p>
                 </td>
             </tr>
             <tr class="profile-table-row">
-                <td class="profile-table-col" style="color: #ffd23f;">
+                <td class="profile-table-col" style="color: #ffd23f; width:2em;">
                     <i class="far fa-envelope"></i> 
                     <p style="font-size: 0.7em;">Email</p>
                 </td>
+                <td class="profile-table-col" >
+                    <div id="no_show_edit_4">{{user.email}}</div>
+                </td>
+                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_4">
+                    <p>
+                        <form method= 'POST'> 
+                        {%csrf_token%}
+                            <input class="edit_profile_box" type="email" name="update_email" placeholder="{{user.email}}"/>
+                            <button class="update-button" value="update_email" type="submit">Update</button>
+                        </form>
+                    </p>
+                </td>
                 <td class="profile-table-col">
-                    <p>test email</p>
+                    <p><a style="visibility: hidden;" id="cancel-update-4"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
+                </td>
+                <td class="profile-table-col">
+                    <p><a class="edit_profile" id="edit_profile4"><i class="fas fa-pen-nib"></i></a></p>
                 </td>
             </tr>
             <tr class="profile-table-row">
-                <td class="profile-table-col" style="color: #ffd23f;">
+                <td class="profile-table-col" style="color: #ffd23f; width:2em;">
                     <i class="fas fa-briefcase-medical"></i>
                     <p style="font-size: 0.7em;">Injuries</p>
                 </td>
+                <td class="profile-table-col" >
+                    <div id="no_show_edit_5">{{user.injuries}}</div>
+                </td>
+                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_5">
+                    <p>
+                        <form method= 'POST'> 
+                        {%csrf_token%}
+                            <textarea class="edit_profile_box" type="text" name="update_injuries" placeholder="{{user.injuries}}"></textarea>
+                            <button class="update-button" value="update_injuries" type="submit">Update</button>
+                        </form>
+                    </p>
+                </td>
                 <td class="profile-table-col">
-                    <p>test injuries</p>
+                    <p><a style="visibility: hidden;" id="cancel-update-5"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
+                </td>
+                <td class="profile-table-col">
+                    <p><a class="edit_profile" id="edit_profile5"><i class="fas fa-pen-nib"></i></a></p>
                 </td>
             </tr>
             <tr class="profile-table-row">
-                <td class="profile-table-col" style="color: #ffd23f;">
+                <td class="profile-table-col" style="color: #ffd23f; width:2em;">
                     <i class="fas fa-info"></i>
                     <p style="font-size: 0.7em;">More Info</p>
                 </td>
+                <td class="profile-table-col" >
+                    <div id="no_show_edit_6">{{user.self_depict}}</div>
+                </td>
+                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_6">
+                    <p>
+                        <form method= 'POST'> 
+                        {%csrf_token%}
+                            <textarea class="edit_profile_box" type="text" name="update_self_depict" placeholder="{{user.self_depict}}"></textarea>
+                            <button class="update-button" value="update_self_depict" type="submit">Update</button>
+                        </form>
+                    </p>
+                </td>
                 <td class="profile-table-col">
-                    <p>test info</p>
+                    <p><a style="visibility: hidden;" id="cancel-update-6"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
+                </td>
+                <td class="profile-table-col">
+                    <p><a class="edit_profile" id="edit_profile6"><i class="fas fa-pen-nib"></i></a></p>
                 </td>
             </tr>
 
+            
         </table>
     </div>
-
     <form method='POST'  enctype="multipart/form-data">
     add profile picture
     </form>
@@ -106,8 +182,12 @@ style="background-color: #373f51"
 {%endblock%}
 {% block footer_js %}
 <script>
+    $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    
     $(document).ready(function() {
-          $(".edit_profile").click(function display_edit() {
+          $("#edit_profile1").click(function display_edit() {
             $("#no_show_edit_1").css({"visibility":"hidden"})
             $("#show_edit_1").css("visibility","visible")
             $("#cancel-update-1").css("visibility","visible")
@@ -117,6 +197,61 @@ style="background-color: #373f51"
             $("#no_show_edit_1").css("visibility","visible");
             $("#show_edit_1").css("visibility","hidden")
             $("#cancel-update-1").css("visibility","hidden")
+          });
+          $("#edit_profile2").click(function display_edit() {
+            $("#no_show_edit_2").css({"visibility":"hidden"})
+            $("#show_edit_2").css("visibility","visible")
+            $("#cancel-update-2").css("visibility","visible")
+            $("input").focus()
+          });
+          $("#cancel-update-2").click(function no_display_edit() {
+            $("#no_show_edit_2").css("visibility","visible");
+            $("#show_edit_2").css("visibility","hidden")
+            $("#cancel-update-2").css("visibility","hidden")
+          });
+          $("#edit_profile3").click(function display_edit() {
+            $("#no_show_edit_3").css({"visibility":"hidden"})
+            $("#show_edit_3").css("visibility","visible")
+            $("#cancel-update-3").css("visibility","visible")
+            $("input").focus()
+          });
+          $("#cancel-update-3").click(function no_display_edit() {
+            $("#no_show_edit_3").css("visibility","visible");
+            $("#show_edit_3").css("visibility","hidden")
+            $("#cancel-update-3").css("visibility","hidden")
+          });
+          $("#edit_profile4").click(function display_edit() {
+            $("#no_show_edit_4").css({"visibility":"hidden"})
+            $("#show_edit_4").css("visibility","visible")
+            $("#cancel-update-4").css("visibility","visible")
+            $("input").focus()
+          });
+          $("#cancel-update-4").click(function no_display_edit() {
+            $("#no_show_edit_4").css("visibility","visible");
+            $("#show_edit_4").css("visibility","hidden")
+            $("#cancel-update-4").css("visibility","hidden")
+          });
+          $("#edit_profile5").click(function display_edit() {
+            $("#no_show_edit_5").css({"visibility":"hidden"})
+            $("#show_edit_5").css("visibility","visible")
+            $("#cancel-update-5").css("visibility","visible")
+            $("input").focus()
+          });
+          $("#cancel-update-5").click(function no_display_edit() {
+            $("#no_show_edit_5").css("visibility","visible");
+            $("#show_edit_5").css("visibility","hidden")
+            $("#cancel-update-5").css("visibility","hidden")
+          });
+          $("#edit_profile6").click(function display_edit() {
+            $("#no_show_edit_6").css({"visibility":"hidden"})
+            $("#show_edit_6").css("visibility","visible")
+            $("#cancel-update-6").css("visibility","visible")
+            $("input").focus()
+          });
+          $("#cancel-update-6").click(function no_display_edit() {
+            $("#no_show_edit_6").css("visibility","visible");
+            $("#show_edit_6").css("visibility","hidden")
+            $("#cancel-update-6").css("visibility","hidden")
           });
         });
 </script>

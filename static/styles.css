@@ -85,7 +85,10 @@
     }
     input{
     width: 25%;
-}
+    }
+    textarea{
+    width: 50%;
+    }
 }
 
 #payment{
@@ -112,7 +115,7 @@
     100% {transform: translateX(0px)}
 }
 
-.edit_profile{
+.edit_profile_box{
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -131,5 +134,9 @@
     border-radius: 3px;
 }
 input{
+    width: 50%;
+}
+
+textarea{
     width: 50%;
 }
