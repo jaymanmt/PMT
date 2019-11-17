@@ -128,22 +128,18 @@ style="background-color: #373f51"
                     <p style="font-size: 0.7em;">Injuries</p>
                 </td>
                 <td class="profile-table-col" >
-                    <div id="no_show_edit_5">{{user.injuries}}</div>
+                    <div>{{user.injuries}}</div>
                 </td>
-                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_5">
+                <td class="profile-table-col">
                     <p>
-                        <form method= 'POST'> 
-                        {%csrf_token%}
-                            <textarea class="edit_profile_box" type="text" name="update_injuries" placeholder="{{user.injuries}}"></textarea>
-                            <button class="update-button" value="update_injuries" type="submit">Update</button>
-                        </form>
+                        
                     </p>
                 </td>
                 <td class="profile-table-col">
-                    <p><a style="visibility: hidden;" id="cancel-update-5"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
+                    
                 </td>
                 <td class="profile-table-col">
-                    <p><a class="edit_profile" id="edit_profile5"><i class="fas fa-pen-nib"></i></a></p>
+                    <p><a type="button" data-toggle="modal" data-target="#exampleModalCenter1" class="edit_profile" id="edit_profile5"><i class="fas fa-pen-nib"></i></a></p>
                 </td>
             </tr>
             <tr class="profile-table-row">
@@ -152,25 +148,68 @@ style="background-color: #373f51"
                     <p style="font-size: 0.7em;">More Info</p>
                 </td>
                 <td class="profile-table-col" >
-                    <div id="no_show_edit_6">{{user.self_depict}}</div>
+                    <div>{{user.self_depict}}</div>
                 </td>
-                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_6">
+                <td class="profile-table-col">
                     <p>
-                        <form method= 'POST'> 
-                        {%csrf_token%}
-                            <textarea class="edit_profile_box" type="text" name="update_self_depict" placeholder="{{user.self_depict}}"></textarea>
-                            <button class="update-button" value="update_self_depict" type="submit">Update</button>
-                        </form>
+                        
                     </p>
                 </td>
                 <td class="profile-table-col">
-                    <p><a style="visibility: hidden;" id="cancel-update-6"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
+                    
                 </td>
                 <td class="profile-table-col">
-                    <p><a class="edit_profile" id="edit_profile6"><i class="fas fa-pen-nib"></i></a></p>
+                    <p><a type="button" data-toggle="modal" data-target="#exampleModalCenter2" class="edit_profile" id="edit_profile6"><i class="fas fa-pen-nib"></i></a></p>
                 </td>
             </tr>
-
+            <!-- Modal for editing injuries section of profile-->
+            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div style="background-color: #373f51;"  class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-briefcase-medical"></i> Injuries</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                        <form method= 'POST'> 
+                        {%csrf_token%}
+                            <textarea style="width: 100%; border-color: transparent; background-color: transparent; color: white;" type="text" name="update_injuries" placeholder="{{user.injuries}}"></textarea>
+                        
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="update-button" value="update_injuries" type="submit">Update</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal for editing info section of profile-->
+            <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div style="background-color: #373f51;"  class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-info"></i> More Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                        <form method= 'POST'> 
+                        {%csrf_token%}
+                            <textarea style="width: 100%; border-color: transparent; background-color: transparent; color: white;" type="text" name="update_self_depict" placeholder="{{user.self_depict}}"></textarea>
+                        
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="update-button" value="update_self_depict" type="submit">Update</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
             
         </table>
     </div>
@@ -230,28 +269,6 @@ style="background-color: #373f51"
             $("#no_show_edit_4").css("visibility","visible");
             $("#show_edit_4").css("visibility","hidden")
             $("#cancel-update-4").css("visibility","hidden")
-          });
-          $("#edit_profile5").click(function display_edit() {
-            $("#no_show_edit_5").css({"visibility":"hidden"})
-            $("#show_edit_5").css("visibility","visible")
-            $("#cancel-update-5").css("visibility","visible")
-            $("input").focus()
-          });
-          $("#cancel-update-5").click(function no_display_edit() {
-            $("#no_show_edit_5").css("visibility","visible");
-            $("#show_edit_5").css("visibility","hidden")
-            $("#cancel-update-5").css("visibility","hidden")
-          });
-          $("#edit_profile6").click(function display_edit() {
-            $("#no_show_edit_6").css({"visibility":"hidden"})
-            $("#show_edit_6").css("visibility","visible")
-            $("#cancel-update-6").css("visibility","visible")
-            $("input").focus()
-          });
-          $("#cancel-update-6").click(function no_display_edit() {
-            $("#no_show_edit_6").css("visibility","visible");
-            $("#show_edit_6").css("visibility","hidden")
-            $("#cancel-update-6").css("visibility","hidden")
           });
         });
 </script>
