@@ -1,0 +1,30 @@
+{%extends 'base.template.html'%}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{%block bg-img%}
+style="background-color: #373f51"
+{%endblock%}
+My Order History
+{%block title%}
+
+{%endblock%}
+
+{%block content%}
+<div style="color: white">
+    <ul>
+    {%for item in invoice_items%}
+    <li>
+        {{item.product}}
+    </li>
+    <li>
+        {{item.quantity}}
+    </li>
+    <li>
+        
+    </li>
+    {%endfor%}
+    </ul>
+</div>
+
+{%endblock%}

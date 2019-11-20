@@ -3,6 +3,7 @@
 style="background-color: #373f51"
 {%endblock%}
 {% load crispy_forms_tags %}
+{%load static%}
 {%block title%}
 <h1 style="text-align: center; margin: 30px; color: #ffd23f;">Let's work together on your well-being!</h1>
 {%endblock%}
@@ -10,12 +11,12 @@ style="background-color: #373f51"
 
 <div style="color: white; display: flex; justify-content: center;">
     
-    <form method="POST" style="border-radius: 3px; margin-right:1em; margin-left:1em; max-width:375px; background-color: rgba(0,0,0,0.2); padding: 20px;">
-    {%csrf_token%}
-    {{form|crispy}}
-    <input type="submit" class= "btn"name="register-btn" value="Register"style="background-color: #ffd23f"/>
-    <button type="button" style="color:white;"class="btn btn-sm" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services.">My Privacy?</button>
-
+    <form method="POST" enctype="multipart/form-data" style="border-radius: 3px; margin-right:1em; margin-left:1em; max-width:375px; background-color: rgba(0,0,0,0.2); padding: 20px;">
+        {%csrf_token%}
+        {{form|crispy}}
+        <input style="visibility:hidden" type="file"  id="default-image" placeholder="default user photo" name="default_profile_photo" value={% static "images/user-icon.png" %}/>
+        <input type="submit" class= "btn"name="register-btn" value="Register"style="background-color: #ffd23f"/>
+        <button type="button" style="color:white;"class="btn btn-sm" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services.">My Privacy?</button>
     </form> 
     
 </div>

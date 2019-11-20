@@ -143,3 +143,12 @@ def pay_here(request):
                 'total_cost' : total_cost,
                 "stripe_public_key": settings.STRIPE_PUBLISHABLE_KEY
                 })
+
+# order history page
+
+def orderhistory(request):
+    invoice_items = InvoiceItem.objects.filter(transaction__owner=request.user)
+    
+    return render(request, 'payment/orderhistory.html', {
+        "invoice_items": invoice_items
+    })

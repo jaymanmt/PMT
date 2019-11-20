@@ -31,3 +31,6 @@ https://stripe.com/en-sg/newsroom/brand-assets
 
 how to show images from objects on django:
 https://stackoverflow.com/questions/9498012/how-to-display-images-from-model-in-django
+
+credit for user photo that auto uploads as profile picture for users
+<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

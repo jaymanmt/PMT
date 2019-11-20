@@ -7,49 +7,101 @@ style="background-color: #373f51"
 {%endblock%}
 
 {%block title%}
-<h1 style="color: #ffd23f; text-align:center;">My Profile</h1> 
-<button type="button" style="color:white;"class="btn btn-sm" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services.">My Privacy?</button>
+
+
 {%endblock%}
 
 {%block content%}
 {%if user.is_authenticated%}
 
+<div class="container-fluid" style="color: #ffd23f">
+    <div style="height: 80px;"></div>
+    <div class="row justify-content-center">
+        <div class="col-2 text-center"></div>
+        <div class="col-2 text-center" >
+            <h1 style="color: #ffd23f; text-align:center;">My Profile<button type="button" style="color:white;"class="btn btn-sm" data-placement="bottom" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services."><i class="fas fa-info-circle"></i></button></h1> 
+        </div>
+        
+        <div class="col-2 text-center">
+            {% if user.photo %}
+            <img style="width: 150px; height: 150px; border-radius: 100px; background-color: transparent;"src="{{ user.photo.url }}"/>
+            {%endif%} 
+            <form method= 'POST' enctype="multipart/form-data"> 
+                {%csrf_token%}
+                <input class="edit_profile_box" type="file" name="photo"/>
+                <button class="update-button" value="update_photo" type="submit">Update</button>
+            </form>
+        </div>
+        
+        <div class="col-2 text-center">
+            
+        </div>
+    </div>
+    <div style="height: 80px;">
+    </div>
+    <!-- first row : change first name -->
+    
+    <div class="row justify-content-center" style="margin-bottom: 1em;">
+        <div class="col-2 text-center profile-edit-col">
+            <i class="fas fa-user"></i>
+            <div style="font-size: 0.7em;">First Name</div>
+        </div>
+        <div class="col-2 profile-edit-col" style="color: white;">
+            <div style="width: 100%; text-align:left;"id="no_show_edit_1">{{user.first_name}}</div>
+            <div style="display:none; width: 100%" id="show_edit_1">
+                
+                <form method= 'POST'> 
+                {%csrf_token%}
+                    <input class="edit_profile_box" type="text" name="first_name"/>
+                    <button class="update-button" value="update_first_name" type="submit">Update</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-2 text-center profile-edit-col">
+            <a style="visibility: hidden;" id="cancel-update-1"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
+            <a class="edit_profile" id="edit_profile1"><i class="fas fa-pen-nib"></i></a>
+        </div>
+    </div>
+    
+    <!-- 2nd row : change last name -->
+    
+    <div class="row justify-content-center" style="margin-bottom: 1em;">
+        <div class="col-2 text-center profile-edit-col">
+            <i class="far fa-user"></i>
+            <div style="font-size: 0.7em;">Last Name</div>
+        </div>
+        <div class="col-2 profile-edit-col" style="color: white;">
+            <div style="width: 100%; text-align:left;"id="no_show_edit_2">{{user.last_name}}</div>
+            <div style="display:none; width: 100%" id="show_edit_2">
+                
+                <form method= 'POST'> 
+                {%csrf_token%}
+                    <input class="edit_profile_box" type="text" name="last_name"/>
+                    <button class="update-button" value="update_second_name" type="submit">Update</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-2 text-center profile-edit-col">
+            <a style="visibility: hidden;" id="cancel-update-2"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
+            <a class="edit_profile" id="edit_profile2"><i class="fas fa-pen-nib"></i></a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 
 <div style="color: #ffd23f; display:flex; flex-direction: column;">
     
     <div style=" display: flex; flex-direction: column; align-items:center;">
-        <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 20px; width: 600px; text-align:center;">
-            <tr>
-                <td>
-                    <img style="width: 150px; height: 150px; border-radius: 100px; background-color: white;"src="{{ user.photo.url }}"/>
-                </td>
-            </tr>
-        </table>
+        
         <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 2em;">
-            <tr class="profile-table-row">
-                <td class="profile-table-col" style="color: #ffd23f; width:2em;">
-                    <i class="fas fa-user"></i>
-                    <p style="font-size: 0.7em;">First Name</p>
-                </td>
-                <td class="profile-table-col" >
-                    <div id="no_show_edit_1">{{user.first_name}}</div>
-                </td>
-                <td class="profile-table-col" style="visibility:hidden;" id="show_edit_1">
-                    <p>
-                        <form method= 'POST'> 
-                        {%csrf_token%}
-                            <input class="edit_profile_box" type="text" name="update_first_name" placeholder="{{user.first_name}}"/>
-                            <button class="update-button" value="update_first_name" type="submit">Update</button>
-                        </form>
-                    </p>
-                </td>
-                <td class="profile-table-col">
-                    <p><a style="visibility: hidden;" id="cancel-update-1"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
-                </td>
-                <td class="profile-table-col">
-                    <p><a class="edit_profile" id="edit_profile1"><i class="fas fa-pen-nib"></i></a></p>
-                </td>
-            </tr>
+            
             <tr class="profile-table-row">
                 <td class="profile-table-col" style="color: #ffd23f; width:2em;">
                     <i class="far fa-user"></i>
@@ -59,13 +111,7 @@ style="background-color: #373f51"
                     <div id="no_show_edit_2">{{user.last_name}}</div>
                 </td>
                 <td class="profile-table-col" style="visibility:hidden;" id="show_edit_2">
-                    <p>
-                        <form method= 'POST'> 
-                        {%csrf_token%}
-                            <input class="edit_profile_box" type="text" name="update_last_name" placeholder="{{user.last_name}}"/>
-                            <button class="update-button" value="update_last_name" type="submit">Update</button>
-                        </form>
-                    </p>
+                    
                 </td>
                 <td class="profile-table-col">
                     <p><a style="visibility: hidden;" id="cancel-update-2"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a></p>
@@ -227,29 +273,29 @@ style="background-color: #373f51"
     
     $(document).ready(function() {
           $("#edit_profile1").click(function display_edit() {
-            $("#no_show_edit_1").css({"visibility":"hidden"})
-            $("#show_edit_1").css("visibility","visible")
+            $("#no_show_edit_1").css({"display":"none", "text-align":"left"})
+            $("#show_edit_1").css({"display":"block","text-align":"left"})
             $("#cancel-update-1").css("visibility","visible")
             $("input").focus()
           });
           $("#cancel-update-1").click(function no_display_edit() {
-            $("#no_show_edit_1").css("visibility","visible");
-            $("#show_edit_1").css("visibility","hidden")
+            $("#no_show_edit_1").css({"display":"inline","text-align":"left"})
+            $("#show_edit_1").css({"display":"none","text-align":"left"})
             $("#cancel-update-1").css("visibility","hidden")
           });
           $("#edit_profile2").click(function display_edit() {
-            $("#no_show_edit_2").css({"visibility":"hidden"})
-            $("#show_edit_2").css("visibility","visible")
+            $("#no_show_edit_2").css({"display":"none", "text-align":"left"})
+            $("#show_edit_2").css({"display":"block","text-align":"left"})
             $("#cancel-update-2").css("visibility","visible")
             $("input").focus()
           });
           $("#cancel-update-2").click(function no_display_edit() {
-            $("#no_show_edit_2").css("visibility","visible");
-            $("#show_edit_2").css("visibility","hidden")
+            $("#no_show_edit_2").css({"display":"inline","text-align":"left"})
+            $("#show_edit_2").css({"display":"none","text-align":"left"})
             $("#cancel-update-2").css("visibility","hidden")
           });
           $("#edit_profile3").click(function display_edit() {
-            $("#no_show_edit_3").css({"visibility":"hidden"})
+            $("#no_show_edit_3").css({"visibility":"hidden", "transition-duration":"0.5s"})
             $("#show_edit_3").css("visibility","visible")
             $("#cancel-update-3").css("visibility","visible")
             $("input").focus()

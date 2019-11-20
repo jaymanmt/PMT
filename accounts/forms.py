@@ -38,10 +38,11 @@ class UserRegistrationForm(UserCreationForm):
             raise forms.ValidationError('passwords do not match, please try again')
         return password2
 
-class UserEditProfile(forms.Form):
-    class Meta(MyUser):
+
+class UserEditProfile(forms.ModelForm):
+    class Meta:
         model = MyUser
-        fields = ['first_name','last_name','mobile','email','username','injuries',]
+        fields = ['first_name','last_name','mobile','email','username','injuries', 'self_depict', 'photo']
         
     def clean_email(self):
         User = get_user_model()

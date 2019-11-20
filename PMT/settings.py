@@ -163,7 +163,7 @@ AWS_ACCESS_KEY_ID=os.environ["AWS_ACCESS_KEY_ID"]
 AWS_SECRET_ACCESS_KEY=os.environ["AWS_SECRET_ACCESS_KEY"]
 AWS_S3_CUSTOM_DOMAIN="{}.s3.amazonaws.com".format(AWS_STORAGE_BUCKET_NAME)
 
-# STATICFILES_STORAGE="storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE="custom_storages.StaticStorage"
 
 STATICFILES_LOCATION="static"
 DEFAULT_FILE_STORAGE='custom_storages.MediaStorage'

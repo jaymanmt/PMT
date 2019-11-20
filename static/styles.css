@@ -120,7 +120,7 @@
     -moz-appearance: none;
     -ms-appearance: none;
     -o-appearance: none;
-    background-color: #373f51;
+    background-color: transparent;
     box-shadow: none; 
     border: none;
     color: white;
@@ -139,4 +139,13 @@ input{
 
 textarea{
     width: 50%;
+}
+
+.profile-table-row td :empty::after{
+    content: "\00a0";
+}
+
+.profile-edit-col{
+    border-bottom: 1px #ffd23f solid;
+    padding-bottom: 10px;
 }
