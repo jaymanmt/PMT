@@ -34,3 +34,6 @@ https://stackoverflow.com/questions/9498012/how-to-display-images-from-model-in-
 
 credit for user photo that auto uploads as profile picture for users
 <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+instructions on how add filter by group on templates
+https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group

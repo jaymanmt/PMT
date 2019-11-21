@@ -41,6 +41,11 @@
                         <a style= "color: white" class="nav-link" href="{% url "register" %}">Register</a>
                     </li>
                     {%endif%}
+                    {% if 'administrator' == request.user.groups.all.0.name %} 
+                    <li>
+                        <a style= "color: white" class="nav-link" href="{% url "administrator_view" %}"><i style="font-size: 1.3em;" class="fas fa-tools"></i></a>
+                    </li>
+                    {% endif %}
                     {%if user.is_authenticated%}
                     <li class="nav-item">
                         <a style= "color: white" class="nav-link" href="{% url "shop" %}"><i style="font-size: 1.3em;" class="fas fa-shopping-cart"></i></a>
@@ -76,10 +81,10 @@
 
         {%endfor%}
         {%endif%}
-        
-        {% block title %}{% endblock %}
-        {%block content%}{%endblock%}
+    {% block title %}{% endblock %}
+    {%block content%}{%endblock%}
     </div>
+    
     {%block footer%}{%endblock%}
     {%block more_info%}{%endblock%}
     

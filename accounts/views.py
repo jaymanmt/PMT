@@ -102,12 +102,20 @@ def edit_profile(request, id):
                 messages.success(request, "First Name Updated Successfully")
             except ValidationError as e:
                 return HttpResponse(e)
-        if 'last_name' in request.POST:
+        elif 'last_name' in request.POST:
             try:
                 edit_profile_form.fields["last_name"].validate(request.POST.get('last_name'))
                 get_user.last_name = request.POST.get('last_name')
                 get_user.save()
                 messages.success(request, "Last Name Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+        elif 'mobile' in request.POST:
+            try:
+                edit_profile_form.fields["mobile"].validate(request.POST.get('mobile'))
+                get_user.mobile = request.POST.get('mobile')
+                get_user.save()
+                messages.success(request, "Mobile Updated Successfully")
             except ValidationError as e:
                 return HttpResponse(e)
             

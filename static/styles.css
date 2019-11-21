@@ -133,6 +133,10 @@
     padding: 0.3em;
     border-radius: 3px;
 }
+
+.update-button:hover{
+    background-color: black ;
+}
 input{
     width: 50%;
 }
@@ -148,4 +152,21 @@ textarea{
 .profile-edit-col{
     border-bottom: 1px #ffd23f solid;
     padding-bottom: 10px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#upload_button{
+    color: black;
+
+}
+
+@keyframes uploadpointing{
+    0% {transform: translateX(60px)}
+    25% {transform: translateX(70px)}
+    50% {transform: translateX(60px)}
+    75% {transform: translateX(70px)}
+    100% {transform: translateX(60px)}
 }
