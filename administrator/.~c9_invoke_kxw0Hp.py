@@ -18,26 +18,17 @@ def is_administrator(user):
 def administrator_view(request):
     check_administrator = is_administrator(request.user)
     if check_administrator == True:
-        number_of_customer = 0
         all_users = MyUser.objects.filter().order_by("first_name")
         number_of_users = len(all_users)
         tx_with_charges = Transaction.objects.filter(charge__isnull=False)
-        for user in all_users:
-            for txc in tx_with_charges:
-                if str(txc.owner) == str(user.username):
-                    number_of_customer+=1
-                    break
-                else:
-                    continue
-        conversion_rate = (int(number_of_customer) / int(number_of_users) ) * 100
-        conversion_rate = round(conversion_rate, 2)
-        print(number_of_customer)
-
+        for all
+        print(len(tx_with_charges))
+        for tx in tx_with_charges:
+            print('------------')
+            print(tx)
         return render(request, 'administrator/administrator_page.html',{
             "all_users": all_users,
-            "number_of_users":number_of_users,
-            "number_of_customer":number_of_customer,
-            "conversion_rate":conversion_rate
+            "number_of_users":number_of_users
         })
     else:
         messages.error(request,'You do not have the permission to access this page')

@@ -3,7 +3,11 @@
 {% load static %}
 
 {%block bg-img%}
+{% if 'administrator' == request.user.groups.all.0.name %} 
+style="background-color: #255f85; color: black !important;"
+{%else%}
 style="background-color: #373f51; "
+{%endif%}
 {%endblock%}
 
 {%block title%}
