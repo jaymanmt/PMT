@@ -1,0 +1,10 @@
+{%extends 'base.template.html'%}
+
+{%block content%}
+{%for item in tx_invoice_item%}
+
+<p>{{item}}</p>
+<p>{{item.sku}}</p>
+{%endfor%}
+
+{%endblock%}
