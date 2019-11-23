@@ -6,6 +6,7 @@ from basket.models import basketItem
 
 def shop(request):
     items = Item.objects.filter()
+    
     if request.user.is_authenticated:
         #make sure that the starter's package can only be bought once by each user
         bkt_starter_bool = True

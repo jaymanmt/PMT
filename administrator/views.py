@@ -19,6 +19,16 @@ def is_administrator(user):
 def administrator_view(request):
     check_administrator = is_administrator(request.user)
     if check_administrator == True:
+        #update sold out status if stock level is 0 and below when admin logs in 
+        stock = Item.objects.filter()
+        for item in stock:
+            if item.stock_level <= 0:
+                item.sold_out = True
+                item.save()
+            elif item.stock_level >= 0:
+                item.sold_out = False
+                item.save()
+                
         number_of_customer = 0
         all_users = MyUser.objects.filter().order_by("first_name")
         number_of_users = len(all_users)
@@ -77,10 +87,7 @@ def administrator_view(request):
         
         #get shop items stock levels
         stock = Item.objects.filter()
-        
-        
-        
-        
+
         
         return render(request, 'administrator/administrator_page.html',{
             "all_users": all_users,
@@ -131,6 +138,7 @@ def view_user(request, id):
 def update_stock(request):
     shop_stock = Item.objects.filter()
     if request.method == 'POST':
+
         if '000001' in request.POST:
             selected_stock = Item.objects.get(sku='000001')
             selected_stock.stock_level = request.POST.get("new_stock_level")
@@ -167,10 +175,21 @@ def update_stock(request):
             selected_stock = Item.objects.get(sku='000009')
             selected_stock.stock_level = request.POST.get("new_stock_level")
             selected_stock.save()
+        
         else:
             messages.error(request, 'sorry, was unable to update due to an error')
+        #update sold out status if stock level is 0 and below
+        for item in shop_stock:
+            if item.stock_level <= 0:
+                item.sold_out = True
+                item.save()
+            elif item.stock_level >= 0:
+                item.sold_out = False
+                item.save()
     else:
-        pass
+        
+        stock = Item.objects.filter()
+        
     return render(request, "administrator/shop_detail.html",{
         "shop_stock":shop_stock
     })
