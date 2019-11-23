@@ -130,53 +130,5 @@ def edit_profile(request, id):
             "edit_profile_form": UserEditProfile()
         })
 
-# def user_profile(request, id):
-        
-#     get_user = get_object_or_404(MyUser, pk=id)
-    
-#     if request.method == "POST":
-#         if "update_first_name" in request.POST:
-#             update_first_name = request.POST["update_first_name"]
-#             get_user.first_name = update_first_name
-#             get_user.save()
-#         elif "update_last_name" in request.POST:
-#             update_last_name = request.POST["update_last_name"]
-#             get_user.last_name = update_last_name
-#             get_user.save()
-#         elif "update_mobile" in request.POST:
-#             update_mobile = request.POST["update_mobile"]
-#             get_user.mobile = update_mobile
-#             get_user.save()
-#         elif "update_email" in request.POST:
-#             # User = get_user_model()
-#             # update_email = request.POST["update_email"]
-#             # provided_email = update_email.cleaned_data.get('update_email')
-#             # # using the Django ORM to check for existing emails of the same name that was entered
-#             # if User.objects.filter(email=provided_email):
-#             #     messages.error(request, "This email is taken")
-#             # else:
-#             #     get_user.email = provided_email
-#             #     get_user.save()
-#             update_email = request.POST["update_email"]
-#             get_user.email = update_email
-#             get_user.save()
-#         elif "update_injuries" in request.POST:
-#             update_injuries = request.POST["update_injuries"]
-#             get_user.injuries = update_injuries
-#             get_user.save()
-#         elif "update_self_depict" in request.POST:
-#             update_self_depict = request.POST["update_self_depict"]
-#             get_user.self_depict = update_self_depict
-#             get_user.save()
-#         return render(request, 'accounts/profile.html')
-
-#     else:
-            
-#         #search by email in object as each email is unique to each user
-#         user = MyUser.objects.filter(email=request.user.email).first()
-#         return render(request, 'accounts/profile.html', {
-#             "profile":user
-#         })
-    
 
 #to add a POST in order to do CRU_ on the user's profile

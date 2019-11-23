@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect, reverse
 import stripe
 from django.conf import settings
 from .forms import OrderForm, PaymentForm 
@@ -6,6 +6,7 @@ from basket.models import basketItem
 from django.utils import timezone
 from django.contrib import messages
 from .models import Transaction, InvoiceItem
+from shop.models import Item
 
 # Create your views here.
 
@@ -46,20 +47,28 @@ def pay_here(request):
         transaction.save()
         
         basket_items = basketItem.objects.filter(owner=request.user)
+        all_stock = Item.objects.filter()
         for item in basket_items:
-            invoice_item = InvoiceItem()
-            invoice_item.transaction = transaction
-            invoice_item.product = item.product
-            invoice_item.quantity = item.quantity_to_buy
-            if item.quantity_to_buy >=5:
-                price_to_discount = item.product.price
-                invoice_item.price = price_to_discount*0.9
-            else:
-                invoice_item.price = item.product.price * item.quantity_to_buy
-            invoice_item.sku = item.product.sku
-            invoice_item.name = item.product.product_name
-            
-            invoice_item.save()
+            # checking if there is enough stock and if it is sold out
+            for stock in all_stock:
+                if item.product.sku == stock.sku and item.quantity_to_buy > stock.stock_level:
+                    messages.error(request, "Unfortunately, we are out of stock of {} for that quantity requested".format(item.product.product_name))
+                    #send an email to admin??
+                    return HttpResponseRedirect(reverse('showbasket'))
+                else:
+                    invoice_item = InvoiceItem()
+                    invoice_item.transaction = transaction
+                    invoice_item.product = item.product
+                    invoice_item.quantity = item.quantity_to_buy
+                    if item.quantity_to_buy >=5:
+                        price_to_discount = item.product.price
+                        invoice_item.price = price_to_discount*0.9
+                    else:
+                        invoice_item.price = item.product.price * item.quantity_to_buy
+                    invoice_item.sku = item.product.sku
+                    invoice_item.name = item.product.product_name
+                    
+                    invoice_item.save()
         
         order_form = OrderForm()
         payment_form = PaymentForm()
@@ -116,8 +125,11 @@ def pay_here(request):
                         #updating stock levels of the shop
                         invoice_items = InvoiceItem.objects.filter(transaction_id=transaction.id)
                         for each_item in invoice_items:
-                            each_item.product.stock_level -= each_item.quantity
-                            each_item.product.save()
+                            if each_item.product.stock_level >= 0:
+                                each_item.product.stock_level -= each_item.quantity
+                                each_item.product.save()
+                            else:
+                                messages.error(request, 'unfortunately, the requested item(s) is out of stock. Please get in contact with us to resolve this.')
                             
                         #empty the user's shop basket
                         basket_items = basketItem.objects.filter(owner = request.user).delete()

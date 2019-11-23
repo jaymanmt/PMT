@@ -5,5 +5,38 @@ style="background-color: #255f85; color: #ffd23f;"
 {%block content%}
 {% if 'administrator' == request.user.groups.all.0.name %} 
 <h1>SHOP ADMIN ADJUSTMENTS</h1>
+{%for item in shop_stock%}
+    <div class="row">
+        <div class="col-2">
+            <p>{{item.product_name}}</p>
+            <p>SKU: {{item.sku}}</p>
+        </div>
+        <div class="col-2">
+            Current Stock Level: {{item.stock_level}}
+        </div>
+        <div class="col-2">
+            {% if item.sold_out%}
+            <p>SOLD OUT! </p>
+            {%else%}
+            <p>IN STOCK! </p>
+            {%endif%}
+        </div>
+        <div class="col-2">
+                <label>
+                New Stock Level:
+                </label>
+                <form class="form-group"method="POST">
+                    {% csrf_token %}
+                    <input class="form-control" type="number" name="new_stock_level"/>
+                    <input class="btn btn-secondary" name="{{item.sku}}" type="submit" value="Update"/>
+                </form>
+            </div>
+    </div>
+    <hr style="background-color: white;">
+    {%endfor%}
+
+
+
+
 {% endif %}
 {%endblock%}

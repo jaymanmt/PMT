@@ -129,13 +129,50 @@ def view_user(request, id):
 
 #function to add or subtract stock levels of each shop item from admin dashboard, also include adding if the stock has been sold out
 def update_stock(request):
+    shop_stock = Item.objects.filter()
     if request.method == 'POST':
-        pass
+        if '000001' in request.POST:
+            selected_stock = Item.objects.get(sku='000001')
+            selected_stock.stock_level = request.POST.get("new_stock_level")
+            selected_stock.save()
+        elif '000002' in request.POST:
+            selected_stock = Item.objects.get(sku='000002')
+            selected_stock.stock_level = request.POST.get("new_stock_level")
+            selected_stock.save()
+        elif '000003' in request.POST:
+            selected_stock = Item.objects.get(sku='000003')
+            selected_stock.stock_level = request.POST.get("new_stock_level")
+            selected_stock.save()
+        elif '000004' in request.POST:
+            selected_stock = Item.objects.get(sku='000004')
+            selected_stock.stock_level = request.POST.get("new_stock_level")
+            selected_stock.save()
+        elif '000005' in request.POST:
+            selected_stock = Item.objects.get(sku='000005')
+            selected_stock.stock_level = request.POST.get("new_stock_level")
+            selected_stock.save()
+        elif '000006' in request.POST:
+            selected_stock = Item.objects.get(sku='000006')
+            selected_stock.stock_level = request.POST.get("new_stock_level")
+            selected_stock.save()
+        elif '000007' in request.POST:
+            selected_stock = Item.objects.get(sku='000007')
+            selected_stock.stock_level = request.POST.get("new_stock_level")
+            selected_stock.save()
+        elif '000008' in request.POST:
+            selected_stock = Item.objects.get(sku='000008')
+            selected_stock.stock_level = request.POST.get("new_stock_level")
+            selected_stock.save()
+        elif '000009' in request.POST:
+            selected_stock = Item.objects.get(sku='000009')
+            selected_stock.stock_level = request.POST.get("new_stock_level")
+            selected_stock.save()
+        else:
+            messages.error(request, 'sorry, was unable to update due to an error')
     else:
-        stock = Item.objects.filter()
-    
+        pass
     return render(request, "administrator/shop_detail.html",{
-        "stock":stock
+        "shop_stock":shop_stock
     })
 
 
