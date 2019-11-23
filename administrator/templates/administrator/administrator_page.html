@@ -32,19 +32,132 @@ style="background-color: #255f85; color: #ffd23f;"
             {{conversion_rate}}%
         </div>
     </div>
-    <h3>STATUS BREAKDOWN</h3>
-    <div>
-        Current customers with existing packages to be delivered - Shipping
+    <div class="row">
+        <div class="col-5">
+            Transactions that reached the payment phase, but not charged:
+        </div>
+        <div class="col-5">
+            {{tx_without_charges}}
+        </div>
     </div>
-    <div>
-        Current customers with completed packages - Delivered
+    <h3>TOTAL TRANSACTION & STATUS BREAKDOWN</h3>
+    <div class="row">
+        <div class="col-5">
+            Total Number of Transactions:
+        </div>
+        <div class="col-5">
+            {{all_tx}}
+        </div>
     </div>
-    <div>
-        <h3>Total Transactions</h3>
+    <div class="row">
+        <div class="col-5">
+            Tx Status - Pending:
+        </div>
+        <div class="col-5">
+            {{tx_pending}}
+        </div>
     </div>
-    <div>
-        Amount of each package sold. 
+    <div class="row">
+        <div class="col-5">
+            Tx Status - Approved:
+        </div>
+        <div class="col-5">
+            {{tx_approved}}
+        </div>
     </div>
+    <div class="row">
+        <div class="col-5">
+            Tx Status - Delivered:
+        </div>
+        <div class="col-5">
+            {{tx_delivered}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            Tx Status - Shipping:
+        </div>
+        <div class="col-5">
+            {{tx_shipping}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            Tx Status - Lost:
+        </div>
+        <div class="col-5">
+            {{tx_lost}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            Tx Status - Rejected:
+        </div>
+        <div class="col-5">
+            {{tx_rejected}}
+        </div>
+    </div>
+    <h3>MONETARY BREAKDOWN</h3>
+    <div class="row">
+        <div class="col-5">
+            Total Amount made: 
+        </div>
+        <div class="col-5">
+            $ {{amount_earned_in_dollars}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            Total products sold: 
+        </div>
+        <div class="col-5">
+            {{all_products_sold}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            Starter's package sold: 
+        </div>
+        <div class="col-5">
+            {{starter_sold}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            Beginner package sold: 
+        </div>
+        <div class="col-5">
+            {{beginner_sold}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            Intermediate package sold: 
+        </div>
+        <div class="col-5">
+            {{intermediate_sold}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            Advanced package sold: 
+        </div>
+        <div class="col-5">
+            {{advanced_sold}}
+        </div>
+    </div>
+    <h3>SHOP STOCK LEVELS + EDIT</h3><a href="/administrator/update_stock"><i class="fas fa-layer-group"></i></a>
+
+    {%for item in stock%}
+    <div class="row">
+        <div class="col-5">
+            {{item.product_name}}
+        </div>
+        <div class="col-5">
+            {{item.stock_level}}
+        </div>
+    </div>
+    {%endfor%}
     <div>
         Total amount of money made
     </div>

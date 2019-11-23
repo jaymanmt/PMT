@@ -2,7 +2,8 @@ from django.shortcuts import render, HttpResponse, reverse, redirect, get_object
 from django.contrib.auth.decorators import login_required, user_passes_test 
 from django.contrib import auth, messages
 from accounts.models import MyUser, ReferralCode
-from payment.models import Transaction, InvoiceItem
+from payment.models import Transaction, InvoiceItem, Charge
+from shop.models import Item
 from accounts.forms import UserEditProfile
 from django.core.exceptions import ValidationError
 
@@ -22,6 +23,8 @@ def administrator_view(request):
         all_users = MyUser.objects.filter().order_by("first_name")
         number_of_users = len(all_users)
         tx_with_charges = Transaction.objects.filter(charge__isnull=False)
+        all_tx = Transaction.objects.filter()
+        tx_without_charges = len(all_tx) - len(tx_with_charges)
         for user in all_users:
             for txc in tx_with_charges:
                 if str(txc.owner) == str(user.username):
@@ -29,15 +32,79 @@ def administrator_view(request):
                     break
                 else:
                     continue
+        all_tx = len(all_tx)
         conversion_rate = (int(number_of_customer) / int(number_of_users) ) * 100
         conversion_rate = round(conversion_rate, 2)
-        print(number_of_customer)
-
+        
+        tx_pending = Transaction.objects.filter(status='pending')
+        tx_pending = len(tx_pending)
+        
+        tx_approved = Transaction.objects.filter(status='approved')
+        tx_approved = len(tx_approved)
+        
+        tx_delivered = Transaction.objects.filter(status='delivered')
+        tx_delivered = len(tx_delivered)
+        
+        tx_lost = Transaction.objects.filter(status='lost')
+        tx_lost = len(tx_lost)
+        
+        tx_shipping = Transaction.objects.filter(status='shipping')
+        tx_shipping = len(tx_shipping)
+        
+        tx_rejected = Transaction.objects.filter(status='rejected')
+        tx_rejected = len(tx_rejected)
+        
+        #get amount earned from Charge model
+        get_charge = Charge.objects.filter()
+        amount_earned = 0
+        for each_charge in get_charge:
+            amount_earned+=int(each_charge.amount)
+        amount_earned_in_dollars = amount_earned/100
+        amount_earned_in_dollars = round(amount_earned_in_dollars, 2)
+        
+        #get amount earned and quantity sold from InvoiceItem model for each product
+        all_products_sold = InvoiceItem.objects.filter()
+        starter_sold = InvoiceItem.objects.filter(sku='000001')
+        beginner_sold = InvoiceItem.objects.filter(sku='000002')
+        intermediate_sold = InvoiceItem.objects.filter(sku='000003')
+        advanced_sold = InvoiceItem.objects.filter(sku='000004')
+        
+        all_products_sold = len(all_products_sold)
+        starter_sold = len(starter_sold)
+        beginner_sold = len(beginner_sold)
+        intermediate_sold = len(intermediate_sold)
+        advanced_sold = len(advanced_sold)
+        
+        #get shop items stock levels
+        stock = Item.objects.filter()
+        
+        
+        
+        
+        
         return render(request, 'administrator/administrator_page.html',{
             "all_users": all_users,
             "number_of_users":number_of_users,
             "number_of_customer":number_of_customer,
-            "conversion_rate":conversion_rate
+            "conversion_rate":conversion_rate,
+            "all_tx":all_tx,
+            "tx_without_charges":tx_without_charges,
+            "tx_pending":tx_pending,
+            "tx_approved":tx_approved,
+            "tx_delivered":tx_delivered,
+            "tx_lost":tx_lost,
+            "tx_shipping":tx_shipping,
+            "tx_rejected":tx_rejected,
+            "amount_earned_in_dollars":amount_earned_in_dollars,
+            "all_products_sold":all_products_sold,
+            "starter_sold":starter_sold,
+            "beginner_sold":beginner_sold,
+            "intermediate_sold":intermediate_sold,
+            "advanced_sold":advanced_sold,
+            "stock":stock
+            
+            
+            
         })
     else:
         messages.error(request,'You do not have the permission to access this page')
@@ -60,7 +127,19 @@ def view_user(request, id):
             "get_user_tx":get_user_tx
         })
 
-#function put into an action within a form to update a transaction's status from the user_page using the administrator's permissions.
+#function to add or subtract stock levels of each shop item from admin dashboard, also include adding if the stock has been sold out
+def update_stock(request):
+    if request.method == 'POST':
+        pass
+    else:
+        stock = Item.objects.filter()
+    
+    return render(request, "administrator/shop_detail.html",{
+        "stock":stock
+    })
+
+
+#function to put into an action within a form to update a transaction's status from the user_page using the administrator's permissions.
 def update_tx_status(request, id, tx_num):
     if 'edit_tx_status' in request.POST:
         get_user_tx = Transaction.objects.filter(owner=id)

@@ -1,0 +1,9 @@
+{%extends 'base.template.html' %}
+{%block bg-img%}
+style="background-color: #255f85; color: #ffd23f;"
+{%endblock%}
+{%block content%}
+{% if 'administrator' == request.user.groups.all.0.name %} 
+<h1>SHOP ADMIN ADJUSTMENTS</h1>
+{% endif %}
+{%endblock%}
