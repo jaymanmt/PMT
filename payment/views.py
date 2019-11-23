@@ -52,7 +52,7 @@ def pay_here(request):
             # checking if there is enough stock and if it is sold out
             for stock in all_stock:
                 if item.product.sku == stock.sku and item.quantity_to_buy > stock.stock_level:
-                    messages.error(request, "Unfortunately, we are out of stock of {} for that quantity requested".format(item.product.product_name))
+                    messages.error(request, "Unfortunately, we are out of stock of {} for that quantity requested, please lower your quantity and try again, otherwise please contact us".format(item.product.product_name))
                     #send an email to admin??
                     return HttpResponseRedirect(reverse('showbasket'))
                 else:
