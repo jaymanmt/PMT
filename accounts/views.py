@@ -72,8 +72,9 @@ def partner(request):
     return render(request, 'accounts/partner.html')
 
 def edit_profile(request, id):
-    
-    get_user = get_object_or_404(MyUser, pk=id)
+    #search by email in object as each email is unique to each user
+    get_user = MyUser.objects.filter(email=request.user.email, id=id).first()
+
     if request.method == "POST":
         
         edit_profile_form = UserEditProfile({
@@ -118,15 +119,45 @@ def edit_profile(request, id):
                 messages.success(request, "Mobile Updated Successfully")
             except ValidationError as e:
                 return HttpResponse(e)
-            
-        return render(request, "accounts/profile.html")
+        elif 'email' in request.POST:
+            try:
+                edit_profile_form.fields["email"].validate(request.POST.get('email'))
+                get_user.email = request.POST.get('email')
+                get_user.save()
+                messages.success(request, "Email Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+        elif 'username' in request.POST:
+            try:
+                edit_profile_form.fields["username"].validate(request.POST.get('username'))
+                get_user.username = request.POST.get('username')
+                get_user.save()
+                messages.success(request, "Username Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+        elif 'injuries' in request.POST:
+            try:
+                edit_profile_form.fields["injuries"].validate(request.POST.get('injuries'))
+                get_user.injuries = request.POST.get('injuries')
+                get_user.save()
+                messages.success(request, "Injuries Section Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+        elif 'self_depict' in request.POST:
+            try:
+                edit_profile_form.fields["self_depict"].validate(request.POST.get('self_depict'))
+                get_user.self_depict = request.POST.get('self_depict')
+                get_user.save()
+                messages.success(request, "User Additional Information Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+        return render(request, "accounts/profile.html",{
+            "get_user":get_user
+        })
         
     else:
-            
-        #search by email in object as each email is unique to each user
-        user = MyUser.objects.filter(email=request.user.email).first()
         return render(request, 'accounts/profile.html', {
-            "profile":user,
+            "get_user":get_user,
             "edit_profile_form": UserEditProfile()
         })
 

@@ -11,12 +11,12 @@ style="background-color: #373f51; "
 {%endblock%}
 
 {%block title%}
-<div style="margin-left: 20%; font-size: 2em; color: #ffd23f;">My Profile<button type="button" style="color:white;"class="btn btn-sm" data-placement="bottom" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services."><i class="fas fa-info-circle"></i></button></div>
+<div style="margin-left: 20%; font-size: 2em; color: #ffd23f;">Profile<button type="button" style="color:white;"class="btn btn-sm" data-placement="bottom" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services."><i class="fas fa-info-circle"></i></button></div>
 
 {%endblock%}
 
 {%block content%}
-{%if user.is_authenticated%}
+{% if 'administrator' == request.user.groups.all.0.name %} 
 <div style="height: 190px; display:flex; justify-content: center; color: white;">
     <form method= 'POST' enctype="multipart/form-data"> 
         <div class="col-2 text-center">
@@ -215,7 +215,7 @@ style="background-color: #373f51; "
             <div style="width: 100%; text-align:left;" id="no_show_edit_7">{{get_user.self_depict}}</div>
         </div>
         <div class="col-3 text-center profile-edit-col">
-            <a style="visibility: hidden;" id="cancel-update-6"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
+            <a style="visibility: hidden;" id="cancel-update-7"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
             <a type="button" data-toggle="modal" data-target="#exampleModalCenter2" class="edit_profile" id="edit_profile7"><i class="fas fa-pen-nib"></i></a>
         </div>
         

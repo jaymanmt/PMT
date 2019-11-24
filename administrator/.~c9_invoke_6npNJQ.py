@@ -243,8 +243,6 @@ def view_user(request, id):
         
 def edit_user(request, id):
     get_user = get_object_or_404(MyUser, pk=id)
-    print('------------------------')
-    print(get_user.first_name)
     # -------------- edit user's profile form ----------------
     if request.method == "POST":
         
@@ -294,7 +292,7 @@ def edit_user(request, id):
         elif 'email' in request.POST:
             try:
                 edit_profile_form.fields["email"].validate(request.POST.get('email'))
-                get_user.email = request.POST.get('email')
+                get_user.mobile = request.POST.get('email')
                 get_user.save()
                 messages.success(request, "Email Updated Successfully")
             except ValidationError as e:
@@ -302,7 +300,7 @@ def edit_user(request, id):
         elif 'username' in request.POST:
             try:
                 edit_profile_form.fields["username"].validate(request.POST.get('username'))
-                get_user.username = request.POST.get('username')
+                get_user.mobile = request.POST.get('username')
                 get_user.save()
                 messages.success(request, "Username Updated Successfully")
             except ValidationError as e:
@@ -310,23 +308,21 @@ def edit_user(request, id):
         elif 'injuries' in request.POST:
             try:
                 edit_profile_form.fields["injuries"].validate(request.POST.get('injuries'))
-                get_user.injuries = request.POST.get('injuries')
+                get_user.mobile = request.POST.get('injuries')
                 get_user.save()
                 messages.success(request, "Injuries Section Updated Successfully")
             except ValidationError as e:
                 return HttpResponse(e)
-        elif 'self_depict' in request.POST:
+        elif 'self-depict' in request.POST:
             try:
-                edit_profile_form.fields["self_depict"].validate(request.POST.get('self_depict'))
-                get_user.self_depict = request.POST.get('self_depict')
+                edit_profile_form.fields["email"].validate(request.POST.get('email'))
+                get_user.mobile = request.POST.get('email')
                 get_user.save()
-                messages.success(request, "User Additional Information Updated Successfully")
+                messages.success(request, "Email Updated Successfully")
             except ValidationError as e:
                 return HttpResponse(e)
             
-        return render(request, "administrator/edit_user.html", {
-            "get_user":get_user
-        })
+        return render(request, "administrator/edit_user.html")
         
     else:
         

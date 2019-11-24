@@ -1,0 +1,86 @@
+{%extends 'base.template.html' %}
+{%block bg-img%}
+style="background-color: #255f85; color: #ffd23f;"
+{%endblock%}
+{%block content%}
+
+{% if 'administrator' == request.user.groups.all.0.name %} 
+
+<h1>USER SEARCH </h1>
+<p>(choose one search type at a time)</p>
+<div>
+    <form method="POST" style="margin: 5px;">
+        {%csrf_token%}
+        <div class="row">
+            <label class="col-3">Search by First Name Only (Generic Searching):</label>
+            <input class="col-3" type="text" name="search_by_first_name"/>
+            <input type= "submit" value="Search" class = "btn btn-secondary col-1"/>
+        </div>
+    </form>
+    <form method="POST" style="margin: 5px;">
+        {%csrf_token%}
+        <div class="row">
+            <label class="col-3">Search by Mobile Only (Specific Searching):</label>
+            <input class="col-3" type="text" name="search_by_mobile"/>
+            <input type= "submit" value="Search" class = "btn btn-secondary col-1"/>
+        </div>
+    </form>
+    <form method="POST" style="margin: 5px;">
+        {%csrf_token%}
+        <div class="row">
+            <label class="col-3">Search by Email Only (Specific Searching):</label>
+            <input class="col-3" type="text" name="search_by_email"/>
+            <input type= "submit" value="Search" class = "btn btn-secondary col-1"/>
+        </div>
+    </form>
+    <form method="POST" style="margin: 5px;">
+        {%csrf_token%}
+        <div class="row">
+            <label class="col-3" >Search by Transaction Type Only:</label>
+            <select class="col-3" type="text" name="search_by_tx_type">
+                <option value="blank" active></option>
+                <option value="pending">Pending</option>
+                <option value="rejected">Rejected</option>
+                <option value="delivered">Delivered</option>
+                <option value="lost">Lost</option>
+                <option value="approved">Approved</option>
+                <option value="shipping">Shipping</option>
+            </select>
+            <input type= "submit" value="Search" class = "btn btn-secondary col-1"/>
+        </div>
+    </form>
+</div>
+<h1>Search Results</h1>
+<div>
+    {%for user in search_results%}
+    <div class="row">
+        <div class="col-2">
+            {{user.first_name}} {{user.last_name}} {{user.mobile}}
+            {{user.owner}}
+        </div>
+        <div class="col-1">
+            <a href="view_user/{{user.id}}"><i class="far fa-eye"></i></a>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+<hr style="background-color:white;">
+<h1>ALL USERS</h1>
+<div>
+    {%for user in all_users%}
+    <div class="row">
+        <div class="col-2">
+            {{user.first_name}} {{user.last_name}} - contact: {{user.mobile}}
+        </div>
+        <div class="col-1">
+            <a href="view_user/{{user.id}}"><i class="far fa-eye"></i></a>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+
+
+
+{%endif%}
+
+{%endblock%}
