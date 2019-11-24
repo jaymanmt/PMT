@@ -1,0 +1,135 @@
+{%extends 'base.template.html' %}
+{%block bg-img%}
+style="background-color: #255f85; color: #ffd23f;"
+{%endblock%}
+{%block content%}
+
+{% if 'administrator' == request.user.groups.all.0.name %} 
+<h1>EDIT Shop Item - {{shop_item.product_name}}</h1>
+
+<div class="row">
+    <div class="col-2">
+        Product Name:
+    </div>
+    <div class="col-2">
+        {{shop_item.product_name}}
+    </div>
+    <div class="col-2">
+        <form method="POST">
+            {%csrf_token%}
+            <input type="text" name="product_name"/>
+            <input type="submit" value="update"/>
+        </form>
+    </div>
+</div>
+<hr style="background-color: white">
+<div class="row">
+    <div class="col-2">
+        Product SKU:
+    </div>
+    <div class="col-2">
+        {{shop_item.sku}}
+    </div>
+    <div class="col-2">
+        <form method="POST">
+            {%csrf_token%}
+            <input type="text" name="sku"/>
+            <input type="submit" value="update"/>
+        </form>
+    </div>
+</div>
+<hr style="background-color: white">
+<div class="row">
+    <div class="col-2">
+        Number of Sessions:
+    </div>
+    <div class="col-2">
+        {{shop_item.sessions}}
+    </div>
+    <div class="col-2">
+        <form method="POST">
+            {%csrf_token%}
+            <input type="text" name="sessions"/>
+            <input type="submit" value="update"/>
+        </form>
+    </div>
+</div>
+<hr style="background-color: white">
+<div class="row">
+    <div class="col-2">
+        Description:
+    </div>
+    <div class="col-2">
+        {{shop_item.description}}
+    </div>
+    <div class="col-2">
+        <form method="POST">
+            {%csrf_token%}
+            <input type="text" name="description"/>
+            <input type="submit" value="update"/>
+        </form>
+    </div>
+</div>
+<hr style="background-color: white">
+<div class="row">
+    <div class="col-2">
+        Price:
+    </div>
+    <div class="col-2">
+        {{shop_item.price}}
+    </div>
+    <div class="col-2">
+        <form method="POST">
+            {%csrf_token%}
+            <input type="text" name="price"/>
+            <input type="submit" value="update"/>
+        </form>
+    </div>
+</div>
+<hr style="background-color: white">
+<div class="row">
+    <div class="col-2">
+        Category:
+    </div>
+    <div class="col-2">
+        {{shop_item.category}}
+    </div>
+    <div class="col-2">
+        <form method="POST">
+            {%csrf_token%}
+            <select name="category">
+                {%for each_category in category%}
+                <option>
+                    {{each_category}}
+                </option>
+                {%endfor%}
+            </select>
+            <input type="submit" value="update"/>
+        </form>
+    </div>
+</div>
+<hr style="background-color: white">
+<div class="row">
+    <div class="col-2">
+        Photo:
+    </div>
+    <div class="col-2">
+        {% if shop_item.photo %}
+            <img style="position: relative; width: 150px; height: 150px; border-radius: 100px; background-color: transparent;"src="{{ shop_item.photo.url }}"/>
+        {%else%}
+            <p>Currently has no image</p>
+        {%endif%} 
+    </div>
+    <div class="col-2">
+        <form method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+            <input style="width: 250px;" type="file" name="photo"/>
+            <input type="submit" value="upload"/>
+        </form>
+    </div>
+</div>
+<hr style="background-color: white">
+
+{%endif%}
+
+{%endblock%}

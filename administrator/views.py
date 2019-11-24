@@ -3,9 +3,10 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import auth, messages
 from accounts.models import MyUser, ReferralCode
 from payment.models import Transaction, InvoiceItem, Charge
-from shop.models import Item
+from shop.models import Item, Category
 from accounts.forms import UserEditProfile
 from django.core.exceptions import ValidationError
+from .forms import UpdateItemForm
 
 def is_user(user):
     return user.groups.filter(name='user').exists()
@@ -253,6 +254,7 @@ def edit_user(request, id):
         return render(request, "accounts/profile.html")
         
     else:
+        
         return render(request, 'accounts/profile.html', {
             "get_user":get_user,
             "edit_profile_form": UserEditProfile()
@@ -264,3 +266,81 @@ def tx_user(request,tx_num):
         "tx_invoice_item":tx_invoice_item
     })
 
+def edit_shop_item(request, select_sku):
+    shop_item = Item.objects.get(sku=select_sku)
+    category = Category.objects.filter()
+    
+    if request.method == "POST":
+        
+        edit_item_form = UpdateItemForm({
+            "product_name": request.POST.get("product_name"),
+            "sku":request.POST.get("sku"),
+            "sessions":request.POST.get("sessions"),
+            "description":request.POST.get("description"),
+            "price": request.POST.get("price"),
+            "category": request.POST.get("product_name"),
+            "photo": request.FILES.get("photo")
+        })
+    
+        if "product_name" in request.POST:
+            try:
+                # edit_item_form.fields["product_name"].validate(request.POST.get('product_name'))
+                shop_item.product_name = request.POST.get('product_name')
+                shop_item.save()
+                messages.success(request, "Product Name Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+        elif "sku" in request.POST:
+            try:
+                # edit_item_form.fields["sku"].validate(request.POST.get('sku'))
+                shop_item.sku = request.POST.get('sku')
+                shop_item.save()
+                messages.success(request, "Product SKU Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+        elif "description" in request.POST:
+            try:
+                # edit_item_form.fields["description"].validate(request.POST.get('description'))
+                shop_item.description = request.POST.get('description')
+                shop_item.save()
+                messages.success(request, "Product Number of Sessions Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+        elif "price" in request.POST:
+            try:
+                # edit_item_form.fields["sessions"].validate(request.POST.get('price'))
+                shop_item.price = request.POST.get('price')
+                shop_item.save()
+                messages.success(request, "Product Price Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+        elif "category" in request.POST:
+            try:
+                # edit_item_form.fields["category"].validate(request.POST.get('category'))
+                chosen_category = Category.objects.get(name=request.POST.get('category'))
+                shop_item.category = chosen_category
+                shop_item.save()
+                messages.success(request, "Product Category Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+                
+        elif "photo" in request.FILES:
+            try:
+                # edit_item_form.fields["photo"].validate(request.FILES.get('photo'))
+                shop_item.photo = request.FILES.get('photo')
+                shop_item.save()
+                messages.success(request, "Product Image Updated Successfully")
+            except ValidationError as e:
+                return HttpResponse(e)
+    else:
+        pass
+    
+    
+    
+    return render(request, 'administrator/edit_shop_item.html',{
+    "edit_item_form":UpdateItemForm(),
+    "shop_item":shop_item,
+    "category":category
+})
+    
+    
