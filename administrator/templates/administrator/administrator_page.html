@@ -5,9 +5,13 @@ style="background-color: #255f85; color: #ffd23f;"
 {%block content%}
 {% if 'administrator' == request.user.groups.all.0.name %} 
 <h1>DASHBOARD</h1>
-
+<div style="margin: 15px; display:flex;">
+    <a style="font-size: 2em; color: white; margin-left: 10px;" href="/administrator/view_all_user"> <i class="fas fa-users"></i></a>
+    <a style="font-size: 2em; color: white; margin-left: 10px;" href="/administrator/view_transaction"> <i class="fas fa-sync"></i></a>
+    <a style="font-size: 2em; color: white; margin-left: 10px;" href="/administrator/update_stock"> <i class="fas fa-layer-group"></i></a>
+</div>
 <div class = "container-fluid">
-    <h3>USERS & CUSTOMERS<a href="/administrator/view_all_user"> <i class="fas fa-users"></i></a></h3>
+    <h3>USERS & CUSTOMERS</h3>
     <div class="row">
         <div class="col-5">
             Total number of users:
@@ -40,7 +44,7 @@ style="background-color: #255f85; color: #ffd23f;"
             {{tx_without_charges}}
         </div>
     </div>
-    <h3>TOTAL TRANSACTION & STATUS BREAKDOWN<a href="/administrator/view_transaction"> <i class="fas fa-sync"></i></a></h3>
+    <h3>TOTAL TRANSACTION & STATUS BREAKDOWN</h3>
     
     <div class="row">
         <div class="col-5">
@@ -147,7 +151,7 @@ style="background-color: #255f85; color: #ffd23f;"
             {{advanced_sold}}
         </div>
     </div>
-    <h3>SHOP STOCK LEVELS + EDIT<a href="/administrator/update_stock"> <i class="fas fa-layer-group"></i></a></h3>
+    <h3>SHOP STOCK LEVELS + EDIT</h3>
 
     {%for item in stock%}
     <div class="row">

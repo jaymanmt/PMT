@@ -62,10 +62,10 @@ style="background-color: #255f85; color: #ffd23f;"
     <div class="col-2">
         {{shop_item.description}}
     </div>
-    <div class="col-2">
+    <div class="col-6">
         <form method="POST">
             {%csrf_token%}
-            <input type="text" name="description"/>
+            <textarea type="text" name="description"></textarea>
             <input type="submit" value="update"/>
         </form>
     </div>

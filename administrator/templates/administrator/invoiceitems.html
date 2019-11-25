@@ -4,10 +4,43 @@ style="background-color: #255f85; color: #ffd23f;"
 {%endblock%}
 
 {%block content%}
+<h1 style = "text-align: center;">TRANSACTION NUMBER: {{tx_num}}</h1>
 {%for item in tx_invoice_item%}
-
-<p>{{item}}</p>
-<p>{{item.sku}}</p>
+<div style="display:flex; flex-direction: column; align-items:center;">
+    <div style="display:flex; flex-direction: row; justify-content:center;">
+        <div>
+            Product:  
+        </div>
+        <div>
+            {{item.product}}
+        </div>
+    </div>
+    <div style="display:flex; flex-direction: row; justify-content:center;">
+        <div>
+            SKU: 
+        </div>
+        <div>
+            {{item.sku}}
+        </div>
+    </div>
+    <div style="display:flex; flex-direction: row; justify-content:center;">
+        <div>
+            Quantity: 
+        </div>
+        <div>
+            {{item.quantity}}
+        </div>
+    </div>
+    <div style="display:flex; flex-direction: row; justify-content:center;">
+        <div>
+            Price: 
+        </div>
+        <div>
+            $ {% widthratio item.price 100 1%}
+        </div>
+    </div>
+</div>
+<hr style="background-color: white;">
 {%endfor%}
 
 {%endblock%}

@@ -12,7 +12,7 @@ style="background-color: #255f85; color: #ffd23f;"
     <form method="POST" style="margin: 5px;">
         {%csrf_token%}
         <div class="row">
-            <label class="col-3">Search by First Name Only (Generic Searching):</label>
+            <label class="col-3">Search by First Name Only:</label>
             <input class="col-3" type="text" name="search_by_first_name"/>
             <input type= "submit" value="Search" class = "btn btn-secondary col-1"/>
         </div>
@@ -59,7 +59,7 @@ style="background-color: #255f85; color: #ffd23f;"
             {{user.owner}}
         </div>
         <div class="col-1">
-            <a href="view_user/{{user.id}}"><i class="far fa-eye"></i></a>
+            <a style="font-size: 1em; color: white; margin-left: 10px;" href="view_user/{{user.id}}"><i class="far fa-eye"></i></a>
         </div>
     </div>
     {%endfor%}
@@ -73,7 +73,7 @@ style="background-color: #255f85; color: #ffd23f;"
             {{user.first_name}} {{user.last_name}} - contact: {{user.mobile}}
         </div>
         <div class="col-1">
-            <a href="view_user/{{user.id}}"><i class="far fa-eye"></i></a>
+            <a style="font-size: 1em; color: white; margin-left: 10px;" href="view_user/{{user.id}}"><i class="far fa-eye"></i></a>
         </div>
     </div>
     {%endfor%}

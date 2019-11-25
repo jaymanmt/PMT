@@ -13,7 +13,7 @@ style="background-color: #255f85; color: #ffd23f"
     </div>
 </div>
 <div>
-    <h1>User Details <a href="/administrator/edit_user/{{get_user.id}}"><i class="fas fa-users-cog"></i></a></h1>
+    <h1>User Details <a style="font-size: 1em; color: white; margin-left: 10px;" href="/administrator/edit_user/{{get_user.id}}"><i class="fas fa-users-cog"></i></a></h1>
     {% if get_user.photo %}
     <img style="position: relative; width: 150px; height: 150px; border-radius: 100px; background-color: transparent;"src="{{ get_user.photo.url }}"/>
     {%else%}
@@ -92,7 +92,7 @@ style="background-color: #255f85; color: #ffd23f"
         </div>
     </div>
 </div>
-
+<hr style="background-color: white;">
 <div>
     <h1>Transactions</h1>
     {%for t in get_user_tx%}
@@ -107,7 +107,7 @@ style="background-color: #255f85; color: #ffd23f"
             $ {% widthratio t.charge.amount 100 1 %}
         </div>
         <div class = "col-1">
-            <a href="/administrator/tx_user/{{t.id}}"><i class="fas fa-file-alt"></i></a><a href="/administrator/charge_user/{{t.id}}"></a>
+            <a style="font-size: 1em; color: white; margin-left: 10px;" href="/administrator/tx_user/{{t.id}}"><i class="fas fa-file-alt"></i></a><a href="/administrator/charge_user/{{t.id}}"></a>
         </div>
         <div class = "col-3">
             <form method="POST" action="/administrator/update_tx_status/{{get_user.id}}/{{t.id}}">
