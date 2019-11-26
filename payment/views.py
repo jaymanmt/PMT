@@ -22,13 +22,20 @@ def calculate_bkt_cost(request):
     
     if number_of_items >= 5:
         total_cost = total_cost * 0.9
+        
+    #call and check 10, 20, 30, 40% off referral codes status, and if any are active, do the discount followed by changing the status back to inactive 
+    # dj2938f7hkd0j10
+    # 9dj342khbazmh20
+    # gas2310h4kamt30
     
     return total_cost
 
 def pay_here(request):
     
     if request.method == 'GET':
+        #total_cost_integer is what will be the amount in dollars that is calculated to be paid
         total_cost = calculate_bkt_cost(request)
+        #total_cost_integer multiply amount to be paid into cents
         total_cost_integer = int(total_cost*100)
         if total_cost == 0:
             messages.error(request, "Your basket is empty, please add an item to proceed")

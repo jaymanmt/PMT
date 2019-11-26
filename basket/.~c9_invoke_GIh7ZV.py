@@ -4,8 +4,6 @@ from shop.models import Item
 from .forms import CheckRefCode
 from accounts.models import ReferralCode, MyUser
 from django.core.exceptions import ValidationError
-from django.utils import timezone
-from django.contrib import auth, messages
 
 # Show basket function
 def showbasket(request):
@@ -20,19 +18,9 @@ def showbasket(request):
         #     print('validation success!---------------')
         # except ValidationError as e:
         #         return HttpResponse(e)
-        ref_code_submitted = request.POST.get('ref_code')
-        check_ref_code = MyUser.objects.get(referral_code=ref_code_submitted)
-        if check_ref_code != None:
-            edit_ref_code = ReferralCode.objects.get(discount=check_ref_code)
-            if edit_ref_code.active == True and edit_ref_code.expiry <= timezone.now():
-                # activate discount
-                edit_ref_code.active = False
-                edit_ref_code.save()
-            else:
-                messages.error(request, 'oops! The discount code is invalid')
-                
-        return HttpResponseRedirect(reverse('showbasket'))
-            
+        
+        check_ref_code = MyUser.objects.get(referral_code=request.POST.get('ref_code')).first()
+        if check_ref_code != No
     else:
     
         each_item_total_cost = 0

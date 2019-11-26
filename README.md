@@ -1,17 +1,26 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
- ----------------------------------------------------------------- 
+## Project - Full-Stack Development
+### Muay Thai Personal Training
+
+#### <u>Summary</u>
+
+Interested parties of the public interested in combat sport may be intimidated by violence, injuries and all the negative impressions portrayed by combat sports events and sometimes gyms themselves in their marketing material.
+
+The idea is to alter that image with a different perception that everyone should be practising and gaining from Muay Thai as a form of art and culture, instead of trying to be the best fighter in town. This is an project depicts a solution to that problem by providing services. 
+
+This is an E-Commerce website designed to be used by a business to host a website for Free-Lance Personal Training specialising in teaching the combat sport, Muay Thai. Users will be able to purchase different types of products, which are essentially training sessions catering to individual needs and goals. 
+
+#### <u>How it works</u>
+
+Users can create an account on the website or login to an existing account. Before they are logged in, they will be able to access the shop page to view the products offered before creating an account. After logging in, they will be able to gain access to make purchases. Discounts are offered based on properties of the purchase. 
+
+After creating their account, users will be able to edit their profile if they wanted to make adjustments to their details. Users can also 
+
+After making their purchase, users access their order history.
 
 
-Hi there! Welcome to AWS Cloud9!
 
-To get started, create some files, play with the terminal,
-or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
 
-Happy coding!
+
 
 README: (markdown)
 -Summary about what the project is about.  (be very neutral, third person perspective)
@@ -63,4 +72,3 @@ referral code setup
 enterprise use - 10-50%-off discount code
 email invoice in pdf both to enterprise and customer. 
 about personal trainer page
-add algorithm to prevent selling shop items that are sold out OR at <= 0 stock level

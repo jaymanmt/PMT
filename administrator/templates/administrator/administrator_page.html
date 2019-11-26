@@ -7,147 +7,147 @@ style="background-color: #255f85; color: #ffd23f;"
 <h1>DASHBOARD</h1>
 <div style="margin: 15px; display:flex;">
     <a style="font-size: 2em; color: white; margin-left: 10px;" href="/administrator/view_all_user"> <i class="fas fa-users"></i></a>
-    <a style="font-size: 2em; color: white; margin-left: 10px;" href="/administrator/view_transaction"> <i class="fas fa-sync"></i></a>
-    <a style="font-size: 2em; color: white; margin-left: 10px;" href="/administrator/update_stock"> <i class="fas fa-layer-group"></i></a>
+    <a style="font-size: 2em; color: white; margin-left: 10px;" href="/administrator/view_transaction"> <i class="far fa-credit-card"></i></i></a>
+    <a style="font-size: 2em; color: white; margin-left: 10px;" href="/administrator/update_stock"> <i class="fas fa-shopping-cart"></i></a>
 </div>
 <div class = "container-fluid">
     <h3>USERS & CUSTOMERS</h3>
     <div class="row">
-        <div class="col-5">
-            Total number of users:
+        <div class="col-3">
+            Total Users:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{number_of_users}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
-            Total number of customers:
+        <div class="col-3">
+            Total customers:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{number_of_customer}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
-            Conversion Rate:
+        <div class="col-3">
+            Conversion:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{conversion_rate}}%
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
-            Transactions that reached the payment phase, but not charged:
+        <div class="col-3">
+            Transactions not charged:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{tx_without_charges}}
         </div>
     </div>
     <h3>TOTAL TRANSACTION & STATUS BREAKDOWN</h3>
     
     <div class="row">
-        <div class="col-5">
-            Total Number of Transactions:
+        <div class="col-3">
+            Total Transactions:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{all_tx}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Tx Status - Pending:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{tx_pending}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Tx Status - Approved:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{tx_approved}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Tx Status - Delivered:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{tx_delivered}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Tx Status - Shipping:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{tx_shipping}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Tx Status - Lost:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{tx_lost}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Tx Status - Rejected:
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{tx_rejected}}
         </div>
     </div>
     <h3>MONETARY BREAKDOWN</h3>
     <div class="row">
-        <div class="col-5">
-            Total Amount made: 
+        <div class="col-3">
+            Revenue: 
         </div>
-        <div class="col-5">
+        <div class="col-3">
             $ {{amount_earned_in_dollars}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Total products sold: 
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{all_products_sold}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Starter's package sold: 
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{starter_sold}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Beginner package sold: 
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{beginner_sold}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Intermediate package sold: 
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{intermediate_sold}}
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             Advanced package sold: 
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{advanced_sold}}
         </div>
     </div>
@@ -155,10 +155,10 @@ style="background-color: #255f85; color: #ffd23f;"
 
     {%for item in stock%}
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             {{item.product_name}}
         </div>
-        <div class="col-5">
+        <div class="col-3">
             {{item.stock_level}}
         </div>
         
