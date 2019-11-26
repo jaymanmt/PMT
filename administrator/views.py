@@ -70,7 +70,7 @@ def administrator_view(request):
         get_charge = Charge.objects.filter()
         amount_earned = 0
         for each_charge in get_charge:
-            amount_earned+=int(each_charge.amount)
+            amount_earned+=float(each_charge.amount)
         amount_earned_in_dollars = amount_earned/100
         amount_earned_in_dollars = round(amount_earned_in_dollars, 2)
         

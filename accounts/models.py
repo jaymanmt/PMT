@@ -27,4 +27,4 @@ class ReferralCode(models.Model):
     
     
     def __str__(self):
-        return str(self.active) + ", expires on " + str(self.expiry)
+        return str(self.discount) + str(self.active)

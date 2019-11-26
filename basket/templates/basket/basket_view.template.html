@@ -15,9 +15,6 @@ style="background-color: #373f51;"
             <th class="bkt-table-col">
                 Product
             </th>
-            <th class="bkt-table-col disposable-col">
-                Description
-            </th>
             <th class="bkt-table-col">
                 Unit Price
             </th>
@@ -45,9 +42,6 @@ style="background-color: #373f51;"
             </td>
             <td class="bkt-table-col">
                 {{item.product}} 
-            </td>
-            <td class="bkt-table-col disposable-col">
-                {{item.product.description}}
             </td>
             <td class="bkt-table-col" style="text-align:center;">
                 $ {% widthratio item.product.price 100 1 %}
@@ -81,7 +75,7 @@ style="background-color: #373f51;"
         {%if number_of_items >= 5%}
         <tr>
             <td>
-                10% Discount Applied for purchasing over 5 packages! 
+                10% Discount Applied for purchasing 5 packages and above! 
             </td>
         </tr>
         {%endif%}

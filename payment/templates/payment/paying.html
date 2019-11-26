@@ -25,11 +25,15 @@ function checkRefCode(){
     axios.get("/payment/check_ref_code/" + $("#ref_code").val())
         .then(function(response) {
             if (response.data.status == true){
-                toPay = $('#amount-to-pay').val()
+                let toPay = $('#amount-to-pay').val()
                 toPay = parseFloat(toPay) / 100
                 toPay = toPay * 0.9
                 toPay = toPay.toFixed(2)
-                $('#display-cost').html('Amount due: $ ' + toPay)
+                $('#display-cost').html('Amount due: $ ' + toPay + ' <p style="color: #ffd23f; font-size:0.8em;">you got 10% off!</p>')
+                $('#indicate-ref-code').html('Valid!')
+            }
+            else{
+                $('#indicate-ref-code').html('Invalid!')
             }
         })
 }
@@ -55,7 +59,8 @@ function checkRefCode(){
         <div class="form-group">
             {{ payment_form | crispy }}
             <input style="border-radius: 5px;"placeholder="referral code" type="text" id="ref_code" name="ref_code"/>
-            <a style="border-radius: 5px; margin-left: 3px; color: #ffd23f; border: 1px #ffd23f solid; background-color: transparent; width: 5em; font-size: 1.1em;" value="check" name="check_ref_code" onClick="checkRefCode()">Check</a>
+            <a style="cursor:pointer; border-radius: 5px; margin-left: 3px; color: #ffd23f; border: 1px #ffd23f solid; background-color: transparent; width: 5em; font-size: 1.1em;" value="check" name="check_ref_code" onClick="checkRefCode()">Check</a> <span style="color: #ffd23f"id="indicate-ref-code"></span>
+            
         </div>
     
         {% csrf_token %}

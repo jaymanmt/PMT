@@ -35,14 +35,29 @@ def calculate_bkt_cost(request):
     
     return total_cost
 
-#create url for AJAX call to check the referral code
+#create url for AJAX call to check the referral code for user interface
 def check_ref_code(request, ref_code):
     referral_codes = ReferralCode.objects.filter(discount=ref_code)
     if len(referral_codes) != 0:
         return JsonResponse({"status":True})
     else:
-        messages.error(request, 'Sorry! This discount code is invalid. ')
         return JsonResponse({"status":False})
+
+#function to pass into payment for backend
+def check_ref_code_payment(request):
+    ref_code = request.POST.get('ref_code')
+    referral_codes = ReferralCode.objects.filter(discount=ref_code)
+    print(referral_codes[0])
+    if len(referral_codes) != 0 and referral_codes[0].expiry <= timezone.now() and referral_codes[0].active == True:
+        try:
+            #not working!!
+            referral_codes[0].active = False
+            referral_codes[0].save()
+        except ValidationError as e:
+                return HttpResponse(e)
+        return True
+    else:
+        return False
 
 def pay_here(request):
     
@@ -105,37 +120,11 @@ def pay_here(request):
             "transaction":transaction
         })
     else:
-        # try:
-            #     check_ref_form = CheckRefCodeForm({
-            #     "discount":request.POST.get('ref_code')
-            #     })
-            #     check_ref_form.fields["discount"].validate(request.POST.get('ref_code'))
-            #     print('validation success!---------------')
-            # except ValidationError as e:
-            #         return HttpResponse(e)
-            # ref_code_submitted = request.POST.get('ref_code')
-            # check_ref_code = ReferralCode.objects.filter(referral_code=ref_code_submitted)
-            # if len(check_ref_code) != 0:
-            #     edit_ref_code = ReferralCode.objects.get(discount=check_ref_code)
-            #     if edit_ref_code.active == True and edit_ref_code.expiry <= timezone.now():
-            #         #total_cost_integer is what will be the amount in dollars that is calculated to be paid
-            #         total_cost = calculate_bkt_cost(request)
-            #         #total_cost_integer multiply amount to be paid into cents
-            #         total_cost_integer = int(total_cost*100)
-            #         if total_cost == 0:
-            #             messages.error(request, "Your basket is empty, please add an item to proceed")
-            #             return render(request, 'payment/oops.html')
-            #         total_cost_integer = total_cost_integer * 0.9
-            #         # activate discount
-            #         edit_ref_code.active = False
-            #         edit_ref_code.save()
-            # else:
-            #     messages.error(request, 'oops! The discount code is invalid')
-                
-            # return HttpResponseRedirect(reverse('pay_here'))
+        
+        # check for status of particular transaction is not pending, if its anything apart from pending, it should have been paid for
         transaction_id = request.POST['transaction_id']
         transaction = Transaction.objects.get(pk=transaction_id)
-        # check for status of particular transaction is not pending, if its anything apart from pending, it should have been paid for
+        
         if transaction.status != 'pending':
             messages.error(request, "It seems like you have already made payment for this. Please check your bank account")
             return render(request, 'payment/oops.html')
@@ -155,10 +144,13 @@ def pay_here(request):
                 
                 try:
                     amount = 0
-                    amount = request.POST['total_cost_for_payment']
+                    amount = int(request.POST['total_cost_for_payment'])
+                    check_ref_code = check_ref_code_payment(request)
+                    if check_ref_code == True:
+                        amount = amount*0.9
 
                     customer = stripe.Charge.create(
-                        amount = amount,
+                        amount = int(amount),
                         currency='sgd',
                         description='Stripe Payment Form',
                         card=stripeToken
