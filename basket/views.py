@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, HttpResponseRedirect
 from .models import basketItem
 from shop.models import Item
-from .forms import CheckRefCode
 from accounts.models import ReferralCode, MyUser
 from django.core.exceptions import ValidationError
 from django.utils import timezone
@@ -9,58 +8,32 @@ from django.contrib import auth, messages
 
 # Show basket function
 def showbasket(request):
+    each_item_total_cost = 0
+    total_cost = 0
+    number_of_bkt_items = 0
+    number_of_items = 0
     
-    if request.method == 'POST':
-        pass
-        # try:
-        #     check_ref_form = CheckRefCode({
-        #     "discount":request.POST.get('ref_code')
-        #     })
-        #     check_ref_form.fields["discount"].validate(request.POST.get('ref_code'))
-        #     print('validation success!---------------')
-        # except ValidationError as e:
-        #         return HttpResponse(e)
-        ref_code_submitted = request.POST.get('ref_code')
-        check_ref_code = MyUser.objects.get(referral_code=ref_code_submitted)
-        if check_ref_code != None:
-            edit_ref_code = ReferralCode.objects.get(discount=check_ref_code)
-            if edit_ref_code.active == True and edit_ref_code.expiry <= timezone.now():
-                # activate discount
-                edit_ref_code.active = False
-                edit_ref_code.save()
-            else:
-                messages.error(request, 'oops! The discount code is invalid')
-                
-        return HttpResponseRedirect(reverse('showbasket'))
-            
-    else:
+    all_basket_items = basketItem.objects.filter(owner=request.user)
+    for each_item in all_basket_items:
+        number_of_bkt_items+=1
+        number_of_items+= each_item.quantity_to_buy
+        total_cost+=each_item.calculate_total()
     
-        each_item_total_cost = 0
-        total_cost = 0
-        number_of_bkt_items = 0
-        number_of_items = 0
+    original_cost = total_cost    
+    if number_of_items >= 5:
+        total_cost = total_cost * 0.9
         
-        all_basket_items = basketItem.objects.filter(owner=request.user)
-        for each_item in all_basket_items:
-            number_of_bkt_items+=1
-            number_of_items+= each_item.quantity_to_buy
-            total_cost+=each_item.calculate_total()
-        
-        original_cost = total_cost    
-        if number_of_items >= 5:
-            total_cost = total_cost * 0.9
-            
-        #convert to two decimal places string
-        total_cost = "{:.2f}".format(total_cost)
-        original_cost = "{:.2f}".format(original_cost)
-        
-        return render(request, "basket/basket_view.template.html", {
-            "all_basket_items":all_basket_items,
-            "total_cost":total_cost,
-            "number_of_bkt_items":number_of_bkt_items,
-            "number_of_items":number_of_items,
-            "original_cost":original_cost
-        })
+    #convert to two decimal places string
+    total_cost = "{:.2f}".format(total_cost)
+    original_cost = "{:.2f}".format(original_cost)
+    
+    return render(request, "basket/basket_view.template.html", {
+        "all_basket_items":all_basket_items,
+        "total_cost":total_cost,
+        "number_of_bkt_items":number_of_bkt_items,
+        "number_of_items":number_of_items,
+        "original_cost":original_cost
+    })
     
 def addtobasket(request, product_id):
     # determine which product we are buying

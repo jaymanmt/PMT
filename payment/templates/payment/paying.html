@@ -11,13 +11,29 @@ style="background-color: #373f51"
 {%endblock%}
 
 {%block footer_js %}
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script type="text/javascript">
     //<![CDATA[
         Stripe.publishableKey = '{{ stripe_public_key }}';
     //]]>
+</script>
+<script>
+/* global axios */
+function checkRefCode(){
+    axios.get("/payment/check_ref_code/" + $("#ref_code").val())
+        .then(function(response) {
+            if (response.data.status == true){
+                toPay = $('#amount-to-pay').val()
+                toPay = parseFloat(toPay) / 100
+                toPay = toPay * 0.9
+                toPay = toPay.toFixed(2)
+                $('#display-cost').html('Amount due: $ ' + toPay)
+            }
+        })
+}
+    
 </script>
 
 <script src="{% static 'payment/stripe.js' %}"></script>
@@ -38,18 +54,21 @@ style="background-color: #373f51"
     
         <div class="form-group">
             {{ payment_form | crispy }}
+            <input style="border-radius: 5px;"placeholder="referral code" type="text" id="ref_code" name="ref_code"/>
+            <a style="border-radius: 5px; margin-left: 3px; color: #ffd23f; border: 1px #ffd23f solid; background-color: transparent; width: 5em; font-size: 1.1em;" value="check" name="check_ref_code" onClick="checkRefCode()">Check</a>
         </div>
     
         {% csrf_token %}
         
-        <input type='hidden' value='{{total_cost_integer}}' name='total_cost_for_payment'/>
+        <input id="amount-to-pay"type='hidden' value='{{total_cost_integer}}' name='total_cost_for_payment'/>
         <input type="hidden" value='{{transaction.id}}' name = 'transaction_id'/>
-        <p style="font-size: 1.3em;">Amount due: $ {{total_cost}}</p>
+        <p id="display-cost" style="font-size: 1.3em;">Amount due: $ {{total_cost}}</p>
         <div class="form-group">
             <input class=" btn" style="box-shadow: 2px 2px 5px; background-color: #ffd23f;"id="submit_payment_btn" name="commit" type="submit" value="Make Payment">
             <img style="margin-left: 2em;"src="{% static 'images/powered_by_stripe.png' %}"></img>
         </div>
     </form>
 </div>
+
 
 {% endblock %}

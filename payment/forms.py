@@ -1,5 +1,13 @@
 from .models import Charge
 from django import forms
+from accounts.models import ReferralCode
+
+class CheckRefCodeForm(forms.ModelForm):
+    class Meta:
+        model = ReferralCode
+        fields = (
+            'discount',
+        )
 
 class OrderForm(forms.ModelForm):
     class Meta:

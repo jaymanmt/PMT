@@ -5,7 +5,7 @@ from django.utils import timezone
 
 # Create your models here.
 def three_weeks_later():
-    return timezone.now() + timezone.timedelta(days=21)
+    return timezone.now() + timezone.timedelta(days=22)
     
 class MyUser(AbstractUser):
     first_name= models.CharField(max_length=80, blank=False, default="")

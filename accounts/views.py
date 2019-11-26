@@ -46,7 +46,7 @@ def register(request):
             form.save()
             user = auth.authenticate(username=request.POST['username'], password=request.POST['password2'])
             if user:
-                unique_id = get_random_string(length=10)
+                unique_id = get_random_string(length=15)
                 code = ReferralCode()
                 code.discount = unique_id
                 code.active = True

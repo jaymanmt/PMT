@@ -1,8 +1,7 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect, reverse
-from django.http import JsonResponse
 import stripe
 from django.conf import settings
-from .forms import OrderForm, PaymentForm, CheckRefCodeForm
+from .forms import OrderForm, PaymentForm, CheckRefCode
 from basket.models import basketItem
 from django.utils import timezone
 from django.contrib import messages
@@ -10,8 +9,30 @@ from .models import Transaction, InvoiceItem
 from shop.models import Item
 from django.utils.crypto import get_random_string
 from accounts.models import ReferralCode
-from django.core.exceptions import ValidationError
 
+# Create your views here.
+if request.method == 'POST':
+        pass
+        # try:
+        #     check_ref_form = CheckRefCode({
+        #     "discount":request.POST.get('ref_code')
+        #     })
+        #     check_ref_form.fields["discount"].validate(request.POST.get('ref_code'))
+        #     print('validation success!---------------')
+        # except ValidationError as e:
+        #         return HttpResponse(e)
+        ref_code_submitted = request.POST.get('ref_code')
+        check_ref_code = MyUser.objects.get(referral_code=ref_code_submitted)
+        if check_ref_code != None:
+            edit_ref_code = ReferralCode.objects.get(discount=check_ref_code)
+            if edit_ref_code.active == True and edit_ref_code.expiry <= timezone.now():
+                # activate discount
+                edit_ref_code.active = False
+                edit_ref_code.save()
+            else:
+                messages.error(request, 'oops! The discount code is invalid')
+                
+        return HttpResponseRedirect(reverse('showbasket'))
 
 #function to calculate total cost in basket of the current user 
 def calculate_bkt_cost(request):
@@ -35,19 +56,9 @@ def calculate_bkt_cost(request):
     
     return total_cost
 
-#create url for AJAX call to check the referral code
-def check_ref_code(request, ref_code):
-    referral_codes = ReferralCode.objects.filter(discount=ref_code)
-    if len(referral_codes) != 0:
-        return JsonResponse({"status":True})
-    else:
-        messages.error(request, 'Sorry! This discount code is invalid. ')
-        return JsonResponse({"status":False})
-
 def pay_here(request):
     
     if request.method == 'GET':
-        
         #total_cost_integer is what will be the amount in dollars that is calculated to be paid
         total_cost = calculate_bkt_cost(request)
         #total_cost_integer multiply amount to be paid into cents
@@ -87,10 +98,10 @@ def pay_here(request):
                         invoice_item.price = price_to_discount*0.9
                     else:
                         invoice_item.price = item.product.price * item.quantity_to_buy
-                        invoice_item.sku = item.product.sku
-                        invoice_item.name = item.product.product_name
-                        
-                        invoice_item.save()
+                    invoice_item.sku = item.product.sku
+                    invoice_item.name = item.product.product_name
+                    
+                    invoice_item.save()
         
         order_form = OrderForm()
         payment_form = PaymentForm()
@@ -105,36 +116,8 @@ def pay_here(request):
             "transaction":transaction
         })
     else:
-        # try:
-            #     check_ref_form = CheckRefCodeForm({
-            #     "discount":request.POST.get('ref_code')
-            #     })
-            #     check_ref_form.fields["discount"].validate(request.POST.get('ref_code'))
-            #     print('validation success!---------------')
-            # except ValidationError as e:
-            #         return HttpResponse(e)
-            # ref_code_submitted = request.POST.get('ref_code')
-            # check_ref_code = ReferralCode.objects.filter(referral_code=ref_code_submitted)
-            # if len(check_ref_code) != 0:
-            #     edit_ref_code = ReferralCode.objects.get(discount=check_ref_code)
-            #     if edit_ref_code.active == True and edit_ref_code.expiry <= timezone.now():
-            #         #total_cost_integer is what will be the amount in dollars that is calculated to be paid
-            #         total_cost = calculate_bkt_cost(request)
-            #         #total_cost_integer multiply amount to be paid into cents
-            #         total_cost_integer = int(total_cost*100)
-            #         if total_cost == 0:
-            #             messages.error(request, "Your basket is empty, please add an item to proceed")
-            #             return render(request, 'payment/oops.html')
-            #         total_cost_integer = total_cost_integer * 0.9
-            #         # activate discount
-            #         edit_ref_code.active = False
-            #         edit_ref_code.save()
-            # else:
-            #     messages.error(request, 'oops! The discount code is invalid')
-                
-            # return HttpResponseRedirect(reverse('pay_here'))
-        transaction_id = request.POST['transaction_id']
-        transaction = Transaction.objects.get(pk=transaction_id)
+        
+        
         # check for status of particular transaction is not pending, if its anything apart from pending, it should have been paid for
         if transaction.status != 'pending':
             messages.error(request, "It seems like you have already made payment for this. Please check your bank account")

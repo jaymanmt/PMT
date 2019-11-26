@@ -78,15 +78,6 @@ style="background-color: #373f51;"
                 Total Amount: $ {{original_cost}}
             </td>
         </tr>
-        <tr>
-            <td>
-                <form method="POST">
-                    {%csrf_token%}
-                    <input style="font-size: 0.8em;" placeholder="referral code" type="text" name="ref_code"/><input style="width: 4em; font-size: 1em;"type="submit" value="enter"name="check_code"/>
-                    
-                </form>
-            </td>
-        </tr>
         {%if number_of_items >= 5%}
         <tr>
             <td>
