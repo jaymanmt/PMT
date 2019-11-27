@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='myuser',
             name='mobile',
-            field=models.PositiveIntegerField(default=''),
+            field=models.PositiveIntegerField(default=0),
         ),
     ]
