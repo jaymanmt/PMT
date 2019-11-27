@@ -11,11 +11,14 @@ This is an E-Commerce website designed to be used by a business to host a websit
 
 #### <u>How it works</u>
 
-Users can create an account on the website or login to an existing account. Before they are logged in, they will be able to access the shop page to view the products offered before creating an account. After logging in, they will be able to gain access to make purchases. Discounts are offered based on properties of the purchase. 
+Users can create an account on the website or login to an existing account. Before they are logged in, they will be able to access the shop page to view the products offered before creating an account. THe Landing Page will also provide basic information on what to expect from the services provided by providing a backdrop. 
 
-After creating their account, users will be able to edit their profile if they wanted to make adjustments to their details. Users can also 
+After creating an account and logging in, more information will be revealed including a more personal profile and contact information of the training provider. After logging in, they will also be able to gain access to make purchases Users can add items from the shop into their basket. From the basket page, they can adjust the quantity or delete the item altogether. While adjusting the quantity, the total amount due will update accordingly. Discounts are offered based on a number of properties of the purchase. Once the user is ready to make payment, he/she will go to the next page and enter their order details and card details. Card details are kept completely private and sent straight to Stripe Payment.
 
-After making their purchase, users access their order history.
+After creating their account, users can also access their order history and will be able to edit their own profile if they wanted to make adjustments.
+
+A live version can be found [here]().
+
 
 
 
@@ -67,8 +70,11 @@ https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-i
 
 
 to-dos:
+deploy to heroku
 postgressql
 referral code setup
 enterprise use - 10-50%-off discount code
 email invoice in pdf both to enterprise and customer. 
 about personal trainer page
+add referral code to admin page
+add 'adding and deleting shop item' feature to admin page
