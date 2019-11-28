@@ -50,19 +50,38 @@ style="background-color: #255f85; color: #ffd23f;"
         </div>
     </form>
 </div>
-<h1>Search Results</h1>
-<div>
-    {%for user in search_results%}
-    <div class="row">
-        <div class="col-2">
-            {{user.first_name}} {{user.last_name}} {{user.mobile}}
-            {{user.owner}}
+
+<div style="display:flex; justify-content: space-around; flex-wrap: wrap">
+    <div>
+        <h1>Search Results by User</h1>
+        {%for user in search_results%}
+        <div class="row">
+            <div class="col-2">
+                <!-- if not searching by transaction type -->
+                {{user.first_name}} {{user.last_name}} {{user.mobile}}
+            </div>
+            <div class="col-1">
+                <a style="font-size: 1em; color: white; margin-left: 10px;" href="view_user/{{user.id}}"><i class="far fa-eye"></i></a>
+            </div>
         </div>
-        <div class="col-1">
-            <a style="font-size: 1em; color: white; margin-left: 10px;" href="view_user/{{user.id}}"><i class="far fa-eye"></i></a>
+        {%endfor%}
+        <hr style="background-color:white;">
+        <!-- if searching by transaction type -->
+        <h1>Search Results by Transaction Type</h1>
+        {%for user in search_results_tx%}
+        <div class="row">
+            <div class="col-2">
+                <!-- if not searching by transaction type -->
+                {{user.first_name}} {{user.last_name}} {{user.mobile}}
+                {{user.owner.first_name}} {{user.owner.last_name}} {{user.owner.mobile}}
+            </div>
+            <div class="col-1">
+                <a style="font-size: 1em; color: white; margin-left: 10px;" href="view_user/{{user.owner.id}}"><i class="far fa-eye"></i></a>
+            </div>
         </div>
+        {%endfor%}
+        <hr style="background-color:white;">
     </div>
-    {%endfor%}
 </div>
 <hr style="background-color:white;">
 <h1>ALL USERS</h1>

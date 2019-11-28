@@ -259,14 +259,17 @@ def view_all_user(request):
             search_results = MyUser.objects.filter(mobile__icontains=request.POST.get("search_by_mobile"))
         elif "search_by_email" in request.POST:
             search_results = MyUser.objects.filter(email__icontains=request.POST.get("search_by_email"))
-        elif "search_by_tx_type" in request.POST:
-            search_results = Transaction.objects.filter(status__icontains=request.POST.get("search_by_tx_type"))    
-            
-            
-        print(search_results)
+        else:
+            search_results = []
+        
+        if "search_by_tx_type" in request.POST:
+            search_results_tx = Transaction.objects.filter(status__icontains=request.POST.get("search_by_tx_type")) 
+        else:
+            search_results_tx = []
         return render(request, "administrator/all_users.html",{
         "all_users":all_users,
-        "search_results":search_results
+        "search_results":search_results,
+        "search_results_tx":search_results_tx
         })
     else:
         
@@ -294,8 +297,6 @@ def view_user(request, id):
         
 def edit_user(request, id):
     get_user = get_object_or_404(MyUser, pk=id)
-    print('------------------------')
-    print(get_user.first_name)
     # -------------- edit user's profile form ----------------
     if request.method == "POST":
         
