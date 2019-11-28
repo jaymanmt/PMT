@@ -86,7 +86,3 @@ add referral code functionality to admin page
 add 'adding and deleting shop item' feature to admin page
 change debug to False!
 
-unable to upload images! possibly because of models error! (upload to?) - admin page edit shop item and adding new stock
-unable to change referral code active to non-active
-stock levels not updating after purchase 
-invoice item not recording transaction items after purchase

@@ -76,14 +76,16 @@ def pay_here(request):
         
         basket_items = basketItem.objects.filter(owner=request.user)
         all_stock = Item.objects.filter()
+        
         for item in basket_items:
-            # checking if there is enough stock and if it is sold out
+            # checking if there is enough stock before going to payment phase
             for stock in all_stock:
                 if item.product.sku == stock.sku and item.quantity_to_buy > stock.stock_level:
                     messages.error(request, "Unfortunately, we are out of stock of {} for that quantity requested, please lower your quantity and try again, otherwise please contact us".format(item.product.product_name))
-                    #send an email to admin??
+                    
                     return HttpResponseRedirect(reverse('showbasket'))
-                else:
+            # using elif for specific condition and breaking out of loop once a match is made comparing a basket item's quantity with a shop item's stock levels
+                elif item.product.sku == stock.sku and item.quantity_to_buy <= stock.stock_level:
                     invoice_item = InvoiceItem()
                     invoice_item.transaction = transaction
                     invoice_item.product = item.product
@@ -97,9 +99,10 @@ def pay_here(request):
                         invoice_item.name = item.product.product_name
                         
                         invoice_item.save()
-        
-        order_form = OrderForm()
-        payment_form = PaymentForm()
+                        
+                        order_form = OrderForm()
+                        payment_form = PaymentForm()
+                    break
 
         
         return render(request, 'payment/paying.html', {

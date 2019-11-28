@@ -75,22 +75,37 @@ def administrator_view(request):
         amount_earned_in_dollars = round(amount_earned_in_dollars, 2)
         
         #get amount earned and quantity sold from InvoiceItem model for each product
-        all_products_sold = InvoiceItem.objects.filter()
-        starter_sold = InvoiceItem.objects.filter(sku='000001')
-        p101_sold = InvoiceItem.objects.filter(sku='000002')
-        p102_sold = InvoiceItem.objects.filter(sku='000003')
-        standard_sold = InvoiceItem.objects.filter(sku='000004')
+        all_products = InvoiceItem.objects.filter()
+        starter = InvoiceItem.objects.filter(sku='000001')
+        p101 = InvoiceItem.objects.filter(sku='000002')
+        p102 = InvoiceItem.objects.filter(sku='000003')
+        standard = InvoiceItem.objects.filter(sku='000004')
         
-        all_products_sold = len(all_products_sold)
-        starter_sold = len(starter_sold)
-        p101_sold = len(p101_sold)
-        p102_sold = len(p102_sold)
-        standard_sold = len(standard_sold)
+        #get total quantity sold using invoice items model and for loops
+        all_products_sold = 0
+        starter_sold = 0
+        p101_sold = 0
+        p102_sold = 0
+        standard_sold = 0
         
+        for product in all_products:
+            all_products_sold+=product.quantity
+        
+        for product in starter:
+            starter_sold+=product.quantity
+        
+        for product in p101:
+            p101_sold+=product.quantity
+        
+        for product in p102:
+            p102_sold+=product.quantity
+        
+        for product in standard:
+            standard_sold+=product.quantity
+
         #get shop items stock levels
         stock = Item.objects.filter()
 
-        
         return render(request, 'administrator/administrator_page.html',{
             "all_users": all_users,
             "number_of_users":number_of_users,
