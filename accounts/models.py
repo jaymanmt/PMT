@@ -27,4 +27,4 @@ class ReferralCode(models.Model):
     
     
     def __str__(self):
-        return str(self.discount) + str(self.active)
+        return str(self.discount) +" - "+ str(self.active)

@@ -5,33 +5,24 @@
 style="background-color: #373f51"
 {%endblock%}
 {%block title%}
-<div style="min-height: 700px; color: #ffd23f; font-size: 3em;">
-    <ul style="list-style: none;">
-        <li>
-            <i class="far fa-smile-wink"></i>
-        </li>
-        <li>
-            Thank you for your purchase! 
-        </li>
-        <li>
-            I will be in touch with you shortly and cant wait to meet you and help you reach your goals!  
-        </li>
-        <li>
-            If you have further questions, feel free to contact me! <a href="#"><i style="color: #ffd23f;"class="fas fa-user"></i></a>
-        </li>
-        <li>
-            Congratulations! You have earned a referral code: {{unique_code}}
-            <p>
-                Use this referral code to receive 10% off from the next purchase!
-            </p>
-            <p>
-                You or a friend may use the code! However, it expires on {{expiry_date}}! 
-            </p>
-            <p>
-                Note that this code will not be shown again once you leave this page due to security reasons.
-            </p>
-        </li>
-    </ul>
+<div style="min-height: 700px; color: #ffd23f; display: flex; flex-direction: column; align-items: left; margin-left: 10%;">
+    <div>
+        <h1><i class="far fa-smile-wink"></i> Thank you for your purchase!</h1>
+    </div>
+    <div style="font-size: 2em; color: white;">
+        I will be in touch with you very shortly. I cant wait to meet you and assist in reaching your goals!  
+    </div>
+    <div style="color: white">
+        <p>If you have further questions, feel free to contact me! <a href="#"><i style="color: #ffd23f;"class="fas fa-user"></i></a></p>
+    </div>
+    <div style="margin-top: 1.5em;">
+        <h3>Congratulations! You have earned a referral code: {{unique_code}}</h3>
+    </div>
+    <div>
+        <p>Use this referral code to receive 10% off from the next purchase!</p>
+        <p>You or a friend may use the code! However, it expires on {{expiry_date}}! </p>
+        <p>Note that this code will NOT be shown again once you leave this page due to security reasons.</p>
+    </div>
 </div>
 
 

@@ -1,0 +1,38 @@
+{%extends 'base.template.html' %}
+{% load crispy_forms_tags %}
+{%block bg-img%}
+style="background-color: #255f85; color: #ffd23f;"
+{%endblock%}
+{%block content%}
+{% if 'administrator' == request.user.groups.all.0.name %} 
+<h1>ADD SHOP ITEMS!!</h1>
+<div style="color: #ffd23f; display: flex; justify-content: center;">
+    <form method='POST' enctype="multipart/form-data" style="border-radius: 3px; margin-right:1em; margin-left:1em; max-width:375px; background-color: rgba(0,0,0,0.2); padding: 20px;">
+        {%csrf_token%}
+        <label>Product Name: </label>
+        <input style="margin-bottom: 1em;"class="form-control"type="text" name="product_name"/>
+        <label>Sku: <span style="font-size: 0.7em;">(Last assigned sku: {{last_item.sku}})</span></label>
+        <input style="margin-bottom: 1em;" class="form-control"type="text" name="sku"/>
+        <label>Number of Sessions: </label>
+        <input style="margin-bottom: 1em;" class="form-control"type="number" name="sessions"/>
+        <label>Description: </label>
+        <textarea style="margin-bottom: 1em;" class="form-control"type="text" name="sku"></textarea>
+        <label>Price - in cents: </label>
+        <input style="margin-bottom: 1em;" class="form-control"type="number" name="price"/>
+        <label>Category: </label>
+        <select name="category">
+                {%for each_category in category%}
+                <option>
+                    {{each_category}}
+                </option>
+                {%endfor%}
+            </select>
+        <label>Photo: </label>
+        <input style="margin-bottom: 1em; min-width: 250px;" type="file" name="photo"/>
+        <input type="submit" class= "btn" name="create-btn" value="Create"style="background-color: #ffd23f"/>
+    </form>
+</div>
+
+
+{%endif%}
+{%endblock%}

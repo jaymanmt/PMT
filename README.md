@@ -19,8 +19,15 @@ After creating their account, users can also access their order history and will
 
 A live version can be found [here]().
 
+#### Testing
+
+Testing was conducted and the documentation can be found [here]().
+
 
 #### UI/UX - 5layers
+
+### <u>Strategy</u>
+
 
 
 
@@ -70,11 +77,16 @@ https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-i
 
 
 to-dos:
-deploy to heroku
-postgressql
-referral code setup
+
+
 enterprise use - 10-50%-off discount code
 email invoice in pdf both to enterprise and customer. 
 about personal trainer page
-add referral code to admin page
+add referral code functionality to admin page
 add 'adding and deleting shop item' feature to admin page
+change debug to False!
+
+unable to upload images! possibly because of models error! (upload to?) - admin page edit shop item and adding new stock
+unable to change referral code active to non-active
+stock levels not updating after purchase 
+invoice item not recording transaction items after purchase

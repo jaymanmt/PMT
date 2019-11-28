@@ -26,19 +26,12 @@ def calculate_bkt_cost(request):
     if number_of_items >= 5:
         total_cost = total_cost * 0.9
     
-    
-    
-    #call and check 10, 20, 30, 40% off referral codes status, and if any are active, do the discount followed by changing the status back to inactive 
-    # dj2938f7hkd0j10
-    # 9dj342khbazmh20
-    # gas2310h4kamt30
-    
     return total_cost
 
 #create url for AJAX call to check the referral code for user interface
 def check_ref_code(request, ref_code):
     referral_codes = ReferralCode.objects.filter(discount=ref_code)
-    if len(referral_codes) != 0:
+    if len(referral_codes) != 0 and referral_codes[0].expiry >= timezone.now() and referral_codes[0].active == True:
         return JsonResponse({"status":True})
     else:
         return JsonResponse({"status":False})
@@ -47,10 +40,8 @@ def check_ref_code(request, ref_code):
 def check_ref_code_payment(request):
     ref_code = request.POST.get('ref_code')
     referral_codes = ReferralCode.objects.filter(discount=ref_code)
-    print(referral_codes[0])
-    if len(referral_codes) != 0 and referral_codes[0].expiry <= timezone.now() and referral_codes[0].active == True:
+    if len(referral_codes) != 0 and referral_codes[0].expiry >= timezone.now() and referral_codes[0].active == True:
         try:
-            #not working!!
             referral_codes[0].active = False
             referral_codes[0].save()
         except ValidationError as e:

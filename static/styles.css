@@ -154,13 +154,8 @@ textarea{
     padding-bottom: 10px;
 }
 
-input[type="file"] {
-    display: none;
-}
-
 #upload_button{
     color: black;
-
 }
 
 @keyframes uploadpointing{

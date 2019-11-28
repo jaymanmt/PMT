@@ -26,7 +26,7 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["sgmuaythai.herokuapp.com","www.sgmuaythai.org"]
+ALLOWED_HOSTS = ["sgmuaythai.herokuapp.com","www.sgmuaythai.org", "6d36a1919bc843a498ae983b9dca4512.vfs.cloud9.us-east-1.amazonaws.com"]
 
 
 # Application definition

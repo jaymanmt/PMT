@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import administrator_view, view_all_user, view_user, tx_user, edit_user, update_tx_status, update_stock, edit_shop_item, view_transaction, add_new_stock
+from .views import administrator_view, view_all_user, view_user, tx_user, edit_user, update_tx_status, update_stock, edit_shop_item, view_transaction
 
 urlpatterns = [
     path('',administrator_view, name="administrator_view"),

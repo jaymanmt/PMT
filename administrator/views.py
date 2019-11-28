@@ -77,15 +77,15 @@ def administrator_view(request):
         #get amount earned and quantity sold from InvoiceItem model for each product
         all_products_sold = InvoiceItem.objects.filter()
         starter_sold = InvoiceItem.objects.filter(sku='000001')
-        beginner_sold = InvoiceItem.objects.filter(sku='000002')
-        intermediate_sold = InvoiceItem.objects.filter(sku='000003')
-        advanced_sold = InvoiceItem.objects.filter(sku='000004')
+        p101_sold = InvoiceItem.objects.filter(sku='000002')
+        p102_sold = InvoiceItem.objects.filter(sku='000003')
+        standard_sold = InvoiceItem.objects.filter(sku='000004')
         
         all_products_sold = len(all_products_sold)
         starter_sold = len(starter_sold)
-        beginner_sold = len(beginner_sold)
-        intermediate_sold = len(intermediate_sold)
-        advanced_sold = len(advanced_sold)
+        p101_sold = len(p101_sold)
+        p102_sold = len(p102_sold)
+        standard_sold = len(standard_sold)
         
         #get shop items stock levels
         stock = Item.objects.filter()
@@ -107,23 +107,52 @@ def administrator_view(request):
             "amount_earned_in_dollars":amount_earned_in_dollars,
             "all_products_sold":all_products_sold,
             "starter_sold":starter_sold,
-            "beginner_sold":beginner_sold,
-            "intermediate_sold":intermediate_sold,
-            "advanced_sold":advanced_sold,
+            "p101_sold":p101_sold,
+            "p102_sold":p102_sold,
+            "standard_sold":standard_sold,
             "stock":stock
-            
-            
-            
         })
     else:
         messages.error(request,'You do not have the permission to access this page')
         return render(request,'payment/oops.html')
 
-
+#function to give functionality to administrator to add new shop items
+def add_new_stock(request):
+    last_item = Item.objects.filter().last()
+    category = Category.objects.filter()
+    if request.method == 'POST':
+        add_new_stock_form = UpdateItemForm(request.FILES, {
+            "product_name":request.POST.get("product_name"),
+            "sku":request.POST.get("sku"),
+            "sessions":request.POST.get("sessions"),
+            "description":request.POST.get("description"),
+            "price":request.POST.get("price"),
+            "category":request.POST.get("category"),
+            "photo":request.FILES.get("photo")
+        })
+        if add_new_stock_form.is_valid():
+            add_new_stock_form.save()
+            
+        else:
+            messages.error(request,'shop item could not be created due to an error!')
+            return render(request, 'administrator/add_new_stock.html',{
+            "add_new_stock_form":add_new_stock_form,
+            "last_item":last_item,
+            "category":category
+        })
+        
+    else:
+        add_new_stock_form = UpdateItemForm()
+        
+        return render(request, 'administrator/add_new_stock.html',{
+            "add_new_stock_form":add_new_stock_form,
+            "last_item":last_item,
+            "category":category
+        })
 
 #function to add or subtract stock levels of each shop item from admin dashboard, also include adding if the stock has been sold out
 def update_stock(request):
-    shop_stock = Item.objects.filter()
+    shop_stock = Item.objects.filter().order_by('sku')
     if request.method == 'POST':
 
         if '000001' in request.POST:

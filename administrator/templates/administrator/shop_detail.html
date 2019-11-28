@@ -4,12 +4,15 @@ style="background-color: #255f85; color: #ffd23f;"
 {%endblock%}
 {%block content%}
 {% if 'administrator' == request.user.groups.all.0.name %} 
-<h1>SHOP ADMIN ADJUSTMENTS</h1>
+<h1>SHOP ADMIN ADJUSTMENTS <a style="color: white;" href="/administrator/add_new_stock"><i class="fas fa-cart-plus"></i></a></h1>
 {%for item in shop_stock%}
     <div class="row">
         <div class="col-2">
-            <p>{{item.product_name}}<a href="/administrator/edit_shop_item/{{item.sku}}"> <i class="fas fa-edit"></i></a></p>
+            <p>{{item.product_name}}</p>
             <p>SKU: {{item.sku}}</p>
+        </div>
+        <div class="col-1">
+            <a style="color: white;" href="/administrator/edit_shop_item/{{item.sku}}"> <i class="fas fa-edit"></i></a>
         </div>
         <div class="col-2">
             Current Stock Level: {{item.stock_level}}
