@@ -16,13 +16,15 @@ style="background-color: #255f85; color: #ffd23f;"
         <label>Number of Sessions: </label>
         <input style="margin-bottom: 1em;" class="form-control"type="number" name="sessions"/>
         <label>Description: </label>
-        <textarea style="margin-bottom: 1em;" class="form-control"type="text" name="sku"></textarea>
+        <textarea style="margin-bottom: 1em;" class="form-control"type="text" name="description"></textarea>
         <label>Price - in cents: </label>
         <input style="margin-bottom: 1em;" class="form-control"type="number" name="price"/>
+        <label>Stock Level </label>
+        <input style="margin-bottom: 1em;" class="form-control"type="number" name="stock_level"/>
         <label>Category: </label>
         <select name="category">
                 {%for each_category in category%}
-                <option>
+                <option value='{{each_category.id}}'>
                     {{each_category}}
                 </option>
                 {%endfor%}

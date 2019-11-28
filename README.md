@@ -83,6 +83,8 @@ enterprise use - 10-50%-off discount code
 email invoice in pdf both to enterprise and customer. 
 about personal trainer page
 add referral code functionality to admin page
-add 'adding and deleting shop item' feature to admin page
+
 change debug to False!
 
+
+view individual user profile from search results not working
