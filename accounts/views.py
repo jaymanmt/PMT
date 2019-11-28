@@ -3,11 +3,13 @@ from django.contrib import auth, messages
 from .forms import UserLoginForm, UserRegistrationForm, UserEditProfile
 from .models import MyUser, ReferralCode
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from PMT.views import home
 from django.utils.crypto import get_random_string
 from django.utils import timezone
+
 
 # Create your views here.
 
@@ -46,6 +48,8 @@ def register(request):
             form.save()
             user = auth.authenticate(username=request.POST['username'], password=request.POST['password2'])
             if user:
+                add_group_perm = Group.objects.get(name='user') 
+                user.groups.add(add_group_perm)
                 unique_id = get_random_string(length=15)
                 code = ReferralCode()
                 code.discount = unique_id

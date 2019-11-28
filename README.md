@@ -87,4 +87,3 @@ add referral code functionality to admin page
 change debug to False!
 
 
-view individual user profile from search results not working
