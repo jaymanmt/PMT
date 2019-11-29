@@ -33,11 +33,9 @@ style="background-color: #255f85; color: #ffd23f;"
     </div>
     
 </div>
-<div>
-    <h3>Total cost of the transaction</h3>
-        <p>$ {% widthratio tx.charge.amount 100 1 %}</p>
-    </div>
 <hr style="background-color: white;">
 {%endfor%}
+<h3>Total cost of the transaction</h3>
+<p>$ {% widthratio tx.charge.amount 100 1 %}</p>
 
 {%endblock%}

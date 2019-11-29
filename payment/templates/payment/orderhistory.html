@@ -7,23 +7,16 @@ style="background-color: #373f51"
 {%block content%}
 <div style="min-height: 700px; color: #ffd23f; display: flex; flex-direction: column; align-items: left; margin-left: 10%;">
     <div>
-        <h1><i class="far fa-smile-wink"></i> Order History</h1>
+        <h1>Order History <i class="fas fa-gifts"></i></h1>
     </div>
-    {% for tx in user_transaction %}
+    {% for tx in user_transactions %}
     <div style="font-size: 2em; color: white;">
-          {{tx}} - $ {{tx.charge.amount}}
+          {{tx}} - $ {% widthratio tx.charge.amount 100 1 %} <a style="font-size: 0.5em; color: #ffd23f;" href="/payment/orderhistory/{{tx.id}}">view</a>
     </div>
     {%endfor%}
-    <div style="color: white">
-        <p>If you have further questions, feel free to contact me! <a href="#"><i style="color: #ffd23f;"class="fas fa-user"></i></a></p>
-    </div>
+
     <div style="margin-top: 1.5em;">
-        <h3>Congratulations! You have earned a referral code: {{unique_code}}</h3>
-    </div>
-    <div>
-        <p>Use this referral code to receive 10% off from the next purchase!</p>
-        <p>You or a friend may use the code! However, it expires on SGT {{expiry_date}}! </p>
-        <p>Note that this code will NOT be shown again once you leave this page due to security reasons.</p>
+        <h3>If you have any questions regarding your transactions, feel free to contact me! <a href="#"><i style="color: #ffd23f;"class="fas fa-user"></i></a></h3>
     </div>
 </div>
 
