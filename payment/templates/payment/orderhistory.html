@@ -1,30 +1,31 @@
 {%extends 'base.template.html'%}
-{% load crispy_forms_tags %}
-{% load static %}
 
+{% load static %}
 {%block bg-img%}
 style="background-color: #373f51"
 {%endblock%}
-My Order History
-{%block title%}
-
-{%endblock%}
-
 {%block content%}
-<div style="color: white">
-    <ul>
-    {%for item in invoice_items%}
-    <li>
-        {{item.product}}
-    </li>
-    <li>
-        {{item.quantity}}
-    </li>
-    <li>
-        
-    </li>
+<div style="min-height: 700px; color: #ffd23f; display: flex; flex-direction: column; align-items: left; margin-left: 10%;">
+    <div>
+        <h1><i class="far fa-smile-wink"></i> Order History</h1>
+    </div>
+    {% for tx in user_transaction %}
+    <div style="font-size: 2em; color: white;">
+          {{tx}} - $ {{tx.charge.amount}}
+    </div>
     {%endfor%}
-    </ul>
+    <div style="color: white">
+        <p>If you have further questions, feel free to contact me! <a href="#"><i style="color: #ffd23f;"class="fas fa-user"></i></a></p>
+    </div>
+    <div style="margin-top: 1.5em;">
+        <h3>Congratulations! You have earned a referral code: {{unique_code}}</h3>
+    </div>
+    <div>
+        <p>Use this referral code to receive 10% off from the next purchase!</p>
+        <p>You or a friend may use the code! However, it expires on SGT {{expiry_date}}! </p>
+        <p>Note that this code will NOT be shown again once you leave this page due to security reasons.</p>
+    </div>
 </div>
+
 
 {%endblock%}

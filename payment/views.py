@@ -213,8 +213,9 @@ def pay_here(request):
 # order history page
 
 def orderhistory(request):
-    invoice_items = InvoiceItem.objects.filter(transaction__owner=request.user)
-    
+    user_transaction = Transaction.objects.filter(owner=request.user)
+    tx_invoice_item = InvoiceItem.objects.filter(transaction=tx_num)
     return render(request, 'payment/orderhistory.html', {
-        "invoice_items": invoice_items
+        "user_transaction": user_transaction,
+        "tx_invoice_item": tx_invoice_item
     })

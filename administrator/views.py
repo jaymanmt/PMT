@@ -388,10 +388,12 @@ def edit_user(request, id):
         })
 
 def tx_user(request,tx_num):
+    tx = all_tx = Transaction.objects.get(id=tx_num)
     tx_invoice_item = InvoiceItem.objects.filter(transaction=tx_num)
     return render(request, "administrator/invoiceitems.html",{
-        "tx_invoice_item":tx_invoice_item,
-        "tx_num": tx_num
+        "tx":tx,
+        "tx_num": tx_num,
+        "tx_invoice_item":tx_invoice_item
     })
 
 def edit_shop_item(request, select_sku):
