@@ -100,8 +100,8 @@ def pay_here(request):
                         
                         invoice_item.save()
                         
-                        order_form = OrderForm()
-                        payment_form = PaymentForm()
+                    order_form = OrderForm()
+                    payment_form = PaymentForm()
                     break
 
         

@@ -15,14 +15,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Cutive+Mono|Farro|Pacifico|Permanent+Marker&display=swap" rel="stylesheet">  
     <link rel="stylesheet"  href="{% static 'styles.css' %}" type="text/css" />
-    <title>Hello, world!</title>
+    <title>Muay Thai Personal Training</title>
 </head>
 
-<body style="width:100%">
+<body style="width:100%; font-family: Farro;">
     <div {%block bg-img%}{%endblock%}>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0,0,0,0.2); font-size:1em;" role="navigation">
-            <a style= "padding: 30px;color: white" class="navbar-brand" href="{% url 'home' %}">PMT</a>
+            <a style= "padding-top: 30px; padding-bottom: 30px; padding-left: 20px; color: white" class="navbar-brand" href="{% url 'home' %}">PMT<span style= "font-size: 0.6em; color: white" class="nav-link">Muay Thai Personal Training</span></a>
+            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -73,9 +75,9 @@
         {% if messages %}
         {%for m in messages%}
         {% if m.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-        <div class = "alert alert-danger">
+        <div style="background-color:#f17e5c; width:100%; padding: 0.5em;">
             {% else %}
-        <div class = "alert alert-success">  
+        <div style="background-color:#2fbf71; width:100%; padding: 0.5em;">
             {%endif%}
             {{m}}
         </div>

@@ -83,7 +83,7 @@ enterprise use - 10-50%-off discount code
 email invoice in pdf both to enterprise and customer. 
 about personal trainer page
 add referral code functionality to admin page
-
+email admin account when a purchase has been made
 change debug to False!
 
 

@@ -1,34 +1,55 @@
 {%extends 'base.template.html'%}
 {% load static %}
 {%block bg-img%}
-style= "background-image: url('{% static 'images/hero.jpg'%}'); background-size: cover; background-position: top;  background-repeat: no-repeat;")
+style= "background-image: url('{% static 'images/technique.jpeg'%}'); background-size: cover; background-position: top;  background-repeat: no-repeat;")
 {%endblock%}
 {%block content%}
-<div>
-    <h4 style="color: #f8333c; text-shadow:2px 2px black;">
-        Muay Thai Personal Training. 
-    </h4>
-</div>
-<div style="color: white; text-align: center; display:flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 10%;">
-    <div style="background-color:rgba(0,0,0,0.5); padding: 20px; margin-top: 80px; color: #ffd23f;">
-        <h2>Get 20% off the starter's package today!</h2>
+
+<div style="display:flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 15%;margin-bottom: 15%">
+    <div style="display: flex; flex-direction: row; border-radius: 5px; background-color:rgba(0,0,0,0.5); padding: 20px; color: #ffd23f; font-size: 2em;">
+        <div style="text-align: center;">Get 20% off the starter's package today!</div>
+        <div style="margin-left: 1em; text-align: center;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "register"%}"> Register Now </a></div>
     </div>
 </div>
 <div>
-    <h3 style="text-align: center; margin-top: 3%;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "register"%}"> Register Now </a></h3>
+    
 </div>
-<div style="padding: 10px; color: white; text-align: center;">
-    <h4>Read More </h4>
-    <i style="font-size: 3em;"class="fas fa-angle-double-down"></i>
+<div style="padding: 10px; color: white; text-align: right; margin-right: 20px;">
 </div>
 
 
 {%endblock%}
 {%block footer%}
+<div style="display: flex; justify-content: space-evenly; margin-top: 30px;">
+    <div class="card" style="width: 18rem; border-color: transparent;;">
+      <img style="margin-top: 17px; margin-left: 17px;height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/101.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; border-color: transparent;;">
+      <img style="margin-top: 17px; margin-left: 17px;height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/nutrition.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; border-color: transparent;;">
+      <img style="margin-top: 17px; margin-left: 17px;height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/101.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+</div>
 
 <div style="color: white; background-color: #373f51;" data-aos="fade-right" data-aos-delay="400" data-aos-once="true" class="row">
     <div class="col-2">
-        <img style="height: 250px; margin: 0;" src="/static/images/101.jpg"></img>
+        <img style="height: 250px; margin: 0;" src="{% static 'images/101.jpg' %}"></img>
     </div>
     <div class="col">
         <h2>

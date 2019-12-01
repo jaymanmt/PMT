@@ -1,12 +1,13 @@
 {%extends 'base.template.html'%}
 {% load custom_tags %}
+{% load static %}
 {%block bg-img%}
-style="background-color: #373f51;"
+style= "background-image: url('{% static 'images/technique.jpeg'%}'); background-size: cover; background-position: top;  background-repeat: no-repeat;")
 {%endblock%}
 {%block content%}
 <div style="display:flex; flex-direction: column; align-items:center;">
-    <h1>My Basket</h1>
-    <table style="color: white; padding: 3px;background-color: #373f51; margin-top: 20px; display: flex; justify-content:center">
+    <h1 style="color: #ffd23f; font-family: Permanent Marker; margin-top: 1.5em; text-shadow: 3px 3px 2px black;">My Basket</h1>
+    <table style="border-radius: 5px; color: white; padding: 20px; background-color: rgba(0,0,0,0.4); margin-top: 20px; display: flex; justify-content:center">
         <tr style="color: black; padding: 0;" class="bkt-table-row bkt-table-rowhead">
             
             <th class="bkt-table-col">
@@ -66,7 +67,7 @@ style="background-color: #373f51;"
     </table>
 </div>
 <div style="display:flex; flex-direction: column; align-items:center; margin-left: 50%; margin-top: 10px;">
-    <table style="color: white;">
+    <table style="color: white; background-color: rgba(0,0,0,0.7); margin: 20px; border-radius: 5px;">
         <tr style="padding: 0;" class="bkt-table-row">
             <td>
                 Total Amount: $ {{original_cost}}
@@ -93,7 +94,7 @@ style="background-color: #373f51;"
     </table>
 </div>
 <div style="min-height: 500px; display:flex; flex-direction: column; align-items:center; margin-right: 50%; margin-top: 10px;">
-    <table style="padding: 10%; color:white;">
+    <table style="padding: 10%; color:white; background-color: rgba(0,0,0,0.7); border-radius: 5px;">
         <tr>
             <td>
                 
@@ -107,7 +108,7 @@ style="background-color: #373f51;"
                 <i style="color: #ffd23f;" class="fas fa-check-circle"></i>
             </td>
             <td>
-                Buy 5 packages, and get 10% off your total bill! 
+                Buy 5 packages and above, you get 10% off your total bill! 
             </td>
         </tr>
         <tr>
@@ -115,7 +116,15 @@ style="background-color: #373f51;"
                 <i style="color: #ffd23f;" class="fas fa-check-circle"></i>
             </td>
             <td>
-                After purchase, you will be contacted within 1-2 business days!
+                After payment, you will be contacted within 1-2 business days!
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <i style="color: #ffd23f;" class="fas fa-check-circle"></i>
+            </td>
+            <td>
+                After each purchase, you will receive a code for 10% off! 
             </td>
         </tr>
     </table>
