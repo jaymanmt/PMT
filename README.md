@@ -85,5 +85,4 @@ about personal trainer page
 add referral code functionality to admin page
 email admin account when a purchase has been made
 change debug to False!
-
-
+edit profile, does not check for existing usernames and emails before changing

@@ -60,7 +60,7 @@ def pay_here(request):
         total_cost_integer = int(total_cost*100)
         if total_cost == 0:
             messages.error(request, "Your basket is empty, please add an item to proceed")
-            return render(request, 'payment/oops.html')
+            return HttpResponseRedirect(reverse('showbasket'))
             
         #convert to two decimal places string
         total_cost = "{:.2f}".format(total_cost)

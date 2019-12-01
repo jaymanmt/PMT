@@ -8,7 +8,7 @@ style= "background-image: url('{% static 'images/technique.jpeg'%}'); background
 {%block content%}
 
 <div >
-    <div class="flex-container" style="display:flex; flex-direction:row; flex-wrap: wrap-reverse; justify-content: space-around;">
+    <div class="flex-container" style="display:flex; flex-direction:row; flex-wrap: wrap; justify-content: space-around;">
         {%for i in items%}
         
         <div class="card" style="box-shadow: 3px 3px 5px; background-color: transparent; border-radius: 15px; flex-basis: 400px; margin:12px; width:100%; text-align: center; {%if starter_check and i.sku == '000001' %}display:none;{%endif%}">

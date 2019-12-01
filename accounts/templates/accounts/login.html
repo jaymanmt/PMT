@@ -5,14 +5,14 @@ style= "background-image: url('{% static 'images/technique.jpeg'%}'); background
 {%endblock%}
 {% load crispy_forms_tags %}
 {%block title%}
-<h1 style="color: #ec4e20; font-family: Permanent Marker; margin-top: 1.5em; text-align: center; text-shadow: 3px 3px 2px black;">Hey, Welcome Back!</h1>
+<h1 style="color: #ffd23f; font-family: Permanent Marker; margin-top: 1.5em; text-align: center; text-shadow: 3px 3px 2px black;">Hey, Welcome Back!</h1>
 {%endblock%}
 {%block content%}
 <div style="display:flex; flex-direction:row; justify-content: center; margin-top: 30px; color:white;">
     <form method="POST" style="background-color: rgba(0,0,0,0.5); padding: 30px; border-radius: 5px; margin-bottom: 300px;">
         {%csrf_token%}
         {{form|crispy}}
-        <input class="btn btn-primary" id="login-btn" style=""type="submit" name="login-btn" value="Login"/>
+        <input class="btn btn-primary" id="login-btn" style=""type="submit" name="login-btn" value="Login"/><br/>
         <a style= "text-decoration: none; color:white; padding: 5px;"href="{% url 'password_reset' %}">Forgot your password?</a>
     </form>
     

@@ -1,17 +1,18 @@
 {%extends 'base.template.html'%}
+{% load static %}
 {%block bg-img%}
-style="background-color: #373f51"
+style= "background-image: url('{% static 'images/technique.jpeg'%}'); background-size: cover; background-position: top;  background-repeat: no-repeat;")
 {%endblock%}
 {% load crispy_forms_tags %}
 {%load static%}
 {%block title%}
-<h1 style="text-align: center; margin: 30px; color: #ffd23f; font-family: Calligraffitti; text-shadow: 3px 3px 2px black;">Let's work together on your well-being!</h1>
+<h1 style="text-align: center; margin: 30px; color: #ffd23f; font-family: Permanent Marker; text-shadow: 3px 3px 2px black;">Let's work together on your well-being!</h1>
 {%endblock%}
 {%block content%}
 
 <div style="color: white; display: flex; justify-content: center;">
     
-    <form method="POST" enctype="multipart/form-data" style="border-radius: 3px; margin-right:1em; margin-left:1em; max-width:375px; background-color: rgba(0,0,0,0.2); padding: 20px;">
+    <form method="POST" enctype="multipart/form-data" style="border-radius: 3px; margin-right:1em; margin-left:1em; max-width:375px; background-color: rgba(0,0,0,0.7); padding: 20px;">
         {%csrf_token%}
         {{form|crispy}}
         <input style="visibility:hidden" type="file"  id="default-image" placeholder="default user photo" name="default_profile_photo" value={% static "images/user-icon.png" %}/>
