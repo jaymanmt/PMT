@@ -176,7 +176,10 @@ def add_new_stock(request):
 def update_stock(request):
     shop_stock = Item.objects.filter().order_by('sku')
     if request.method == 'POST':
-
+        check_negative = request.POST.get("new_stock_level")
+        if int(check_negative) < 0:
+            messages.error(request, 'Quantity CANNOT be negative!')
+            return HttpResponseRedirect(reverse('update_stock'))
         if '000001' in request.POST:
             selected_stock = Item.objects.get(sku='000001')
             selected_stock.stock_level = request.POST.get("new_stock_level")
@@ -263,7 +266,13 @@ def view_all_user(request):
             search_results = []
         
         if "search_by_tx_type" in request.POST:
-            search_results_tx = Transaction.objects.filter(status__icontains=request.POST.get("search_by_tx_type")) 
+            # remove duplicates in list to clean search results for admin page
+            temp_list = Transaction.objects.filter(status__icontains=request.POST.get("search_by_tx_type"))
+            search_results_tx = []
+            for tx in temp_list:
+                if tx.owner not in search_results_tx:
+                    search_results_tx.append(tx.owner)
+                    
         else:
             search_results_tx = []
         return render(request, "administrator/all_users.html",{
@@ -280,7 +289,7 @@ def view_all_user(request):
 
 def view_user(request, id):
     get_user = get_object_or_404(MyUser, pk=id)
-    get_user_tx = Transaction.objects.filter(owner=id)
+    get_user_tx = Transaction.objects.filter(owner=id).order_by('id')
     
     if request.method == "POST":
         if 'delete_user' in request.POST:
@@ -388,7 +397,7 @@ def edit_user(request, id):
         })
 
 def tx_user(request,tx_num):
-    tx = all_tx = Transaction.objects.get(id=tx_num)
+    tx = Transaction.objects.get(id=tx_num)
     tx_invoice_item = InvoiceItem.objects.filter(transaction=tx_num)
     return render(request, "administrator/invoiceitems.html",{
         "tx":tx,
@@ -475,7 +484,7 @@ def edit_shop_item(request, select_sku):
 })
     
 def view_transaction(request):
-    all_tx = Transaction.objects.filter().order_by('status').reverse()
+    all_tx = Transaction.objects.filter().order_by('id').reverse()
     return render(request, "administrator/transactions-view.html",{
         "all_tx":all_tx
     })

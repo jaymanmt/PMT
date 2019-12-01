@@ -107,7 +107,7 @@ style="background-color: #255f85; color: #ffd23f"
             $ {% widthratio t.charge.amount 100 1 %}
         </div>
         <div class = "col-1">
-            <a style="font-size: 1em; color: white; margin-left: 10px;" href="/administrator/tx_user/{{t.id}}"><i class="fas fa-file-alt"></i></a><a href="/administrator/charge_user/{{t.id}}"></a>
+            <a style="font-size: 1em; color: white; margin-left: 10px;" href="/administrator/tx_user/{{t.id}}"><i class="fas fa-file-alt"></i></a>
         </div>
         <div class = "col-3">
             <form method="POST" action="/administrator/update_tx_status/{{get_user.id}}/{{t.id}}">
