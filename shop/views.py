@@ -5,7 +5,7 @@ from basket.models import basketItem
 # Create your views here.
 
 def shop(request):
-    items = Item.objects.filter()
+    items = Item.objects.filter().order_by('price')
     
     if request.user.is_authenticated:
         #make sure that the starter's package can only be bought once by each user

@@ -6,9 +6,17 @@ style= "background-image: url('{% static 'images/technique.jpeg'%}'); background
 {%block content%}
 
 <div style="display:flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 15%;margin-bottom: 15%">
-    <div style="display: flex; flex-direction: row; border-radius: 5px; background-color:rgba(0,0,0,0.5); padding: 20px; color: #ffd23f; font-size: 2em;">
-        <div style="text-align: center;">Get 20% off the starter's package today!</div>
+    <div style="flex-wrap: wrap; display: flex; flex-direction: row; border-radius: 5px; background-color:rgba(0,0,0,0.5); padding: 20px; color: #ffd23f; font-size: 2em;">
+        {%if user.is_authenticated%}
+        <div style="text-align: center;">Buy 5 packages to get 10% off the total cost today!</div>
+        {% else %}
+        <div style="text-align: center;">Get one-time deal 20% off the starter's package today!</div>
+        {% endif %}
+        {%if user.is_authenticated%}
+        <div style="margin-left: 1em; text-align: center;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "shop"%}"> Shop </a></div>
+        {% else %}
         <div style="margin-left: 1em; text-align: center;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "register"%}"> Register Now </a></div>
+        {% endif %}
     </div>
 </div>
 <div>
@@ -20,32 +28,124 @@ style= "background-image: url('{% static 'images/technique.jpeg'%}'); background
 
 {%endblock%}
 {%block footer%}
-<div style="display: flex; justify-content: space-evenly; margin-top: 30px;">
+<div style="display: flex; justify-content: space-evenly; margin-top: 30px; text-align: center; flex-wrap: wrap;">
     <div class="card" style="width: 18rem; border-color: transparent;;">
-      <img style="margin-top: 17px; margin-left: 17px;height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/101.jpg' %}" class="card-img-top" alt="...">
+      <img style="margin-top: 17px; margin-left: 17px; height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/101_2.jpeg' %}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title" style="font-family: Permanent Marker; min-height: 50px;">TECHNIQUE 101</h5>
+        <p style="min-height: 375px;"class="card-text">In my personal one-to-one sessions, you will have my full attention and I will work closely with you to make sure you achieve your personal goals whether is it to lose weight, be a Muay Thai professional, or learning it for self-defense. You will attain all that while staying injury-free. </p>
+        <button type="button" class="btn" style="color: black; background-color: #f17e5c;" data-toggle="modal" data-target="#exampleModalCenter">Read More</button>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; border-color: transparent;">
+      <img style="margin-top: 17px; margin-left: 17px; height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/redefine2.jpeg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title" style="font-family: Permanent Marker; text-align: center; min-height: 50px;">REDEFINE YOUR FITNESS</h5>
+        <p style="min-height: 375px;" class="card-text">Martial Arts are a form of ART! It is open to interpretation by anyone who practices. As a practitioner, I want to spread my own perception of Muay Thai to others. Some might look at Muay Thai as a 'keep-fit' regimen, 'self-confidence' booster and a form of self-defence. But I see it very differently...</p>
+        <button type="button" style="color: black; background-color: #f17e5c;" class="btn" data-toggle="modal" data-target="#exampleModalCenter2">Read More</button>
       </div>
     </div>
     <div class="card" style="width: 18rem; border-color: transparent;;">
-      <img style="margin-top: 17px; margin-left: 17px;height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/nutrition.jpg' %}" class="card-img-top" alt="...">
+      <img style="margin-top: 17px; margin-left: 17px;height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/nutrition3.jpg' %}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title" style="font-family: Permanent Marker; text-align: center; min-height: 50px;">YOUR NUTRITION</h5>
+        <p style="min-height: 375px;" class="card-text">Did I mention that I am also a Nutritionist? Through both exercise and nutrition, you'll be able to conquer it all! With a small price bump or bundle, you can get an affordable dietary assessment and I will advise you on how to improve your health by meeting your nutritional needs as well as eliminating fad diets, and discretionary food. </p>
+        <button type="button" style="color: black; background-color: #f17e5c;" class="btn" data-toggle="modal" data-target="#exampleModalCenter3">Read More</button>
       </div>
     </div>
     <div class="card" style="width: 18rem; border-color: transparent;;">
       <img style="margin-top: 17px; margin-left: 17px;height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/101.jpg' %}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title" style="font-family: Permanent Marker; text-align: center; min-height: 50px;">MY STORY</h5>
+        <p style="min-height: 375px;" class="card-text">If you are worried about the 'brutality' of picking up a combat sport, your worries are unfortunately justified. In every sport, it is key to have correct technique or you will get injured at some point. I have gone through it the tough way by going to martial arts gyms which did not provide the personal attention needed by their members. </p>
+        <button type="button" style="color: black; background-color: #f17e5c;" class="btn" data-toggle="modal" data-target="#exampleModalCenter4">Read More</button>
       </div>
     </div>
 </div>
+<!-- Modal 1 - Technique 101 -->
+<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...1
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 2 - Redefining Fitness -->
+<div class="modal fade bd-example-modal-lg" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...2
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3 - Nutrition -->
+<div class="modal fade bd-example-modal-lg" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...3
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal 4 - My Story -->
+<div class="modal fade bd-example-modal-lg" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...4
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div style="color: white; background-color: #373f51;" data-aos="fade-right" data-aos-delay="400" data-aos-once="true" class="row">
     <div class="col-2">
