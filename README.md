@@ -140,6 +140,4 @@ change debug to False!
 edit profile, does not check for existing usernames and emails before changing
 email account validation? 
 Feedback email after I mark the transaction as 'delivered'
-
-
-tahrkkJcRe
+newsletters

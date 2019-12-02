@@ -173,18 +173,16 @@ def pay_here(request):
                         transaction.charge = order
                         transaction.save()
                         
+                        #send email to confirm order to both admin and customer. 
                         transaction_charge_display= transaction.charge.amount / 100
                         transaction_charge_display = round(transaction_charge_display, 2)
                         payee_email= transaction.owner.email
                         
+                        
                         if transaction.owner == request.user: 
-                            print(transaction.owner.first_name)
-                            print(transaction.owner.last_name)
-                            print(transaction.owner.email)
-                            print(transaction.owner.mobile)
-                            print(transaction.charge.amount)
-                        subject = "Your Order has been received! "
-                        text_content = """
+
+                            subject = "Your Order has been received! "
+                            text_content = """
 Thank you for your prompt payment, this email is to confirm your order and payment of SGD {} on {}.
                         
 Your limited time discount code is {}.
@@ -200,14 +198,14 @@ If you have any questions, feel free to get in contact with me at 8783 5456.
 Regards,
 Jerald
 Admin @PMTT
-                        """.format(transaction_charge_display, transaction.charge.date, unique_code, expiry_date)
-                        sender = "no-reply@mail.sgmuaythai.org"
-                        payee = payee_email
-                        msg = EmailMultiAlternatives(subject, text_content, sender, [payee])
-                        msg.send()
+                            """.format(transaction_charge_display, transaction.charge.date, unique_code, expiry_date)
+                            sender = "no-reply@mail.sgmuaythai.org"
+                            payee = payee_email
+                            msg = EmailMultiAlternatives(subject, text_content, sender, [payee])
+                            msg.send()
                         
-                        subject2 = "An Order has been received! "
-                        text_content2 = """
+                            subject2 = "An Order has been received! "
+                            text_content2 = """
 This email confirms an order with payment of SGD {} on {}.
 
 Customer Name: {} {}
@@ -222,11 +220,11 @@ Please organise a suitable schedule, venue and timing with client within 1-2 bus
 
 Regards,
 Admin @PMTT
-                        """.format(transaction_charge_display, transaction.charge.date, transaction.owner.first_name, transaction.owner.last_name, transaction.owner.email, transaction.owner.mobile, transaction.charge.street_address1, transaction.charge.street_address2, unique_code, expiry_date)
-                        sender2 = "no-reply@mail.sgmuaythai.org"
-                        administrator = "jeraldtanxh@hotmail.com"
-                        msg2 = EmailMultiAlternatives(subject2, text_content2, sender2, [administrator])
-                        msg2.send()
+                            """.format(transaction_charge_display, transaction.charge.date, transaction.owner.first_name, transaction.owner.last_name, transaction.owner.email, transaction.owner.mobile, transaction.charge.street_address1, transaction.charge.street_address2, unique_code, expiry_date)
+                            sender2 = "no-reply@mail.sgmuaythai.org"
+                            administrator = "jeraldtanxh@hotmail.com"
+                            msg2 = EmailMultiAlternatives(subject2, text_content2, sender2, [administrator])
+                            msg2.send()
                         
                         #updating stock levels of the shop
                         invoice_items = InvoiceItem.objects.filter(transaction_id=transaction.id)

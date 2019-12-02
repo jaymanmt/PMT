@@ -185,3 +185,6 @@ def edit_profile(request, id):
             "get_user":get_user,
             "edit_profile_form": UserEditProfile()
         })
+
+
+#to add a POST in order to do CRU_ on the user's profile
