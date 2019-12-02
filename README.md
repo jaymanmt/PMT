@@ -26,11 +26,54 @@ Testing was conducted and the documentation can be found [here]().
 
 #### UI/UX - 5layers
 
-### <u>Strategy</u>
+##### <u>Strategy</u>
+
+PMT is a E-Commerce website aimed to provide personal training services in the form of muay thai. Such Personal Training services are very rare and only available in gyms that already provide group classes. Most gym members will not purchase these personal training sessions since are already paying a monthly fee to be in the gym. Therefore this service which focuses solely on affordable one-to-one training in muay thai makes it unique in itself. 
+
+User 1 Story: "I love watching combat sports and find it scary. Everytime I pass by a gym, I am confronted at the idea of getting injured or beat up since I have no experience in martial arts."
+
+User 2 Story: "I find martial arts gyms scary and confronting since I have no experience."
+
+User 3 Story: "I have joined a martial arts gym before but did not get much attention and adopted some bad technique which I find hard to shake off. I'm not sure what muay thai actually is."
+
+User 4 Story: "My kids are so hyperactive that I don't know what to do with them. Taekwondo and Karate seem overly mainstream and non-effective as self-defence for them."
+
+This website's services provides the solution to members of the public who either have had bad experiences in martial arts gyms or are confronted by the idea of pursuing combat sports. 
+
+##### <u>Scope</u>
+
+###### Functional Requirements:
+
+Able to create accounts, reset password, add items to basket, make purchases, access and edit profile, access order history, logout. 
+
+**Create Account**: Register with a valid email to create an account, that will gain access to being able to add items to the individual's basket/cart. 
+
+**Shop**: Shop is accessible without having  to create to account to give viewer's an idea of what can be purchased and if the services provided suit their interest or needs before having to create an account. 
+
+**Basket**: Items added to the basket will stay in the basket persistently. Adding over 5 items to the basket will result in a 10% discount from the total bill. 
+
+**Payment**: Payment is powered by Stripe to protect user's payment information. Stripe will protect against invalid card details. Payment will not be allowed if the basket is empty or the transaction created does NOT have the status of 'PENDING'.
+
+**Edit Profile**: A feature provided for users who might want to update essential details especially after purchase so that they can describe to the service provider a little more about themselves such as injuries or additional information. Additional information always contributes to improving overall results for the customers. 
+
+**Order History**: Enables users who have made payment have a sense of reassurance that there is a record of their purchase and its current status. 
+
+**Logout**: User can log out of their accounts for security reasons.
+
+**Administrator Page**: Admin users can update edit existing shop items, add new shop items, edit user profiles, update individual transaction status. 
+
+###### Content Requirements:
+
+In order to load the functional components, database entities includes:
+1) Each User's account information
+2) Transaction Details,
+3) Charge Details for each transaction that has been paid for
+4) Invoice Items to record each item in each transaction and the quantity purchased.
+5) 
 
 
 
-
+The  structure  defines  the  way  in  which  the  various  features  andfunctions of the site fit together. Just what those features and func-tions are constitutes the scopeof the site. Some sites that sell booksoffer a feature that enables users to save previously used addressesso they can be used again. The question of whether that feature—orany feature—is included on a site is a question of scope******
 
 README: (markdown)
 -Summary about what the project is about.  (be very neutral, third person perspective)
@@ -86,3 +129,7 @@ add referral code functionality to admin page
 email admin account when a purchase has been made
 change debug to False!
 edit profile, does not check for existing usernames and emails before changing
+email account validation? 
+Feedback email after I mark the transaction as 'delivered'
+
+asd@asdasdasdasd.com

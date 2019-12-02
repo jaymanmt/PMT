@@ -13,7 +13,7 @@ style= "background-image: url('{% static 'images/technique.jpeg'%}'); background
         
         <div class="card" style="box-shadow: 3px 3px 5px; background-color: transparent; border-radius: 15px; flex-basis: 400px; margin:12px; width:100%; text-align: center; {%if starter_check and i.sku == '000001' %}display:none;{%endif%}">
             
-            <div style="background-color: #ffd23f; border-top-left-radius: 25px;border-top-right-radius: 15px; padding:12px;">
+            <div style="min-height: 185px; background-color: #ffd23f; border-top-left-radius: 25px;border-top-right-radius: 15px; padding:12px;">
                 <h2 class="card-title">{{i.product_name}}</h2>
                 <h5>{{i.sessions}} session(s)</h5>
             </div>

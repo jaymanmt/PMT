@@ -435,7 +435,7 @@ def edit_shop_item(request, select_sku):
                 edit_item_form.fields["sessions"].validate(request.POST.get('sessions'))
                 shop_item.sessions = request.POST.get('sessions')
                 shop_item.save()
-                messages.success(request, "Product Number of Sessions Updated Successfully")
+                messages.success(request, "Product's Number of Sessions Updated Successfully")
             except ValidationError as e:
                 return HttpResponse(e)
         elif "description" in request.POST:

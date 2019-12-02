@@ -47,7 +47,10 @@ class UserEditProfile(forms.ModelForm):
     def clean_email(self):
         User = get_user_model()
         provided_email = self.cleaned_data.get('email')
+        print("!!!!!!!!!!!!!!!Duplicate email check")
+        print(len(User.objects.filter(email=provided_email)))
         #using the Django ORM to check for existing emails of the same name that was entered
-        if User.objects.filter(email=provided_email):
+        if len(User.objects.filter(email=provided_email)) > 0:
+            print("Error detected")
             raise forms.ValidationError('This email is currently being used')
         return provided_email

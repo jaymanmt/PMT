@@ -91,6 +91,7 @@ def edit_profile(request, id):
             "injuries": request.POST.get("injuries"),
             "self_depict": request.POST.get("self_depict")
         })
+
         if 'photo' in request.FILES:
             try:
                 edit_profile_form.fields["photo"].validate(request.FILES.get('photo'))
@@ -101,58 +102,78 @@ def edit_profile(request, id):
                 return HttpResponse(e)
         if 'first_name' in request.POST:
             try:
-                edit_profile_form.fields["first_name"].validate(request.POST.get('first_name'))
-                get_user.first_name = request.POST.get('first_name')
-                get_user.save()
-                messages.success(request, "First Name Updated Successfully")
+                first_name = edit_profile_form.full_clean()
+                if (not edit_profile_form.has_error('first_name')):
+                    get_user.first_name = request.POST.get('first_name')
+                    get_user.save()
+                    messages.success(request, "First Name Updated Successfully")
+                else:
+                    messages.error(request, 'An error has occured, please try again.')
             except ValidationError as e:
                 return HttpResponse(e)
         elif 'last_name' in request.POST:
             try:
-                edit_profile_form.fields["last_name"].validate(request.POST.get('last_name'))
-                get_user.last_name = request.POST.get('last_name')
-                get_user.save()
-                messages.success(request, "Last Name Updated Successfully")
+                last_name = edit_profile_form.full_clean()
+                if (not edit_profile_form.has_error('last_name')):
+                    get_user.last_name = request.POST.get('last_name')
+                    get_user.save()
+                    messages.success(request, "Last Name Updated Successfully")
+                else:
+                    messages.error(request, 'An error has occured, please try again.')
             except ValidationError as e:
                 return HttpResponse(e)
         elif 'mobile' in request.POST:
             try:
-                edit_profile_form.fields["mobile"].validate(request.POST.get('mobile'))
-                get_user.mobile = request.POST.get('mobile')
-                get_user.save()
-                messages.success(request, "Mobile Updated Successfully")
+                mobile = edit_profile_form.full_clean()
+                if (not edit_profile_form.has_error('mobile')):
+                    get_user.mobile = request.POST.get('mobile')
+                    get_user.save()
+                    messages.success(request, "Contact Number Updated Successfully")
+                else:
+                    messages.error(request, 'An error has occured, please try again.')
             except ValidationError as e:
                 return HttpResponse(e)
-        elif 'email' in request.POST:
-            try:
-                edit_profile_form.fields["email"].validate(request.POST.get('email'))
-                get_user.email = request.POST.get('email')
-                get_user.save()
-                messages.success(request, "Email Updated Successfully")
-            except ValidationError as e:
-                return HttpResponse(e)
-        elif 'username' in request.POST:
-            try:
-                edit_profile_form.fields["username"].validate(request.POST.get('username'))
-                get_user.username = request.POST.get('username')
-                get_user.save()
-                messages.success(request, "Username Updated Successfully")
-            except ValidationError as e:
-                return HttpResponse(e)
+        # elif 'email' in request.POST:
+        #     try:
+        #         # edit_profile_form.fields["email"].validate(request.POST.get('email'))
+        #         email = edit_profile_form.full_clean()
+        #         if (not edit_profile_form.has_error('email')):
+        #             get_user.email = request.POST.get('email')
+        #             get_user.save()
+        #             messages.success(request, "Email Updated Successfully")
+        #         else:
+        #             messages.error(request, 'This email is being used. Please use another email.')
+        #     except ValidationError as e:
+        #         return HttpResponse(e)
+        # elif 'username' in request.POST:
+        #     try:
+        #         edit_profile_form.fields["username"].validate(request.POST.get('username'))
+        #         get_user.username = request.POST.get('username')
+        #         get_user.save()
+        #         messages.success(request, "Username Updated Successfully")
+        #     except ValidationError as e:
+        #         return HttpResponse(e)
         elif 'injuries' in request.POST:
             try:
-                edit_profile_form.fields["injuries"].validate(request.POST.get('injuries'))
-                get_user.injuries = request.POST.get('injuries')
-                get_user.save()
-                messages.success(request, "Injuries Section Updated Successfully")
+                injuries = edit_profile_form.full_clean()
+                if (not edit_profile_form.has_error('injuries')):
+                    get_user.injuries = request.POST.get('injuries')
+                    get_user.save()
+                    messages.success(request, "Injuries Section Updated Successfully")
+                else:
+                    messages.error(request, 'An error has occured, please try again.')
             except ValidationError as e:
                 return HttpResponse(e)
         elif 'self_depict' in request.POST:
             try:
-                edit_profile_form.fields["self_depict"].validate(request.POST.get('self_depict'))
-                get_user.self_depict = request.POST.get('self_depict')
-                get_user.save()
-                messages.success(request, "User Additional Information Updated Successfully")
+                self_depict = edit_profile_form.full_clean()
+                if (not edit_profile_form.has_error('self_depict')):
+                    get_user.self_depict = request.POST.get('self_depict')
+                    get_user.save()
+                    messages.success(request, "Information Section Updated Successfully")
+                else:
+                    messages.error(request, 'An error has occured, please try again.')
+
             except ValidationError as e:
                 return HttpResponse(e)
         return render(request, "accounts/profile.html",{

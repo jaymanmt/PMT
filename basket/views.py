@@ -13,7 +13,7 @@ def showbasket(request):
     number_of_bkt_items = 0
     number_of_items = 0
     
-    all_basket_items = basketItem.objects.filter(owner=request.user)
+    all_basket_items = basketItem.objects.filter(owner=request.user).order_by('product')
     for each_item in all_basket_items:
         number_of_bkt_items+=1
         number_of_items+= each_item.quantity_to_buy
