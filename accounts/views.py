@@ -130,7 +130,7 @@ def edit_profile(request, id):
                     get_user.save()
                     messages.success(request, "Contact Number Updated Successfully")
                 else:
-                    messages.error(request, 'An error has occured, please try again.')
+                    messages.error(request, 'This mobile number is invalid, please try again with another number.')
             except ValidationError as e:
                 return HttpResponse(e)
         # elif 'email' in request.POST:

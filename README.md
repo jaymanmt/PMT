@@ -71,7 +71,13 @@ In order to load the functional components, database entities includes:
 4) Invoice Items to record each item in each transaction and the quantity purchased.
 5) 
 
+##### <u>Structure</u>
 
+Structure of the website follows a similar approach to a typical e-commerce website, where the navbar is located up the top. Shop items spaced out evenly. Profile, Basket and Payment pages are centralised on the page for easy reading and eventually easy selection and payment. 
+
+Important and frequently accessed items such as the shop and basket are accessible directly visa icons while other features such as order history and password reset are found in a dropdown menu. 
+
+State Changes such as invalid mobile numbers are signaled across the top to inform the user that an error has occured. At the same time, when information has been processed successfully, the user is either informed via those message tabs across the top or redirected to another page such as the 'thank you' page after payment has been processed. 
 
 The  structure  defines  the  way  in  which  the  various  features  andfunctions of the site fit together. Just what those features and func-tions are constitutes the scopeof the site. Some sites that sell booksoffer a feature that enables users to save previously used addressesso they can be used again. The question of whether that feature—orany feature—is included on a site is a question of scope******
 
@@ -117,6 +123,9 @@ credit for user photo that auto uploads as profile picture for users
 instructions on how add filter by group on templates
 https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group
 
+sending emails to admin personal email account
+https://madradavid.com/sending-email-django-and-mailgun/
+
 
 
 to-dos:
@@ -132,4 +141,5 @@ edit profile, does not check for existing usernames and emails before changing
 email account validation? 
 Feedback email after I mark the transaction as 'delivered'
 
-asd@asdasdasdasd.com
+
+tahrkkJcRe
