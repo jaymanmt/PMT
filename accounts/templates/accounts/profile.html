@@ -11,7 +11,7 @@ style="background-color: #373f51;"
 {%endblock%}
 
 {%block title%}
-<div style="margin-left: 20%; font-size: 2em; color: #ffd23f;">My Profile<button type="button" style="color:white;"class="btn btn-sm" data-placement="bottom" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services."><i class="fas fa-info-circle"></i></button></div>
+<div style="font-family: Permanent Marker; margin-left: 20%; font-size: 2em; color: #ffd23f;">My Profile<button type="button" style="color:white;"class="btn btn-sm" data-placement="bottom" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services."><i class="fas fa-info-circle"></i></button></div>
 
 {%endblock%}
 
@@ -112,58 +112,7 @@ style="background-color: #373f51;"
             <a class="edit_profile" id="edit_profile3"><i class="fas fa-pen-nib"></i></a>
         </div>
     </div>
-    
-    <!-- 4th row : change email -->
-    
-    <!--<div class="row justify-content-center" style="margin-bottom: 1em;">-->
-    <!--    <div class="col-3 text-center profile-edit-col">-->
-    <!--        <i class="far fa-envelope"></i> -->
-    <!--        <div style="font-size: 0.7em;">Email</div>-->
-    <!--    </div>-->
-    <!--    <div class="col-3 profile-edit-col" style="color: white;">-->
-    <!--        <div style="width: 100%; text-align:left;"id="no_show_edit_4">{{get_user.email}}</div>-->
-    <!--        <div style="display:none; width: 100%" id="show_edit_4">-->
-                
-    <!--            <form method= 'POST'> -->
-    <!--            {%csrf_token%}-->
-    <!--                <input class="edit_profile_box" type="email" name="email"/>-->
-    <!--                <button class="update-button" value="update_email" type="submit">Update</button>-->
-    <!--            </form>-->
-    <!--        </div>-->
-    <!--    </div>-->
-
-    <!--    <div class="col-3 text-center profile-edit-col">-->
-    <!--        <a style="visibility: hidden;" id="cancel-update-4"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>-->
-    <!--        <a class="edit_profile" id="edit_profile4"><i class="fas fa-pen-nib"></i></a>-->
-    <!--    </div>-->
-    <!--</div>-->
-    
-    <!-- 5th row : change username -->
-    
-    <!--<div class="row justify-content-center" style="margin-bottom: 1em;">-->
-    <!--    <div class="col-3 text-center profile-edit-col">-->
-    <!--        <i class="fas fa-chess-knight"></i>-->
-    <!--        <div style="font-size: 0.7em;">Username</div>-->
-    <!--    </div>-->
-    <!--    <div class="col-3 profile-edit-col" style="color: white;">-->
-    <!--        <div style="width: 100%; text-align:left;"id="no_show_edit_5">{{get_user.username}}</div>-->
-    <!--        <div style="display:none; width: 100%" id="show_edit_5">-->
-                
-    <!--            <form method= 'POST'> -->
-    <!--            {%csrf_token%}-->
-    <!--                <input class="edit_profile_box" type="text" name="username"/>-->
-    <!--                <button class="update-button" value="update_mobile" type="submit">Update</button>-->
-    <!--            </form>-->
-    <!--        </div>-->
-    <!--    </div>-->
-
-    <!--    <div class="col-3 text-center profile-edit-col">-->
-    <!--        <a style="visibility: hidden;" id="cancel-update-5"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>-->
-    <!--        <a class="edit_profile" id="edit_profile5"><i class="fas fa-pen-nib"></i></a>-->
-    <!--    </div>-->
-    <!--</div>-->
-    
-    <!-- 6th row : change injuries -->
+    <!-- 4th row : change injuries -->
     
     <div class="row justify-content-center" style="margin-bottom: 1em;">
         <div class="col-3 text-center profile-edit-col">
@@ -204,7 +153,7 @@ style="background-color: #373f51;"
         </div>
     </div>
     
-    <!-- 7th row : change self-depiction -->
+    <!-- 5th row : change self-depiction -->
     
     <div class="row justify-content-center" style="margin-bottom: 1em;">
         <div class="col-3 text-center profile-edit-col">
@@ -243,6 +192,7 @@ style="background-color: #373f51;"
             </div>
           </div>
         </div>
+        <div style="min-height: 100px;"></div>
 </div>
 {%endif%}
 {%endblock%}

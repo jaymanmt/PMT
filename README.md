@@ -21,7 +21,7 @@ A live version can be found [here]().
 
 #### Testing
 
-Testing was conducted and the documentation can be found [here]().
+Manual Testing was conducted and the documentation can be found [here]().
 
 
 #### UI/UX - 5layers
@@ -52,7 +52,7 @@ Able to create accounts, reset password, add items to basket, make purchases, ac
 
 **Basket**: Items added to the basket will stay in the basket persistently. Adding over 5 items to the basket will result in a 10% discount from the total bill. 
 
-**Payment**: Payment is powered by Stripe to protect user's payment information. Stripe will protect against invalid card details. Payment will not be allowed if the basket is empty or the transaction created does NOT have the status of 'PENDING'.
+**Payment**: Payment is powered by Stripe to protect user's payment information. Stripe will protect against invalid card details. Payment will not be allowed if the basket is empty or the transaction created does NOT have the status of 'PENDING'. 10% discount applied if 5 packages and above purchased. Additional 10% off with use of discount code. 
 
 **Edit Profile**: A feature provided for users who might want to update essential details especially after purchase so that they can describe to the service provider a little more about themselves such as injuries or additional information. Additional information always contributes to improving overall results for the customers. 
 
@@ -69,75 +69,88 @@ In order to load the functional components, database entities includes:
 2) Transaction Details,
 3) Charge Details for each transaction that has been paid for
 4) Invoice Items to record each item in each transaction and the quantity purchased.
-5) 
+5) Referral Codes to store unique referral codes.
+6) Basket entity to store individual users' cart items. 
+7) Item to store  shop items and their individual details.
+8) Categories to better organise types of Shop Items
 
 ##### <u>Structure</u>
-
-Structure of the website follows a similar approach to a typical e-commerce website, where the navbar is located up the top. Shop items spaced out evenly. Profile, Basket and Payment pages are centralised on the page for easy reading and eventually easy selection and payment. 
 
 Important and frequently accessed items such as the shop and basket are accessible directly visa icons while other features such as order history and password reset are found in a dropdown menu. 
 
 State Changes such as invalid mobile numbers are signaled across the top to inform the user that an error has occured. At the same time, when information has been processed successfully, the user is either informed via those message tabs across the top or redirected to another page such as the 'thank you' page after payment has been processed. 
 
-The  structure  defines  the  way  in  which  the  various  features  andfunctions of the site fit together. Just what those features and func-tions are constitutes the scopeof the site. Some sites that sell booksoffer a feature that enables users to save previously used addressesso they can be used again. The question of whether that feature—orany feature—is included on a site is a question of scope******
+##### <u>Skeleton</u>
 
-README: (markdown)
--Summary about what the project is about.  (be very neutral, third person perspective)
--How it works ( walk through on how to get started, needs to be intuitive)
--A live version can be found here
--Testing the features, use table with 3 columns: steps, expected results, pass/fail - can include a pdf file for reference if the testing is too long.
-(test for happy case, unhappy cases, and fringe cases e.g quantity cant go negative, user types in very long characters. )
-test case 1--> test if user can sign up for account, step 1. user type in the URL of website -- user sees landing page step 2 user clicks on the signup button -- user see a forms that asks for his details. 
-step 3. user fills in the form with valid email, etc and press submit button. 
-test case 2-->test if user will be prevented from signing up if he does not provide a valid email
--UI/UX: 5layers, scope, skeleton, strategy, structure, surface, include user stories, include wireframe and ER diagram in github as well.
--Technologies used 
--Features(stuff u want to brag about, these are the features and this is where they will come into action)
--Algorithms(only if u have special algorithms)
--Deployment: Condense the instructions for deplpying to heroku, talk about S3. 
--todos
--credits
+Struture of the website follows a similar approach to a typical e-commerce website, where the navbar is located up the top. Shop items spaced out evenly. Profile, Basket and Payment pages are centralised on the page for easy reading and eventually easy selection and payment. 
+
+A wireframe for structure was not used for this website as the structure of the webpage follows a simple e-Commerce layout. 
+
+##### <u>Surface</u>
+
+White-ish background with darker undertones to represent a form of elegancy through out website. Stuck with 5 color themes through out, red, yellow, black and white. 
 
 
-add crispy forms instructions:
-https://simpleisbetterthancomplex.com/tutorial/2018/08/13/how-to-use-bootstrap-4-forms-with-django.html
+#### Features 
 
-set customised password reset forms:
-https://wsvincent.com/django-user-authentication-tutorial-password-reset/
+1) Login, Logout
+2) Register an account
+3) Add items to basket
+4) Make purchase for items in basket
+5) Sends email to administrator and customer
+6) Display order history
+7) Administrator has ability to visualise useful data and search for specific users
+8) Administrator has ability to delete users, edit users, add new shop items, edit existing shop items, update transaction status. 
 
-animate on scroll functionality
-https://michalsnik.github.io/aos/
+***Features left to implement***:
 
-animate on click functionality
-https://github.com/daneden/animate.css
+- Add more discount codes
+- ability to send newsletters via admin page
 
-Stripe branding 
-https://stripe.com/en-sg/newsroom/brand-assets
+#### Technologies Used
 
-how to show images from objects on django:
-https://stackoverflow.com/questions/9498012/how-to-display-images-from-model-in-django
+- HTML
+- CSS
+- JAVASCRIPT and JQUERY
+- PYTHON
+- DJANGO
+- S3 (database)
+- Mailgun (email)
+- STRIPE (payment)
+- BOOTSTRAP 4.3
+- GitHub (Version Control)
+- Heroku (deployment)
+- POSTGRESSSQL (database relationship model)
+- Cloud 9 (IDE Web Development Environemnt)
+- Google Fonts
 
-credit for user photo that auto uploads as profile picture for users
-<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+#### Deployment
 
-instructions on how add filter by group on templates
-https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group
+Github repository named "PMT" was created for this project. Regular commits were made to display progress of the website over a period of time. The site is deployed directly from the Heroku App with an added domain name from NameCheap:
+The live site can be found on [here](www.sgmuaythai.com).
+The heroku app can be found [here](https://sgmuaythai.herokuapp.com)
 
-sending emails to admin personal email account
-https://madradavid.com/sending-email-django-and-mailgun/
-
+The site is aimed not only to be a project but also as a live eCommerce site to provide specialised personal training services to the Singapore Public. Therefore, a git-branch is performed to continue working on the website while the project is being assessed.
 
 
-to-dos:
+#### Credits
 
+Adding crispy forms attachment. [Link](https://simpleisbetterthancomplex.com/tutorial/2018/08/13/how-to-use-bootstrap-4-forms-with-django.html)
 
-enterprise use - 10-50%-off discount code
-email invoice in pdf both to enterprise and customer. 
-about personal trainer page
-add referral code functionality to admin page
-email admin account when a purchase has been made
-change debug to False!
-edit profile, does not check for existing usernames and emails before changing
-email account validation? 
-Feedback email after I mark the transaction as 'delivered'
-newsletters
+Setting customisable password reset form. [Link](https://wsvincent.com/django-user-authentication-tutorial-password-reset/)
+
+Stipe Brand Assets. [Link](https://stripe.com/en-sg/newsroom/brand-assets)
+
+Show images on Django. [Link](https://stackoverflow.com/questions/9498012/how-to-display-images-from-model-in-django)
+
+Auto Upload profile photo for new user sign ups. Image gotten from [here](https://www.flaticon.com/authors/freepik)
+
+Adding object filters by group. [Link](https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group)
+
+Sending emails from django using mailgun. [Link](https://madradavid.com/sending-email-django-and-mailgun/)
+
+All icons gotten from Fontawesome. [Link](https://fontawesome.com/icons?d=gallery)
+
+Food Photo by Pexels. [Link](https://www.pexels.com/)
+
+Hero image and rest of photos gotten through licensed adobe stock photos. [Link](https://stock.adobe.com/sg/photos)

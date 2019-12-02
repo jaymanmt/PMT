@@ -361,26 +361,7 @@ def edit_user(request, id):
                     messages.error(request, 'This mobile number is invalid, please try again with another number.')
             except ValidationError as e:
                 return HttpResponse(e)
-        # elif 'email' in request.POST:
-        #     try:
-        #         # edit_profile_form.fields["email"].validate(request.POST.get('email'))
-        #         email = edit_profile_form.full_clean()
-        #         if (not edit_profile_form.has_error('email')):
-        #             get_user.email = request.POST.get('email')
-        #             get_user.save()
-        #             messages.success(request, "Email Updated Successfully")
-        #         else:
-        #             messages.error(request, 'This email is being used. Please use another email.')
-        #     except ValidationError as e:
-        #         return HttpResponse(e)
-        # elif 'username' in request.POST:
-        #     try:
-        #         edit_profile_form.fields["username"].validate(request.POST.get('username'))
-        #         get_user.username = request.POST.get('username')
-        #         get_user.save()
-        #         messages.success(request, "Username Updated Successfully")
-        #     except ValidationError as e:
-        #         return HttpResponse(e)
+
         elif 'injuries' in request.POST:
             try:
                 injuries = edit_profile_form.full_clean()
