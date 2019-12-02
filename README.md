@@ -21,7 +21,7 @@ A live version can be found [here]().
 
 #### Testing
 
-Manual Testing was conducted and the documentation can be found [here]().
+Manual Testing was conducted and the documentation can be found [on github](https://github.com/jaymanmt/PMT) in a pdf file.
 
 
 #### UI/UX - 5layers
