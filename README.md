@@ -133,7 +133,7 @@ The heroku app can be found [here](https://sgmuaythai.herokuapp.com)
 
 The site is aimed not only to be a project but also as a live eCommerce site to provide specialised personal training services to the Singapore Public. Therefore, a git-branch is performed to continue working on the website while the project is being assessed.
 
-Sandboxed! 
+Sandboxed! !! 
 
 #### Credits
 
