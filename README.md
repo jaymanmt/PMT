@@ -88,7 +88,8 @@ A wireframe for structure was not used for this website as the structure of the 
 
 ##### <u>Surface</u>
 
-White-ish background with darker undertones to represent a form of elegancy through out website. Stuck with 5 color themes through out, red, yellow, black and white. 
+White-ish background with darker undertones to represent a form of elegancy through out website. Stuck with 5 color themes through out, red, yellow, black and white.
+Used translucent background with white font color to present a minimalistic approach in the navbar and forms. 
 
 
 #### Features 
