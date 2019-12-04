@@ -1,3 +1,5 @@
+/* navbar link hover and transition features */
+
 .nav-link{
     color:white;
     transition-duration: 0.5s;
@@ -18,6 +20,8 @@
     color:#ec4e20 !important;
 }
 
+/* call-to-action button hover and transition features */
+
 #cta{
     background-color: #ffd23f;
     transition-duration: 0.5s;
@@ -27,6 +31,8 @@
 #cta:hover{
     background-color: #d1ac34 !important;
 }
+
+/* call-to-action button hover and transition features */
 
 .basket-btn{
     background-color: #ec4e20;
@@ -40,6 +46,8 @@
     border-color: #f17e5c;
 }
 
+/* login button hover and transition features */
+
 #login-btn{
     color: black;
     background-color: #ffd23f;
@@ -52,6 +60,8 @@
     background-color: #d1ac34 !important;
     border-color: #ffd23f;
 }
+
+/* table styling used in features */
 
 .bkt-table-rowhead{
     background-color: #ffd23f;
@@ -91,6 +101,8 @@
     }
 }
 
+/* payment button hover, pointer type and transition features */
+
 #payment{
     color: #ffd23f;
     transition-duration: 0.5s;
@@ -115,6 +127,8 @@
     100% {transform: translateX(0px)}
 }
 
+/* styling for edit profile input fields  */
+
 .edit_profile_box{
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -125,6 +139,8 @@
     border: none;
     color: white;
 }
+
+/* profile editing buttons hover and transition features */
 
 .update-button{
     background-color: transparent;
@@ -137,6 +153,9 @@
 .update-button:hover{
     background-color: black ;
 }
+
+/* forms page centralising styling */
+
 input{
     width: 50%;
 }
@@ -154,9 +173,13 @@ textarea{
     padding-bottom: 10px;
 }
 
+/* upload photo button styling */
 #upload_button{
     color: black;
 }
+
+
+/* animation for basket payment button icon*/
 
 @keyframes uploadpointing{
     0% {transform: translateX(60px)}
@@ -164,4 +187,11 @@ textarea{
     50% {transform: translateX(60px)}
     75% {transform: translateX(70px)}
     100% {transform: translateX(60px)}
+}
+
+/* media query for order history border-bottom to disappear to have better rearrangement of transaction history items on smaller screens */
+@media only screen and (max-width: 570px){
+    #transaction_number_display{
+        border-bottom: 1px transparent solid !important;
+    }
 }

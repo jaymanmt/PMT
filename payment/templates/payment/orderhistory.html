@@ -13,9 +13,9 @@ style="background-color: #373f51"
     {% if tx.charge.amount != None %}
     <div style="font-size: 2em; color: white;" class="row">
         
-          <div class="col">{{tx}}</div> 
+          <div class="col-lg-2 col-md-5 col-sm-5" id="transaction_number_display" style="border-bottom: 1px #ffd23f solid;">{{tx}}</div> 
           
-          <div class="col"> $ {% widthratio tx.charge.amount 100 1 %} <a style="font-size: 0.5em; color: #ffd23f;" href="/payment/orderhistory/{{tx.id}}">view</a></div>
+          <div class="col-lg-2 col-md-5 col-sm-5" style="border-bottom: 1px #ffd23f solid;"> $ {% widthratio tx.charge.amount 100 1 %} <a style="font-size: 0.5em; color: #ffd23f;" href="/payment/orderhistory/{{tx.id}}">view</a></div>
           
     </div>
     {% endif %}

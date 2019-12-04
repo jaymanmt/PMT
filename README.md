@@ -79,6 +79,8 @@ Able to create accounts, reset password, add items to basket, make purchases, ac
 
 **Logout**: User can log out of their accounts.
 
+**Admin Details**: There is meant to be a tab on the navbar with a user icon and this clickable user-icon will appear during events when the user may need to contact the administrator, for example after payment or in the order history. This section was remitted and thus, all user-icon links and a nav bar link is not present. Entering false admin details on the website was deemed to be inconsistent when this project launches as a live website to be used in the public. 
+
 **Administrator Page**: Admin users can update edit existing shop items, add new shop items, edit user profiles, update individual transaction status. Administrators can still make purchases for testing purposes. 
 
 ###### Content Requirements:
