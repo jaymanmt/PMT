@@ -1,5 +1,5 @@
 ## Project - Full-Stack Development
-### Muay Thai Personal Training
+### Muay Thai Personal Training (PMTT) by Jerald Tan
 
 #### <u>Summary</u>
 

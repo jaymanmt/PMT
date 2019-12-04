@@ -8,7 +8,7 @@ style= "background-image: url('{% static 'images/technique.jpeg'%}'); background
 <div style="display:flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 18%;margin-bottom: 18%">
     <div style="flex-wrap: wrap; display: flex; flex-direction: row; border-radius: 5px; background-color:rgba(0,0,0,0.5); padding: 20px; color: #ffd23f; font-size: 2em;">
         {%if user.is_authenticated%}
-        <div style="text-align: center;">Buy 5 packages to get 10% off the total cost today!</div>
+        <div style="text-align: center;">Buy 5 packages and get 10% off the total cost today!</div>
         {% else %}
         <div style="text-align: center;">Get one-time deal 20% off the starter's package today!</div>
         {% endif %}
