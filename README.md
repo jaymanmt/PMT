@@ -23,7 +23,6 @@ The herokuapp version can be found [here](https://sgmuaythai.herokuapp.com/).
 
 ( ***For CI examiners*** : you may opt to use the following details during the testing process, a password reset will require a separate legitimate email to receive the reset link. 
 
-
 *typical user*
 **username**: benwyatt
 **password**: benny111
@@ -34,6 +33,8 @@ The herokuapp version can be found [here](https://sgmuaythai.herokuapp.com/).
 **password**: ronny111
 
 Note: Because the Administrator Page is not visible to customers or the public, the functionality of the page was prioritised over the UI/UX, mobile responsiveness and frontend development for this project.
+
+Note: For github, please refer to the master branch. The sandbox_launch branch is used to keep on working on the website during the assessment phase.
 )
 
 #### Testing
@@ -152,8 +153,7 @@ Github repository named "PMT" was created for this project. Regular commits were
 The live site can be found on [here](www.sgmuaythai.com).
 The heroku app can be found [here](https://sgmuaythai.herokuapp.com)
 
-The site is aimed not only to be a project but also as a live eCommerce site to provide specialised personal training services to the Singapore Public. Therefore, a git-branch is performed to continue working on the website while the project is being assessed.
-
+The site is aimed not only to be a project but also as a live eCommerce site to provide specialised personal training services to the Singapore Public. Therefore, a git-branch (sandbox_launch) is performed to continue working on the website while the project is being assessed.
 
 
 #### Credits
