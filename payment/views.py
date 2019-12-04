@@ -266,7 +266,7 @@ Admin @PMTT
 # order history pages
 
 def orderhistory(request):
-    user_transactions = Transaction.objects.filter(owner=request.user)
+    user_transactions = Transaction.objects.filter(owner=request.user).order_by('id').reverse()
     return render(request, 'payment/orderhistory.html', {
         "user_transactions": user_transactions
     })

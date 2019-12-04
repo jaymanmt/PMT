@@ -11,7 +11,7 @@ style="background-color: #373f51"
     </div>
     {% for tx in user_transactions %}
     <div style="font-size: 2em; color: white;">
-          {{tx}} - $ {% widthratio tx.charge.amount 100 1 %} <a style="font-size: 0.5em; color: #ffd23f;" href="/payment/orderhistory/{{tx.id}}">view</a>
+          <div>{{tx}} </div> - <div style="margin-left: 30px;">$ {% widthratio tx.charge.amount 100 1 %}</div> <a style="margin-left: 30px; font-size: 0.5em; color: #ffd23f;" href="/payment/orderhistory/{{tx.id}}">view</a>
     </div>
     {%endfor%}
 

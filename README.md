@@ -19,11 +19,19 @@ After creating their account, users can also access their order history and will
 
 The live version of this website can be found [here](www.sgmuaythai.org).
 
-( ***For examiners*** : you may opt to use the following details during the testing process, a password reset will require a separate legitimate email to receive the reset link. 
+( ***For CI examiners*** : you may opt to use the following details during the testing process, a password reset will require a separate legitimate email to receive the reset link. 
 
-**username**: shaunsmith
-**password**: testingpurposes123
+
+*typical user*
+**username**: benwyatt
+**password**: benny111
 **valid 10%-off discount codes**: I7BEe9VYeM, xzrlfaQzoB, tRfcZDL3Jg
+
+*admin user*
+**username**: ronswanson
+**password**: ronny111
+
+Note: Because the Administrator Page is not visible to customers or the public, the functionality of the page was prioritised over the UI/UX, mobile responsiveness and frontend development for this project.
 )
 
 #### Testing
@@ -69,7 +77,7 @@ Able to create accounts, reset password, add items to basket, make purchases, ac
 
 **Logout**: User can log out of their accounts.
 
-**Administrator Page**: Admin users can update edit existing shop items, add new shop items, edit user profiles, update individual transaction status. 
+**Administrator Page**: Admin users can update edit existing shop items, add new shop items, edit user profiles, update individual transaction status. Administrators can still make purchases for testing purposes. 
 
 ###### Content Requirements:
 
