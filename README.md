@@ -19,6 +19,8 @@ After creating their account, users can also access their order history and will
 
 The live version of this website can be found [here](www.sgmuaythai.org).
 
+The herokuapp version can be found [here](https://sgmuaythai.herokuapp.com/).
+
 ( ***For CI examiners*** : you may opt to use the following details during the testing process, a password reset will require a separate legitimate email to receive the reset link. 
 
 

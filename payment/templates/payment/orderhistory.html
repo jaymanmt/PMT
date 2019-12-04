@@ -5,14 +5,20 @@
 style="background-color: #373f51"
 {%endblock%}
 {%block content%}
-<div style="min-height: 700px; color: #ffd23f; display: flex; flex-direction: column; align-items: left; margin-left: 10%;">
-    <div>
-        <h1>Order History <i class="fas fa-gifts"></i></h1>
-    </div>
+<div style="color: #ffd23f;">
+    <h1>Order History <i class="fas fa-gifts"></i></h1>
+</div>
+<div style="min-height: 700px; color: #ffd23f; margin-left: 5%;" class="container-fluid">
     {% for tx in user_transactions %}
-    <div style="font-size: 2em; color: white;">
-          <div>{{tx}} </div> - <div style="margin-left: 30px;">$ {% widthratio tx.charge.amount 100 1 %}</div> <a style="margin-left: 30px; font-size: 0.5em; color: #ffd23f;" href="/payment/orderhistory/{{tx.id}}">view</a>
+    {% if tx.charge.amount != None %}
+    <div style="font-size: 2em; color: white;" class="row">
+        
+          <div class="col">{{tx}}</div> 
+          
+          <div class="col"> $ {% widthratio tx.charge.amount 100 1 %} <a style="font-size: 0.5em; color: #ffd23f;" href="/payment/orderhistory/{{tx.id}}">view</a></div>
+          
     </div>
+    {% endif %}
     {%endfor%}
 
     <div style="margin-top: 1.5em;">
