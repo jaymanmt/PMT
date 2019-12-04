@@ -19,6 +19,13 @@ After creating their account, users can also access their order history and will
 
 The live version of this website can be found [here](www.sgmuaythai.org).
 
+( ***For examiners*** : you may opt to use the following details during the testing process, a password reset will require a separate legitimate email to receive the reset link. 
+
+**username**: shaunsmith
+**password**: testingpurposes123
+**valid 10%-off discount codes**: I7BEe9VYeM, xzrlfaQzoB, tRfcZDL3Jg
+)
+
 #### Testing
 
 Manual Testing was conducted and the documentation can be found [on github](https://github.com/jaymanmt/PMT) in a pdf file.
@@ -135,11 +142,7 @@ The heroku app can be found [here](https://sgmuaythai.herokuapp.com)
 
 The site is aimed not only to be a project but also as a live eCommerce site to provide specialised personal training services to the Singapore Public. Therefore, a git-branch is performed to continue working on the website while the project is being assessed.
 
-<<<<<<< HEAD
 
-=======
-Sandboxed! !! 
->>>>>>> sandbox_launch
 
 #### Credits
 
