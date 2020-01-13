@@ -7,6 +7,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--mapbox dependency -->
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
     <!--Animate on Click-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <!-- Animate on Scroll CSS -->
@@ -15,46 +17,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Cutive+Mono|Farro|Pacifico|Permanent+Marker&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Alegreya+SC|Handlee|Julius+Sans+One|RalewayCalligraffitti|Cutive+Mono|Farro|Pacifico|Permanent+Marker&display=swap" rel="stylesheet">  
     <link rel="stylesheet"  href="{% static 'styles.css' %}" type="text/css" />
-    <title>Muay Thai Personal Training | Nutrition</title>
+    <title>Be Olecra Fit with us! Personalised Muay Thai Training | Nutrition Counselling </title>
 </head>
 
-<body style="width:100%; font-family: Farro; letter-spacing: 1px; line-spacing: 3px;">
-    <div {%block bg-img%}{%endblock%}>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0,0,0,0.2); font-size:1em;" role="navigation">
+<body style="width:100%; font-family: Handlee; letter-spacing: 1px; line-spacing: 3px;">
+    <div id="bg-img" {%block bg-img%}{%endblock%}>
+        
+        <nav id="nav-color-change" class="navbar navbar-expand-lg navbar-dark" style="z-index: 6;background-color: rgba(0,0,0,0.2); font-family: Farro; font-size:1em;" role="navigation">
             <div style="display:flex; flex-direction: column;">
-                <a style= "font-size: 2em; font-family: Permanent Marker; padding-top: 30px; padding-bottom: 0; padding-left: 20px; color: white" class="navbar-brand" href="{% url 'home' %}">PMTT</a>
-                <a href="{% url 'home' %}" style= "font-family: Permanent Marker; margin-bottom: 50px;font-size: 0.8em; color: white" class="nav-link">Muay Thai Personal Training</a>
+                <a style= "font-size: 2em; font-family: Handlee; padding-top: 30px; padding-bottom: 0; padding-left: 20px; color: white" class="navbar-brand" href="{% url 'home' %}">OlecraFit</a>
+                <a href="{% url 'home' %}" style= "font-family: Handlee; margin-bottom: 50px;font-size: 0.8em; color: white" class="nav-link">OlecraFit</a>
             </div>
             
             
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <button onClick="changeColorNav(); disableBtn();" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span  class="navbar-toggler-icon"></span>
             </button>
             
         
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="nav navbar-nav ml-auto">
-                    {%if not user.is_authenticated%}
-                    <li style= "color: white" class="nav-item">
-                        <a style= "color: white" class="nav-link" href="{% url "shop" %}">Shop</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a style= "color: white" class="nav-link" href="{% url "login" %}">Login <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a style= "color: white" class="nav-link" href="{% url "register" %}">Register</a>
-                    </li>
-                    {%endif%}
                     {% if 'administrator' == request.user.groups.all.0.name %} 
                     <li>
                         <a style= "color: white" class="nav-link" href="{% url "administrator_view" %}"><i style="font-size: 1.3em;" class="fas fa-tools"></i></a>
                     </li>
                     {% endif %}
+                    <li style= "color: white" class="nav-item">
+                        <a style= "color: white" class="nav-link" href="{% url "blogPage" %}">About</a>
+                    </li>
+                    <li style= "color: white" class="nav-item">
+                        <a style= "color: white" class="nav-link" href="{% url "howItWorks" %}">How it works</a>
+                    </li>
+                    {%if not user.is_authenticated%}
+                    <li style= "color: white" class="nav-item">
+                        <a style= "color: white" class="nav-link" href="{% url "shop" %}">Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style= "background-color:rgb(236,78,32); border-radius: 5px; border: 1px #ec4e20 solid; color: white" id="s-nav-link" class="nav-link" href="{% url "login" %}">Get Started</a>
+                    </li>
+                    {%endif%}
+                    
                     {%if user.is_authenticated%}
                     <li class="nav-item">
-                        <a style= "color: white" class="nav-link" href="{% url "shop" %}"><i style="font-size: 1.3em;" class="fas fa-shopping-cart"></i></a>
+                        <a style= "color: white" class="nav-link" href="{% url "shop" %}">Book</a>
                     </li>
                     <li class="nav-item">
                         <a style= "padding-bottom: 0;color: white" class="nav-link jumping-btn" href="{% url "showbasket" %}"><i style="font-size: 1.3em;" class="fas fa-shopping-basket"></i> <span style="font-size:0.8em;">({{total_quantity}})</span></a>
@@ -79,9 +86,11 @@
         {% if messages %}
         {%for m in messages%}
         {% if m.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-        <div style="background-color:#f17e5c; width:100%; padding: 0.5em;">
+        <div class= "alert alert-info alert-dismissable"style="font-family: Farro; border-color: transparent; background-color:rgba(0,0,0,0.5);color: #ff5c59; width:100%; padding: 0.5em;">
+            <a style="text-decoration: none; font-color: white; cursor: pointer;" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
             {% else %}
-        <div style="background-color:#2fbf71; width:100%; padding: 0.5em;">
+        <div class="alert alert-info alert-dismissable" style="font-family: Farro; border-color: transparent; background-color:rgba(0,0,0,0.5);color: #8bff76; width:100%; padding: 0.5em;">
+            <a style="text-decoration: none; font-color: white; cursor: pointer;" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
             {%endif%}
             {{m}}
         </div>
@@ -90,17 +99,66 @@
         {%endif%}
     {% block title %}{% endblock %}
     {%block content%}{%endblock%}
-    </div>
     
+    </div>
+    {%block content2%}{%endblock%}
     {%block footer%}{%endblock%}
     {%block more_info%}{%endblock%}
     
+    <nav class="navbar navbar-expand-lg navbar-dark" style="min-height: 200px; background-color: #d36847; font-family: Farro; font-size:1em; padding: 25px;" role="navigation">
+        <div>
+            <ul>
+                <li style= "list-style:none; color: white" class="nav-item">
+                    <a style= "color: black" class="nav-link" href="{% url "faqPage" %}">FAQ</a>
+                </li>
+                <li style= "list-style:none; color: white" class="nav-item">
+                    <a style= "color: black" class="nav-link" href="{% url "contactPage" %}">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav navbar-nav ml-auto" style="margin-right: 2em; color: black; font-size: 2em;">
+            <li style= "color: white" class="nav-item">
+                <a style= "color: black" class="nav-link" href="{% url "blogPage" %}"><i class="fab fa-facebook-square"></i></a>
+            </li>
+            <li style= "color: white" class="nav-item">
+                <a style= "color: black" class="nav-link" href="{% url "howItWorks" %}"><i class="fab fa-instagram"></i> </a>
+            </li>
+            
+        </div>
+        
+    </nav>
+    <div style="background-color:#d36847; text-align: center; font-family: Farro; font-size: 0.7em;">
+        © OlecraFit 2020 All Rights Reserved | Developed By <span>Jerald Tan</span>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        let counter = 0
+        function setDisabled() {
+            document.getElementById("#nav-color-change").disabled = true;
+        }
+
+        function changeColorNav(){
+            counter += 1;
+            if (counter % 2 == 0){
+                
+                $("#nav-color-change").css({"background-color":"rgba(0,0,0,0.2)"})
+                
+            }else{
+                $("#nav-color-change").css({"background-color":"rgba(0,0,0,0.9)", "transition-duration": "0.4s"})
+                
+            }
+        }
+        
+    </script>
     {% block footer_js %}{%endblock%}
 </body>
 

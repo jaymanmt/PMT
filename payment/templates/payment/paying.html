@@ -3,11 +3,11 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {%block bg-img%}
-style="background-color: #373f51"
+style= "background-image: url('{% static 'images/putting_on_gloves.jpg'%}'); background-size: cover; background-position: center;  background-repeat: no-repeat;")
 {%endblock%}
 
 {%block title%}
-<h1 style="text-align: center; font-family: Permanent Marker; color: #ffd23f; text-shadow: 3px 3px 2px black;">Please confirm your payment</h1>
+<h1 style="text-align: center; font-family: Alegreya SC; color: #ffd23f; text-shadow: 3px 3px 2px black;">Please confirm your payment</h1>
 {%endblock%}
 
 {%block footer_js %}
@@ -27,9 +27,9 @@ function checkRefCode(){
             if (response.data.status == true){
                 let toPay = $('#amount-to-pay').val()
                 toPay = parseFloat(toPay) / 100
-                toPay = toPay * 0.9
+                toPay = toPay * 0.95
                 toPay = toPay.toFixed(2)
-                $('#display-cost').html('Amount due: $ ' + toPay + ' <p style="color: #ffd23f; font-size:0.8em;">you got 10% off!</p>')
+                $('#display-cost').html('Amount due: $ ' + toPay + ' <p style="color: #ffd23f; font-size:0.8em;">you got 5% off!</p>')
                 $('#indicate-ref-code').html('Valid!')
             }
             else{
@@ -44,8 +44,8 @@ function checkRefCode(){
 {%endblock%}
 
 {%block content %}
-<div style="color: white; display: flex; justify-content: center;">
-    <form role="form" method="POST" id="payment-form" style="border-radius: 3px; margin-right:1em; margin-left:1em; min-width:375px; background-color: rgba(0,0,0,0.2); padding: 20px;">
+<div style="color: white; font-family: Alegreya SC; display: flex; justify-content: center;">
+    <form role="form" method="POST" id="payment-form" style="border-radius: 3px; margin-right:1em; margin-left:1em; min-width:375px; background-color: rgba(0,0,0,0.7); padding: 20px;">
         <legend style="color: #ffd23f">Payment Details<img style="margin-left: 2em;"src="{% static 'images/powered_by_stripe.png' %}"></img></legend>
     
         <div class='alert alert-danger' id='credit-card-errors' style='display:none'>

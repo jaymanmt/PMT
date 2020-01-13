@@ -18,10 +18,10 @@ def showbasket(request):
         number_of_bkt_items+=1
         number_of_items+= each_item.quantity_to_buy
         total_cost+=each_item.calculate_total()
-    
+    #disocunt applied when the number ofpackages purchased exceeds 5
     original_cost = total_cost    
     if number_of_items >= 5:
-        total_cost = total_cost * 0.9
+        total_cost = total_cost * 0.95
         
     #convert to two decimal places string
     total_cost = "{:.2f}".format(total_cost)

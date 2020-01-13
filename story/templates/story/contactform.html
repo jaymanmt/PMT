@@ -1,0 +1,31 @@
+{%extends 'base.template.html'%}
+{%load static%}
+{% load crispy_forms_tags %}
+{%block bg-img%}
+style= "background-image: url('{% static 'images/faq.jpg'%}'); background-size: cover; background-position: center;  background-repeat: no-repeat;")
+{%endblock%}
+{%block content%}
+<div id="height-img-mobile" id="height-img-mobile" style="min-height: 350px;">
+    
+</div>
+
+{%endblock%}
+
+{%block content2%}
+<h1 data-aos="fade-up"
+     data-aos-duration="2500" id="individualsection" style="font-size: 3em; font-weight: bold; font-family: Alegreya SC; padding:2.5em;text-align: center; color: #ec4e20;">Contact Us</h1>
+<div data-aos="fade-up"
+     data-aos-duration="2500" style="display: flex; justify-content: center; align-items: center; font-family: Alegreya SC; margin-bottom: 50px;">
+    
+    <form method="POST" style="width: 450px; padding: 0.5em;">
+    {% csrf_token %}
+
+    {{contact_form | crispy}}
+    
+    <input id="contact-form-link" style="background-color: #ec4e20;"class="btn" type="submit" value="Submit">
+    </form>
+    
+</div>
+
+
+{%endblock%}

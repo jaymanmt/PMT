@@ -2,27 +2,27 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {%block bg-img%}
-style="background-color: #373f51"
+style= "background-image: url('{% static 'images/stretching.jpg'%}'); background-size: cover; background-position: center;  background-repeat: no-repeat;")
 {%endblock%}
 {%block title%}
-<div style="min-height: 700px; color: #ffd23f; display: flex; flex-direction: column; align-items: left; margin-left: 10%;">
+<div style="background-color: rgba(0,0,0,0.7); margin: 3em; min-height: 700px; color: #ffd23f; display: flex; flex-direction: column; align-items: cetner; justify-content: center; padding: 2em;">
     <div>
         <h1><i class="far fa-smile-wink"></i> Thank you for your purchase!</h1>
     </div>
     <div style="font-size: 2em; color: white;">
-        I will be in touch with you very shortly. I cant wait to meet you and assist in reaching your goals!  
+        We will be in touch very shortly. We cant wait to meet you and assist in reaching your goals!  
+    </div>
+    <div style="color: white;">
+        <p>Before you go, please add some information in your profile so we can further optimise a training plan for you! </p>
     </div>
     <div style="color: white">
-        <p>Please try to add some information in your profile so I can further optimise my training plan for you! </p>
-    </div>
-    <div style="color: white">
-        <p>If you have further questions, feel free to contact me! <a href="#"><i style="color: #ffd23f;"class="fas fa-user"></i></a></p>
+        <p>If you have further questions, feel free to contact us <a style="color: #ffd23f" href="{% url "contactPage" %}">here</a>.</p>
     </div>
     <div style="margin-top: 1.5em;">
         <h3>Congratulations! You have earned a referral code: {{unique_code}}</h3>
     </div>
     <div>
-        <p>Use this referral code to receive 10% off from the next purchase!</p>
+        <p>Use this referral code to receive 5% off from the next purchase!</p>
         <p>You or a friend may use the code! However, it expires on SGT {{expiry_date}}! </p>
         <p>Note that this code will NOT be shown again once you leave this page due to security reasons, please check your email.</p>
     </div>

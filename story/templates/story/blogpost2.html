@@ -1,0 +1,84 @@
+{%extends 'base.template.html'%}
+{%load static%}
+{%block bg-img%}
+style= "background-image: url('{% static 'images/wrapping-hands-guy.jpg'%}'); background-size:cover; background-position: center;  background-repeat: repeat-x;")
+{%endblock%}
+{%block content%}
+<div id="height-img-mobile"style="min-height: 100px;">
+    
+</div>
+
+{%endblock%}
+
+{%block content2%}
+
+<div data-aos="fade-up"
+     data-aos-duration="2500" style="padding: 1em;">
+    <div style="height: 3em;">
+        <a style= "color: #ec4e20; text-decoration: none; font-size: 1.5em;" href="{% url "blogPage" %}"><i class="fas fa-arrow-left"></i></a>
+    </div>
+    
+    <div style="width: 100%; display: flex; flex-direction: row;  font-family: Alegreya SC; flex-wrap: wrap-reverse;">
+        <div style="flex: 4;">
+            <div class="blog-content-info" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+                <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap; width: 700px;">
+                    <h2 style="text-decoration: underline; color: #ec4e20; padding-left: 10px; padding-right: 10px; text-align: center;">The Importance of Nutrition</h2>
+                    <p style="text-align: center;">
+                        The food you eat determines how you feel...
+                    </p>
+                    <img class="blog-content-post-img" style="height: 552px;" src="{% static 'images/woman-eating.jpg' %}"></img>
+                    <div style="margin-top: 15px; font-family: Farro; line-height: 30px;">
+                        <p>
+                         Your well-being is of the utmost importance, and there are some aspects of your health that even tremendous amounts of exercises will not improve unless you make the dietary changes that need to happen. 
+                        </p>
+                        <p>
+                            The lifestyles of Singapore Residents and the urbanised culture of the city-state make it difficult to understand the importance of nutrition and healthy eating. Many grow up not understanding the impacts of food on our bodies and what healthy eating actually is.
+                        </p>
+                        <p>
+                            The situation does not get easier with all kinds of fad diets and false web content such as "superfoods" catching the public eye. Such content and information are unfortunately often part of a marketing strategy and are not based on unbiased evidence consolidated by qualified researchers. 
+                        </p>
+                        <p>
+                            At OlecraFit, we strive to change this by providing an affordable nutrition consultation by a qualified nutritionist who we will work with you to educate and improve your health based on scientifically proven data as well as providing the necessary advice needed to eliminate fad diets and discretionary food. 
+                        </p>
+                        <p>
+                            We will help you understand that whatever goes into your body will affect your health and quality of life. Take control of what you eat as Good Nutrition only begins with you. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div style="flex: 1; margin-bottom: 1em;">
+            <div id="about-blog-section" style="display: flex; flex-direction: column; justify-content: center; align-items: space-evenly; padding-left: 40px; border-left: 1px #ec4e20 solid; ">
+                <div style="display: flex; flex-direction: column;align-items: center;">
+                    <h2 style="padding-left: 10px; padding-right: 10px; width: 200px; text-align: center;">About Us</h2>
+                    <img style="margin-top: 20px; margin-bottom: 20px; width: 200px; height: 200px;" src="{% static 'images/square_profile_pic.jpg' %}"></img>
+                    <p style="padding-left: 10px; padding-right: 10px; width: 250px; text-align: center;">
+                        At OleraFit, we define fitness to work for your health with our high quality services.
+                    </p>
+                    <p>
+                        <i class="far fa-circle" style="font-size: 1em; color: #ec4e20;"></i>
+                    </p>
+                    <p style="padding-left: 10px; padding-right: 10px; width: 250px; text-align: center;">
+                        Over 7 years of experience in Muay Thai Fitness Training.
+                    </p>
+                    <p>
+                        <i class="far fa-circle" style="font-size: 1em; color: #ec4e20;"></i>
+                    </p>
+                    <p style="padding-left: 10px; padding-right: 10px; width: 250px; text-align: center;">
+                        Recognised Tertiary qualifications in Human Nutrition Studies.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+    
+
+    
+    
+</div>
+{%endblock%}

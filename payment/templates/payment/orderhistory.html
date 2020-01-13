@@ -2,27 +2,53 @@
 
 {% load static %}
 {%block bg-img%}
-style="background-color: #373f51"
+style= "background-image: url('{% static 'images/putting_on_gloves.jpg'%}'); background-size: cover; background-position: center;  background-repeat: no-repeat;")
 {%endblock%}
 {%block content%}
 <div style="color: #ffd23f;">
-    <h1>Order History <i class="fas fa-gifts"></i></h1>
+    
 </div>
-<div style="min-height: 700px; color: #ffd23f; margin-left: 5%;" class="container-fluid">
-    {% for tx in user_transactions %}
-    {% if tx.charge.amount != None %}
-    <div style="font-size: 2em; color: white;" class="row">
+<div id = "order_summary" style="font-family: Alegreya SC; background-color: rgba(0,0,0,0.7); display:flex; flex-direction: column; align-items:center; padding-bottom: 5%; font-size: 2em; color: white; text-align: center;">
+    <h1 style="margin: 1em; color: #ffd23f">Order History</h1>
+    <table>
+        <tr>
+            <th>
+                Transaction
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        {% for tx in user_transactions %}
+        {% if tx.charge.amount != None %}
+        <tr>
+            <td>
+                # {{tx.id}}
+            </td>
+            <td>
+                {{tx.status}}
+            </td>
+            <td>
+                $ {% widthratio tx.charge.amount 100 1 %}
+            </td>
+            <td>
+                <a style="font-size: 0.5em; color: #ffd23f;" href="/payment/orderhistory/{{tx.id}}">view</a>
+            </td>
+        </tr>
         
-          <div class="col-lg-2 col-md-5 col-sm-5" id="transaction_number_display" style="border-bottom: 1px #ffd23f solid;">{{tx}}</div> 
-          
-          <div class="col-lg-2 col-md-5 col-sm-5" style="border-bottom: 1px #ffd23f solid;"> $ {% widthratio tx.charge.amount 100 1 %} <a style="font-size: 0.5em; color: #ffd23f;" href="/payment/orderhistory/{{tx.id}}">view</a></div>
-          
-    </div>
-    {% endif %}
-    {%endfor%}
+        {% endif %}
+        {%endfor%}
+    </table>
+    
 
     <div style="margin-top: 1.5em;">
-        <h3>If you have any questions regarding your transactions, feel free to contact me! <a href="#"><i style="color: #ffd23f;"class="fas fa-user"></i></a></h3>
+        <h3>If you have any questions regarding your transactions, feel free to contact us <a style="color: #ec4e20" href="{% url "contactPage" %}">here</a></h3>
     </div>
 </div>
 

@@ -2,10 +2,10 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {%block bg-img%}
-style="background-color: #373f51"
+style="background-color: white"
 {%endblock%}
 {%block title%}
-<div style="min-height: 700px; color: #ffd23f; font-size: 3em;">
+<div style="min-height: 700px; color: #ec4e20; font-size: 3em;">
     <ul style="list-style: none;">
         <li>
             <i class="fas fa-exclamation-circle"></i> OOPS! 
@@ -14,7 +14,7 @@ style="background-color: #373f51"
             An error has occured. Please try again. 
         </li>
         <li>
-            If this error continues to occur, please contact me directly. <a href="#"><i style="color: #ffd23f;"class="fas fa-user"></i></a>
+            If this error continues to occur, please send an enquiry <a style="color:#ec4e20" href="{% url "contactPage" %}">here</a>.
         </li>
     </ul>
 </div>
