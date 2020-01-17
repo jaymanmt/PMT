@@ -1,0 +1,91 @@
+{%extends 'base.template.html'%}
+{%load static%}
+{%block bg-img%}
+style= "background-image: url('{% static 'images/wrapping-hands-guy.jpg'%}'); background-size:cover; background-position: center;  background-repeat: repeat-x;")
+{%endblock%}
+{%block content%}
+<div id="height-img-mobile"style="min-height: 100px;">
+    
+</div>
+
+{%endblock%}
+
+{%block content2%}
+
+<div data-aos="fade-up"
+     data-aos-duration="2500" style="padding: 1em;">
+    <div style="height: 3em;">
+        <a style= "color: #ec4e20; text-decoration: none; font-size: 1.5em;" href="{% url "blogPage" %}"><i class="fas fa-arrow-left"></i></a>
+    </div>
+    
+    <div style="width: 100%; display: flex; flex-direction: row;  font-family: Alegreya SC; flex-wrap: wrap-reverse;">
+        <div style="flex: 4;">
+            <div class="blog-content-info" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+                <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap; width: 550px;">
+                    <h2 style="text-decoration: underline; color: #ec4e20; padding-left: 10px; padding-right: 10px; text-align: center;">Muay Thai as Functional Fitness</h2>
+                    <p style="text-align: center;">
+                        anyone can learn Muay Thai, let us show you how...
+                    </p>
+                    <img class="blog-content-post-img-2" style="height: 825px;" src="{% static 'images/blog-redefine.jpg' %}"></img>
+                    <div style="margin-top: 15px; font-family: Farro; line-height: 30px;">
+                        
+                        <p>
+                         Human beings have evolved over millenniums to be able to move constantly on our two feet, but recent technology advancements seem to have left our bodies behind. We see an evolving modernised society increasingly affiliated to a sedentary lifestyle. We are either on an electronic device at home or seated at desks at work. All this physical inactivity will come with the ultimate price of our very own health and well-being. 
+                        </p>
+                        <p>
+                            Moreover, large-scale fitness marketing have been portraying "impossible-to-meet" fitness standards to the public. Meanwhile, obesity rates rise year on year in Singapore and other developed nations.
+                        </p>
+                        <p>
+                            At OlecraFit, we believe in functional fitness which utilises all your muscles at the same time while staying PRACTICAL and APPLICABLE in real-life dangerous situations. 
+                        </p>
+                        <p>
+                            We want to debunk the myth that fitness is a ripped body or having chunks of muscle. Fitness is you being a healthy individual feeling strong in your own body! 
+                        </p>
+                        <p>
+                            At OlecraFit, we utilise Muay Thai Techniques as that missing piece to give you that health, fitness and intangible yet valuable gains like humility, self-confidence, mental toughness, self-defense skills, improved gait, self-discipline, respect, confidence, and much more.
+                        </p>
+                        <p>
+                            We recognise that most people might see Muay Thai as a sport of violence that requires high levels of fitness. We argue that ANYONE can pick up Muay Thai and we back it up with our 100% PERSONALISED Olecra sessions where we impart authentic Muay Thai technique to you while helping you achieve your health and fitness goals. 
+                        </p>
+                        <p>
+                            Start thinking more about your health and well-being today and we take the steps necessary to have a comfortable and healthy life! 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div style="flex: 1; margin-bottom: 1em;">
+            <div id="about-blog-section" style="display: flex; flex-direction: column; justify-content: center; align-items: space-evenly; padding-left: 40px; border-left: 1px #ec4e20 solid; ">
+                <div style="display: flex; flex-direction: column;align-items: center;">
+                    <h2 style="padding-left: 10px; padding-right: 10px; width: 200px; text-align: center;">About Us</h2>
+                    <img style="margin-top: 20px; margin-bottom: 20px; width: 200px; height: 200px;" src="{% static 'images/square_profile_pic.jpg' %}"></img>
+                    <p style="padding-left: 10px; padding-right: 10px; width: 250px; text-align: center;">
+                        At OleraFit, we define fitness to work for your health with our high quality services.
+                    </p>
+                    <p>
+                        <i class="far fa-circle" style="font-size: 1em; color: #ec4e20;"></i>
+                    </p>
+                    <p style="padding-left: 10px; padding-right: 10px; width: 250px; text-align: center;">
+                        Over 7 years of experience in Muay Thai Fitness Training.
+                    </p>
+                    <p>
+                        <i class="far fa-circle" style="font-size: 1em; color: #ec4e20;"></i>
+                    </p>
+                    <p style="padding-left: 10px; padding-right: 10px; width: 250px; text-align: center;">
+                        Recognised Tertiary qualifications in Human Nutrition Studies.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+    
+
+    
+    
+</div>
+{%endblock%}

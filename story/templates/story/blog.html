@@ -1,0 +1,83 @@
+{%extends 'base.template.html'%}
+{%load static%}
+{%block bg-img%}
+style= "background-image: url('{% static 'images/about-us.jpg'%}'); background-size:cover; background-position: center;  background-repeat: repeat-x;")
+
+
+{%endblock%}
+{%block content%}
+<div id="height-img-mobile" id="height-img-mobile" style="min-height: 350px;">
+    
+</div>
+
+{%endblock%}
+{%block content2%}
+<div data-aos="fade-up"
+     data-aos-duration="2500" style="padding: 0.2em;">
+    <div style="height: 2em;">
+        
+    </div>
+    
+    <div style="width: 100%; display: flex; flex-direction: row;  font-family: Alegreya SC; flex-wrap: wrap-reverse;">
+        <div style="flex: 4;">
+            <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+                <a class="blog-content-item" href="{% url "blogPost2" %}" style="width: 450px; text-decoration: none; color: black; border-radius: 5px; margin: 10px;">
+                    
+                    <img class="blog-content-img" style="height: 300px;" src="{% static 'images/fruits.jpg' %}"></img>
+                    <h2 style="color: black; margin-top: 15px; margin-bottom: 15px;">Nutrition Power</h2>
+                    <p style="color: black; ">Good nutrition works wonders and relying on exercise alone is not enough...</p>
+                </a>
+                <a class="blog-content-item" href="{% url "blogPost1" %}" style="text-decoration: none; border-radius: 5px;width: 450px; margin: 10px;">
+                    <img class = "blog-content-img" style="height: 300px;" src="{% static 'images/muaythai-blog.jpg' %}"></img>
+                    <h2 style="color: black; margin-top: 15px; margin-bottom: 15px;;">Personalised Muay Thai</h2>
+                    <p style="color: black;">Martial Arts is an Art... It is open to interpretation and our vision is...</p>
+                </a>
+                <a class="blog-content-item" href="{% url "blogPost3" %}" style="margin: 10px; text-decoration: none; border-radius: 5px;width: 450px;">
+                    <img class = "blog-content-img" style="height: 300px;" src="{% static 'images/industry-error.jpg' %}"></img>
+                    <h2 style="color: black; margin-top: 15px; margin-bottom: 15px;;">Industry Problems</h2>
+                    <p style="color: black;">We acknowledge unsafe and unhealthy practices occuring in many martial arts gyms. We are different...</p>
+                </a>
+                <a class="blog-content-item" href="#" style="visibility: hidden; margin: 30px; text-decoration: none; border-radius: 5px;width: 450px;">
+                    <img class = "blog-content-img" style="height: 300px;" src="{% static 'images/industry-error.jpg' %}"></img>
+                    <h2 style="color: black; margin-top: 15px; margin-bottom: 15px;;">Industry Problems</h2>
+                    <p style="color: black;">We acknowledge unsafe and unhealthy practices in many martial arts gyms. We differ from that...</p>
+                </a>
+            </div>
+            
+            
+        </div>
+        <div style="flex: 1; margin-bottom: 1em;">
+            <div id="about-blog-section" style="display: flex; flex-direction: column; justify-content: center; align-items: space-evenly; padding-left: 40px; border-left: 1px #ec4e20 solid; ">
+                <div style="display: flex; flex-direction: column;align-items: center;">
+                    <h2 style="padding-left: 10px; padding-right: 10px; width: 200px; text-align: center;">About Us</h2>
+                    <img style="margin-top: 20px; margin-bottom: 20px; width: 200px; height: 200px;" src="{% static 'images/square_profile_pic.jpg' %}"></img>
+                    <p style="padding-left: 10px; padding-right: 10px; width: 250px; text-align: center;">
+                        At OleraFit, we redefine fitness to work around your health with our customer-focused quality services.
+                    </p>
+                    <p>
+                        <i class="far fa-circle" style="font-size: 1em; color: #ec4e20;"></i>
+                    </p>
+                    <p style="padding-left: 10px; padding-right: 10px; width: 250px; text-align: center;">
+                        Over 7 years of experience in Muay Thai Fitness Training.
+                    </p>
+                    <p>
+                        <i class="far fa-circle" style="font-size: 1em; color: #ec4e20;"></i>
+                    </p>
+                    <p style="padding-left: 10px; padding-right: 10px; width: 250px; text-align: center;">
+                        Recognised Tertiary qualifications in Human Nutrition Studies.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+    
+
+    
+    
+</div>
+
+
+{%endblock%}

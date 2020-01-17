@@ -1,15 +1,21 @@
 {%extends 'base.template.html' %}
 {%load static%}
 {%block bg-img%}
-style= "background-image: url('{% static 'images/technique.jpeg'%}'); background-size: cover; background-position: top;  background-repeat: no-repeat;")
+style= "background-image: url('{% static 'images/glove-laugh.jpg'%}'); background-size: cover; background-position: center;  background-repeat: no-repeat;")
 {%endblock%}
 {% load crispy_forms_tags %}
 {%block title%}
-<h1 style="color: #ffd23f; font-family: Permanent Marker; margin-top: 1.5em; text-align: center; text-shadow: 3px 3px 2px black;">Hey, Welcome Back!</h1>
+
 {%endblock%}
 {%block content%}
-<div style="display:flex; flex-direction:row; justify-content: center; margin-top: 30px; color:white;">
-    <form method="POST" style="background-color: rgba(0,0,0,0.5); padding: 30px; border-radius: 5px; margin-bottom: 300px;">
+<div data-aos="fade-up"
+     data-aos-duration="1000"style="font-size: 1.2em; display:flex; flex-direction:row; justify-content: space-around; margin-top: 200px; color:white; flex-wrap: wrap;">
+    <div style="font-family: Alegreya SC; width: 300px; background-color: rgba(0,0,0,0.5); padding: 30px; border-radius: 5px; margin-bottom: 300px;text-align: center;">
+        New to OlecraFit? 
+        <a id="contact-form-link"style= "margin-top: 155px;margin-left: 0 !important; background-color:rgb(236,78,32); border-radius: 5px; border: 1px #ec4e20 solid; color: white" class="btn" href="{% url "register" %}">Register Here</a>
+    </div>
+    <form method="POST" style="font-family: Alegreya SC; width: 300px; background-color: rgba(0,0,0,0.5); padding: 30px; border-radius: 5px; margin-bottom: 300px;">
+        <h1 id ="login-title-mobile"style="display: none; color: #ffd23f; font-family: Alegreya SC; text-align: center; text-shadow: 3px 3px 2px black;">Hey, Welcome Back!</h1>
         {%csrf_token%}
         {{form|crispy}}
         <input class="btn btn-primary" id="login-btn" style=""type="submit" name="login-btn" value="Login"/><br/>

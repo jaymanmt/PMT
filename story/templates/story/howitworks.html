@@ -1,0 +1,204 @@
+{%extends 'base.template.html'%}
+{%load static%}
+{%block bg-img%}
+style= "background-image: url('{% static 'images/wrapping-hands-guy.jpg'%}'); background-size:cover; background-position: center;  background-repeat: repeat-x;")
+{%endblock%}
+{%block content%}
+<div id="height-img-mobile"style="min-height: 550px;">
+    
+</div>
+
+{%endblock%}
+
+{%block content2%}
+
+<div class="container-fluid" style="padding: 4em; font-family: Alegreya SC; ">
+    <h3 style="color: #ec4e20; font-weight: bold; text-align: center; font-family: Alegreya SC; ">
+        WHAT DOES IT MEAN TO BE OLECRAFIT?
+    </h3>
+    <div data-aos="fade-up"
+     data-aos-duration="2500" style="margin-top:4em; margin-bottom: 4em;padding: 0.1em; font-size: 1.5em; text-align: center;">
+        <p>
+        To be OlecraFit, we have formulated a FITNESS AND WELLNESS RECIPE that includes both nutritional changes as well as a Personalised Functional Fitness Training using Muay Thai Techniques to have you feeling GREAT in your own body! 
+        </p>
+        <p>
+            Read more on our <a style="color: #ec4e20; font-size: 1.2em;"href="{% url "blogPage" %}">About Page</a> about how we acknowledge the health dangers in modern society's sedentary lifestyles, dietary misconceptions, practical functional fitness, gym favouritism, etc and how we intend to lead the change in all that. 
+        </p>
+    </div>
+    <hr>
+    <h3 data-aos="fade-up"
+     data-aos-duration="2500" style="color: #ec4e20; font-weight: bold;">
+        FOLLOW THESE STEPS TO BE OLECRA FIT:
+    </h3>
+    
+    <div data-aos="fade-up"
+     data-aos-duration="2500" class="row" style="margin-top: 2em;">
+        <table style="font-family: Alegreya SC;">
+            <tr style="font-size: 1.2em;">
+                <td style="vertical-align: top;">
+                    <i style="color: #ec4e20;"class="fas fa-carrot"></i>
+                </td>
+                <td>
+                    <p style="margin-left: 1em;">Find out about our sessions to see which suits you best <button type="button" style="color:#ec4e20;"class="btn btn-sm" data-toggle="popover" title="We recommend!" data-content="For Fitness Training, we recommend you start off with an affordable Olecra Intro session, followed by 3 sessions of Olecra 101 to focus on various basic techniques. Once your foundation is laid out nicely, we recommend you move on to Standard Personalised Training Sessions which will be fully customised for you">recommendations?</button></p>
+                </td>
+            </tr>
+            <tr style="font-size: 1.2em;">
+                <td style="vertical-align: top;">
+                    <i style="color: #ec4e20;"class="fas fa-carrot"></i>
+                </td>
+                <td>
+                    <p style="margin-left: 1em;">Send an enquiry to us <a style= "color:#ec4e20 ;" href="{% url "contactPage" %}">here</a>. We recommend you touch on your general fitness goals, schedule and choose which session(s) you are interested in</p>
+                </td>
+            </tr>
+            <tr style="font-size: 1.2em;">
+                <td style="vertical-align: top;">
+                    <i style="color: #ec4e20;"class="fas fa-carrot"></i>
+                </td>
+                <td>
+                    <p style="margin-left: 1em;">We will be in contact within 1-2 business days after your enquiry to discuss more into your goals, arrange a suitable schedule for you and answer any other questions you might have. </p>
+                </td>
+            </tr>
+            
+            <tr style="font-size: 1.2em;">
+                <td style="vertical-align: top;">
+                    <i style="color: #ec4e20;"class="fas fa-carrot"></i>
+                </td>
+                <td>
+                    <p style="margin-left: 1em;">You are ready to get started!  </p>
+                </td>
+            </tr>
+            <tr style="font-size: 1.2em;">
+                <td style="vertical-align: top;">
+                    <i style="color: #ec4e20;"class="fas fa-carrot"></i>
+                </td>
+                <td>
+                    <p style="margin-left: 1em;">Muay Thai Sessions will be held at Platinum Fitness Singapore near Tanjong Pagar MRT which contains all the necessary equipment to get you started</p>
+                </td>
+            </tr>
+            <tr style="font-size: 1.2em;">
+                <td style="vertical-align: top;">
+                    <i style="color: #ec4e20;"class="fas fa-carrot"></i>
+                </td>
+                <td>
+                    <p style="margin-left: 1em;">Nutrition Sessions, the date,time and venue are flexible. </p>
+                </td>
+            </tr>
+        </table>
+            <a style= "font-family: Farro; background-color:rgb(236,78,32); border-radius: 5px; border: 1px #ec4e20 solid; color: white; margin-top: 2em;" id="s-nav-link" class="nav-link" {%if user.is_authenticated%}href="{% url "shop" %}" {%else%}href="{% url "shop" %}" {%endif%}>Get Started</a>
+        </div>
+        
+    <hr style="margin-top: 50px; margin-bottom: 50px;">
+    <div data-aos="fade-up"
+     data-aos-duration="2500" class="row" style="margin-top: 35px; font-family: Alegreya SC;">
+        
+        <div class="col-sm-10 col-md-10 col-lg-6">
+            <h3 style="font-family: Alegreya SC; font-weight: bold;">
+                We have partnered with <a style="color: #ec4e20;" href="https://www.platinumfitness.sg/" target= "_blank"> Platinum Fitness Singapore</a> to ensure quality services, facilities, equipment and a convenient centralised location for you. 
+            </h3>
+            <h4 style="margin-top: 2em; color: #ec4e20; font-weight: bold;">
+                DIRECTIONS:
+            </h4>
+            <ul>
+                <li>
+                    6A Shenton Way, #B1-04/05 OUE Down Town, Singapore 068815
+                </li>
+                <li>
+                    Closest MRT : Tanjong Pagar MRT
+                </li>
+                <li>
+                    5 min walk from Tanjong Pagar MRT Exit F to cross Robinson Road to OUE Downtown
+                </li>
+            </ul>
+            <div>
+        <h4 style="color: #ec4e20; font-weight: bold;">
+            WHAT TO BRING:
+        </h4>
+        <ul>
+            <li>
+                Water Bottle
+            </li>
+            <li>
+                Spare Clothes if you wish to have a shower here
+            </li>
+            <li>
+                Wear sports shorts that are ABOVE knee length
+            </li>
+        </ul>
+        <h4 style="color: #ec4e20; font-weight: bold;">
+            MORE INFO:
+        </h4>
+        <ul>
+            <li>
+                Shower facilities and fresh towels available
+            </li>
+            <li>
+                Full Set of the Gym Equipment (e.g Free Weights, Treadmills, etc)
+            </li>
+            <li>
+                Proper Muay Thai Coaching Gear
+            </li>
+            <li>
+                High-grade Non-Slip Gymnasium Floor Mats
+            </li>
+            <li>
+                Gloves and Handwraps provided (We recommend you bring your own)
+            </li>
+            
+        </ul>
+    </div>
+        </div>
+        <div id="map" class="col-sm-10 col-md-10 col-lg-5" style="width: 450px; height: 450px; padding:0;"></div>
+    </div>
+
+    <div style="margin-top: 50px;">
+        
+    </div>
+    
+</div>
+
+
+{%endblock%}
+
+{% block footer_js %}
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiamF5bWFubXQiLCJhIjoiY2sweXFzaHBwMDI5YTNubGc1c255aHp1cCJ9.hdMY8-5YXAPS3wasvO1kbg';
+    var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/light-v10', // stylesheet location
+    center: [103.8483, 1.2769], // starting position [lng, lat]
+    zoom: 11 // starting zoom
+    });
+    let popup = new mapboxgl.Popup({
+                    offset: 20
+                })
+    popup.setHTML(`
+    <div style="text-align: center; padding: 0.2em; font-family: Farro;">
+        <h4>Platinum Fitness</h4>
+        <h6>6A Shenton Way, #B1-04/05 OUE Down Town, Singapore 068815</h6>
+    
+    </div>
+    `);
+    map.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        trackUserLocation: true
+    }));
+    let el = document.createElement("div");
+    el.className = "marker";
+    let eMark = new mapboxgl.Marker(el)
+        .setLngLat([103.8483, 1.2769])
+        .addTo(map)
+        .setPopup(popup);
+
+</script>
+	
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+</script>
+{%endblock%}

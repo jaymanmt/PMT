@@ -1,192 +1,246 @@
 {%extends 'base.template.html'%}
 {% load static %}
 {%block bg-img%}
-style= "background-image: url('{% static 'images/technique.jpeg'%}'); background-size: cover; background-position: top;  background-repeat: no-repeat;")
+style= "background-image: url('{% static 'images/glove-laugh.jpg'%}'); background-size: cover; background-position: center;  background-repeat: repeat-x;")
 {%endblock%}
 {%block content%}
 
-<div style="display:flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 18%;margin-bottom: 18%">
-    <div style="flex-wrap: wrap; display: flex; flex-direction: row; border-radius: 5px; background-color:rgba(0,0,0,0.5); padding: 20px; color: #ffd23f; font-size: 2em;">
+<div style="display:flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 18%;margin-bottom: 18%;">
+    <div id="hero-banner" style="margin-left: 0.5em; margin-right: 0.5em;flex-wrap: wrap;display: flex; flex-direction: row; border-radius: 5px; background-color:rgba(0,0,0,0.5); padding: 20px; color: #ffd23f; font-size: 2em;">
         {%if user.is_authenticated%}
-        <div style="text-align: center;">Buy 5 packages and get 10% off the total cost today!</div>
+        <div style="text-align: center; font-family: Farro;">Buy any 5 packages and get 10% off the total cost today!</div>
         {% else %}
-        <div style="text-align: center;">Get one-time deal 20% off the starter's package today!</div>
+        <div style="text-align: center; font-family: Farro;">Limited Time Only! 10% off your introductory session!</div>
         {% endif %}
         {%if user.is_authenticated%}
-        <div style="margin-left: 1em; text-align: center;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "shop"%}"> Shop </a></div>
+        <div style="margin-left: 1em; text-align: center; font-family: Farro;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "shop"%}"> Shop </a></div>
         {% else %}
-        <div style="margin-left: 1em; text-align: center;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "register"%}"> Register Now </a></div>
+        <div style="margin-left: 1em; text-align: center; font-family: Farro;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "contactPage"%}"> Get Started </a></div>
         {% endif %}
     </div>
 </div>
 <div>
-    
+<div id="hero-banner-alt" style="margin-left: 0.5em; margin-right: 0.5em;flex-wrap: wrap;display: none; flex-direction: row; border-radius: 5px; background-color:rgba(0,0,0,0.5); padding: 20px; color: #ffd23f; font-size: 2em;">
+        {%if user.is_authenticated%}
+        <div style="text-align: center;">Buy any 5 packages and get 10% off the total cost today!</div>
+        {% else %}
+        <div style="text-align: center;">Get limited time one-off deal 10% off the introductory session!</div>
+        {% endif %}
+        {%if user.is_authenticated%}
+        <div style="margin-left: 1em; text-align: center;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "shop"%}"> Shop </a></div>
+        {% else %}
+        <div style="margin-left: 1em; text-align: center;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "register"%}"> Get Started </a></div>
+        {% endif %}
+    </div>
 </div>
 <div style="padding: 10px; color: white; text-align: right; margin-right: 20px;">
+  
 </div>
 
 
 {%endblock%}
+
+{% block content2 %}
+
+<div data-aos="fade-up"
+     data-aos-duration="2000" style="font-size: 1.3em; padding: 3em; padding-top: 1em;">
+  <h1 style="font-family: Alegreya SC; color: #ec4e20;">Why OlecraFit?</h1>
+  <p style="margin-top: 2em; font-family: Alegreya SC; font-weight: bold; font-size: 1.1em;">
+    We recognise and strive to solve problems with modern society:
+  </p>
+  <table style="font-family: Alegreya SC;">
+    <tr>
+      <td class="home-page-points" style="vertical-align: center;">
+        <i class="far fa-circle" style="font-size: 0.8em; color: #ec4e20; padding-right: 10px; vertical-align: top;"></i>
+      </td>
+      <td>
+        <p>Persuasive advertising have us brainwashed... fitness is NOT a ripped beach body nor a large chunk of muscle.</p>
+        
+      </td>
+    </tr>
+    <tr>
+      <td class="home-page-points" style="vertical-align: center; margin-top: 20px;">
+        <i class="far fa-circle" style="font-size: 0.8em; color: #ec4e20; padding-right: 10px;"></i>
+      </td>
+      <td>
+        <p>Transport technology and task automation have us desk-bound and not having to walk more than 15-30mins on a typical day. </p>
+        
+      </td>
+    </tr>
+  </table>
+  
+  
+</div>
+<hr>
+<h3 style="margin: 1.3em; text-align: center; font-family: Alegreya SC; color: #ec4e20;">
+  What fitness means to us is YOU feeling GREAT in YOUR body. At OlecraFit, we can get you there!
+</h3>
+{% endblock %}
+
 {%block footer%}
-<div style="display: flex; justify-content: space-evenly; margin-top: 30px; text-align: center; flex-wrap: wrap;">
-    <div class="card" style="width: 18rem; border-color: transparent;;">
-      <img style="margin-top: 17px; margin-left: 17px; height: 250px; width: 250px; border-radius: 1000px;" src="{% static 'images/101_2.jpeg' %}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title" style="font-family: Permanent Marker; min-height: 50px;">TECHNIQUE 101</h5>
-        <p style="min-height: 375px;"class="card-text">In my personal one-to-one sessions, you will have my full attention and I will work closely with you to make sure you achieve your personal goals whether is it to lose weight, be a Muay Thai professional, or learning it for self-defense. You will attain all that while staying injury-free. </p>
-        <button type="button" class="btn" style="color: black; background-color: #f17e5c;" data-toggle="modal" data-target="#exampleModalCenter">Read More</button>
-      </div>
-    </div>
+<hr>
+<div style="display: flex; justify-content: space-evenly; margin-top: 150px; text-align: center; flex-wrap: wrap;" data-aos="fade-up"
+     data-aos-duration="2000" >
+    
     <div class="card" style="width: 18rem; border-color: transparent;">
-      <img style="margin-top: 17px; margin-left: 17px; height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/redefine2.jpeg' %}" class="card-img-top" alt="...">
+      <i style="color: #ec4e20; font-size: 5em;" class="fas fa-book"></i>
       <div class="card-body">
-        <h5 class="card-title" style="font-family: Permanent Marker; text-align: center; min-height: 50px;">REDEFINE YOUR FITNESS</h5>
-        <p style="min-height: 375px;" class="card-text">Martial Arts are a form of ART! It is open to interpretation by anyone who practices. As a practitioner, I want to spread my own perception of Muay Thai to others. Some might look at Muay Thai as a 'keep-fit' regimen, 'self-confidence' booster and a form of self-defence. But I see it very differently...</p>
-        <button type="button" style="color: black; background-color: #f17e5c;" class="btn" data-toggle="modal" data-target="#exampleModalCenter2">Read More</button>
+        <h4 class="card-title" style="font-family: Handlee; font-weight: bold; ; text-align: center; min-height: 50px;">REDEFINING FITNESS</h4>
+        <!--<p style="min-height: 300px; font-size: 1.1em;" class="card-text">Martial Arts is an Art?! It is open to interpretation by anyone and as practitioners, we want to spread our perception of Muay Thai as a fully practical and functional fitness! </p>-->
+        <!--<button type="button" style="color: black; background-color: #f17e5c; font-size: 1.1em;" class="btn" data-toggle="modal" data-target="#exampleModalCenter2">Read More</button>-->
       </div>
     </div>
     <div class="card" style="width: 18rem; border-color: transparent;;">
-      <img style="margin-top: 17px; margin-left: 17px;height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/nutrition3.jpg' %}" class="card-img-top" alt="...">
+      <i style="color: #ec4e20; font-size: 5em;" class="fas fa-drafting-compass"></i>
       <div class="card-body">
-        <h5 class="card-title" style="font-family: Permanent Marker; text-align: center; min-height: 50px;">YOUR NUTRITION</h5>
-        <p style="min-height: 375px;" class="card-text">Did I mention that I am also a Nutritionist? Through both exercise and nutrition, you'll be able to conquer it all! With a small price bump or bundle, you can get affordable dietary assessments and I will advise you on how to improve your health by meeting your nutritional needs as well as eliminating fad diets, and discretionary food. </p>
-        <button type="button" style="color: black; background-color: #f17e5c;" class="btn" data-toggle="modal" data-target="#exampleModalCenter3">Read More</button>
+        <h4 class="card-title" style="font-family: Handlee; font-weight: bold; min-height: 50px;">TECHNIQUE FOCUSED</h4>
+        <!--<p style="min-height: 300px; font-size: 1.1em;"class="card-text">We recognise that most people see Muay Thai as a sport of violence that also requires high levels of fitness. We seek change that with our 100% personalised Muay Thai sessions for you. We strive to impart authentic Muay Thai technique to you to help you achieve your fitness goals. </p>-->
+        <!--<button type="button" class="btn" style="color: black; background-color: #f17e5c; font-size: 1.1em;" data-toggle="modal" data-target="#exampleModalCenter">Read More</button>-->
       </div>
     </div>
     <div class="card" style="width: 18rem; border-color: transparent;;">
-      <img style="margin-top: 17px; margin-left: 17px;height: 250px; width: 250px; border-radius: 1000px; "src="{% static 'images/101.jpg' %}" class="card-img-top" alt="...">
+      <i style="color: #ec4e20; font-size: 5em;" class="fab fa-nutritionix"></i>
       <div class="card-body">
-        <h5 class="card-title" style="font-family: Permanent Marker; text-align: center; min-height: 50px;">MY STORY</h5>
-        <p style="min-height: 375px;" class="card-text">If you are worried about the 'brutality' of picking up a combat sport, your worries are unfortunately justified. In every sport, it is key to have correct technique or you will get injured at some point. I have gone through it the tough way by going to martial arts gyms which did not provide the personal attention needed by their members. </p>
-        <button type="button" style="color: black; background-color: #f17e5c;" class="btn" data-toggle="modal" data-target="#exampleModalCenter4">Read More</button>
+        <h4 class="card-title" style="font-family: Handlee; font-weight: bold; ; text-align: center; min-height: 50px;"> NUTRITIONIST</h4>
+        <!--<p style="min-height: 300px; font-size: 1.1em;" class="card-text">Exercise alone is not enough... At OlecraFit, we offer affordable nutrition assessments by a full-fledged nutritionist and we will work with you intricately on improving your health as well as eliminating fad diets, and discretionary food. </p>-->
+        <!--<button type="button" style="color: black; background-color: #f17e5c; font-size: 1.1em;" class="btn" data-toggle="modal" data-target="#exampleModalCenter3">Read More</button>-->
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; border-color: transparent;;">
+      <i style="color: #ec4e20; font-size: 5em;" class="fas fa-heartbeat"></i>
+      <div class="card-body">
+        <h4 class="card-title" style="font-family: Handlee; font-weight: bold; ; text-align: center; min-height: 50px;">HEALTH PRIORITSATION</h4>
+        <!--<p style="min-height: 300px; font-size: 1.1em;" class="card-text">OlecraFit recognises many aspects wrong with health and fitness trends happening today. We recognise that there is an insidious trend of martial arts gyms not providing enough personal attention needed to their members and fitness marketing portraying impossible-to-meet fitness standards to the public. Meanwhile, obesity rates rise year on year in Singapore and other developed nations. At OlecraFit, we believe that we have found the solution to helping turn all this around, while maintaining a high level of customer service to our clients.</p>-->
+        <!--<button type="button" style="color: black; background-color: #f17e5c; font-size: 1.1em;" class="btn" data-toggle="modal" data-target="#exampleModalCenter4">Read More</button>-->
       </div>
     </div>
 </div>
 <!-- Modal 1 - Technique 101 -->
-<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle" style="text-align: center; font-family: Permanent Marker;">TECHNIQUE 101</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
-        <img style="padding: 20px; height: 250px; width: 250px; border-radius: 1000px;" src="{% static 'images/101_2.jpeg' %}" class="card-img-top" alt="...">
-        <p>
-        If you are worried about the 'brutality' of picking up a combat sport, your worries are unfortunately justified. In every sport, it is key to have correct technique or you will get injured at some point. I have gone through it the tough way by going to martial arts gyms which did not provide the personal attention needed by their members. Anyone who goes to these gyms will know what I am talking about when I say that there is immense favouritism and partialism for their fighters instead of passionately spreading the art itself to the public. To me, this is wrong. There seems to be an invisible rule that new members somehow have to prove themselves worthy of attention and care by the gym. That should NOT be the case, because nobody should be discriminated by the sport. People need to start realising that not everyone wants to enter the ring and compete.
-        </p>
-        <p>
-        All that should be required of you is the willingness to learn and improve. In my eyes, the fact that you turn up wanting to improve your skillset is enough proof and that in itself, is very commendable!
-        </p>
-        <p>
-        In my personal one-to-one sessions, you will have my full attention and I will work closely with you to make sure you achieve your personal goals whether is it to lose weight, be a Muay Thai professional, or learning it for self-defense. You will attain all that while staying injury-free! 
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalCenterTitle" style="text-align: center; font-family: Handlee; font-weight: bold;">TECHNIQUE 101</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">-->
+<!--        <img style="padding: 20px; height: 250px; width: 250px; border-radius: 1000px;" src="{% static 'images/101_2.jpeg' %}" class="card-img-top" alt="...">-->
+<!--        <p>-->
+<!--        In every sport, it is key to have proper technique to avoid injury. At OlecraFit, we place heavy emphasis on helping you nail the foundations of Muay Thai techniques and working closely with you every step along the way to make sure you have something to take away from every session. -->
+<!--        </p>-->
+<!--        <p>-->
+<!--          We kick off with an affordable Olecra introductory session to make sure you feel comfortable with our services as well as to get to know you as a person better. Once we have established rapport with you, you will progress on to Olecra 101 to expose you to the various aspects and benefits of Muay Thai. If you have learned Muay Thai or other combat sports before, we will help to accommodate for that as well.-->
+<!--        </p>-->
+<!--        <p>-->
+<!--        Nobody is doomed to feel unfit for life or feel afraid to learn something new. Let us help you feel great in your own body! -->
+<!--        </p>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 <!-- Modal 2 - Redefining Fitness -->
-<div class="modal fade bd-example-modal-lg" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 style="text-align: center; font-family: Permanent Marker;" class="modal-title" id="exampleModalCenterTitle">REDEFINE YOUR FITNESS</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
-        <img style="padding: 20px; height: 250px; width: 250px; border-radius: 1000px;" src="{% static 'images/redefine2.jpeg' %}" class="card-img-top" alt="...">
-        <p>
-        Muay Thai is without a doubt one of the most effective, practical and beautiful combat sport today and thanks to the boom in the mixed martial arts(MMA) industry, the masses are starting to see this and we have seen a surge in demand as more MMA gyms incorporate muay thai classes as part of their schedule. However, while the demand has increased, it unfortunately has also been closely associated with egotism, violence, injuries, knockouts, cuts, and a whole lot of blood. It is a combat sport after all. 
-    </p>
-    <p>
-        The term 'martial arts' means that it is a form of ART and is open to interpretation by anyone who practices this art. As a practitioner, I want to spread my own perception of Muay Thai to others. Some might look at Muay Thai as a 'keep-fit' regimen, 'self-confidence' booster, 'self-defence' technique and many others. But I see it very differently...
-    </p>
-    <p>
-        Muay Thai empowers you with a variety of things! The obvious things would be elevating your fitness levels, giving you self-defense skils or if you wish, competing with others for a sense of achievement. But it is so much more... It will pass onto you intangible yet valuable gains such as humility, self-confidence, self-esteem, mental toughness, situation awareness, self-respect, respect for others, fun-loving social interactions, and more! I am an embodiment whose life has been shaped by this. Let me share with you my story as to you will benefit from this.  
-    </p>
-    <p>
-        Before I get into a deep-dive of my life-changing story with Muay Thai, I hope that I have said enough to get you somewhat interested in finding out more. So please register with me <span>here</span> and login to find out more! 
-    </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div class="modal fade bd-example-modal-lg" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 style="text-align: center; font-family: Handlee; font-weight: bold;" class="modal-title" id="exampleModalCenterTitle">REDEFINE YOUR FITNESS</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">-->
+<!--        <img style="padding: 20px; height: 250px; width: 250px; border-radius: 1000px;" src="{% static 'images/redefine2.jpeg' %}" class="card-img-top" alt="...">-->
+<!--        <p>-->
+<!--        The term 'martial arts' means that it is a form of ART and is open to interpretation by anyone who practices this art. As practitioners, we want to spread our own perception of Muay Thai to others. -->
+<!--        </p>-->
+<!--        <p>-->
+<!--          Human beings have evolved over millenniums to be able to move constantly on our two feet, but technology advancements seem to have left us behind. We see an evolving modernised society increasingly affiliated to living a sedentary lifestyle on an electronic device at home and seated at desks at work. All this inactivity comes at the ultimate price one can pay. That is our very own health and well-being. -->
+<!--        </p>-->
+<!--        <p>-->
+<!--        At OlecraFit, we believe in functional fitness that utilises all your muscles at the same time, but also the fact that it needs to be PRACTICAL and APPLICABLE in real-life situations. -->
+<!--        </p>-->
+<!--        <p>-->
+<!--          We see Muay Thai as that perfect functional fitness that you are missing out on. It will not only give you better health and fitness, but also intangible yet valuable gains like humility, self-confidence, mental toughness, self-defense skills, improved gait, self-discipline, sense of achievement, respect, confidence, and much more that it almost sounds too good to be true!-->
+<!--        </p>-->
+<!--        <p>-->
+<!--          Start thinking more about your health and well-being today and we encourage you to take the steps necessary to living a comfortable and healthy long life!-->
+<!--          </p>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 <!-- Modal 3 - Nutrition -->
-<div class="modal fade bd-example-modal-lg" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 style="text-align: center; font-family: Permanent Marker;" class="modal-title" id="exampleModalCenterTitle">YOUR NUTRITION</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
-        <img style="padding: 20px; height: 250px; width: 250px; border-radius: 1000px;" src="{% static 'images/nutrition5.jpg' %}" class="card-img-top" alt="...">
-        <p>
-        Did I mention that I am also a Nutritionist? Your well-being is of the utmost importance, and there are some aspects of your health that even tremendous amounts of exercises will not improve unless you make the dietary changes that need to happen. With a small price bump or bundle, you can get an affordable dietary assessment and I will advise you on how to improve your health by meeting your nutritional needs as well as eliminating fad diets, and discretionary food. 
-    </p>
-    <p>
-        With Muay Thai and proper Nutrition, you will feel like brand-new both mentally and physically! Register and purchase a plan that is most suitable for you today and I will get back to you within the next 1-2days!  
-    </p>
-    <p>
-        Any form of combat sport can be intimidating, not to mention one of the most dangerous ones on the planet. But please do not let that get in the way of learning something beneficial for yourself. If you feel like you are not sure if this is the right step for you, there is a 20% discounted rate for a one-off first-timer muay thai class package in the shop that would give me the opportunity to meet with you face-to-face and provide an introductory class which will give you everything you need to make a decision. 
-    </p>
-    <p>
-        Otherwise, just register here and gain access within your account to get in contact with me directly. I'd love to hear your story (: 
-    </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div class="modal fade bd-example-modal-lg" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 style="text-align: center; font-family: Handlee; font-weight: bold;" class="modal-title" id="exampleModalCenterTitle">YOUR NUTRITION</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">-->
+<!--        <img style="padding: 20px; height: 250px; width: 250px; border-radius: 1000px;" src="{% static 'images/nutrition5.jpg' %}" class="card-img-top" alt="...">-->
+<!--        <p>-->
+<!--        Your well-being is of the utmost importance, and there are some aspects of your health that even tremendous amounts of exercises will not improve unless you make the dietary changes that need to happen. -->
+<!--    </p>-->
+<!--    <p>-->
+<!--      At OlecraFit, we offer affordable nutrition assessments by full-fledged nutritionists. An initial nutrition assessment may take between 1-2 hours to make sure we fully understand your individual circumstances and dietary intake. That is followed by an evaluation and an intricate discussion between you and your nutritionist to come up with achievable goals on improving your nutrition. Don't worry, a summary with all the details will be provided at the end of your session (:-->
+<!--    </p>-->
+<!--    <p>-->
+<!--        With Muay Thai Functional Fitness and Proper Nutrition, we aim to help you feel like BRAND-NEW both mentally and physically!-->
+<!--    </p>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 
 <!-- Modal 4 - My Story -->
-<div class="modal fade bd-example-modal-lg" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 style="text-align: center; font-family: Permanent Marker;" class="modal-title" id="exampleModalCenterTitle">MY STORY</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
-        <img style="padding: 20px; height: 250px; width: 250px; border-radius: 1000px;" src="{% static 'images/101.jpg' %}" class="card-img-top" alt="...">
-        <p>
-        Unfit and I were a couple 10 years ago. Being a teenager and overly aware of my own physical limitations, I often complained about knee joint pains, calf tensions, and had very poor peformances in cardio-exercisies. I know we are all familiar with the term "I hate running". 
-    </p>
-    <p>
-        I had exceedingly low self-esteem and self-confidence in the past and unfortunately became the target of some bullying probes. Maybe I should consider myself quite fortunate as they were mainly passive-aggressive and I have heard of some extreme bullying cases which I don't even want to delve into.
-    </p>
-    <p>
-        In 2006, Muay Thai had no presence in Singapore, a that time I was a teenager with had so much energy, both positive and negative, pent up inside of me with no method of channelling it. Simplying lifting weights, doing push-ups and running was no where close to expelling it. The simplicity of static and one-dimensional dynamic exercises was not exciting at all for me. But there was one thing I knew, and it was that I loved hitting this boxing bag at my neighbour's house. Something tells me that I am not alone on this... If you believe yourself or even your kids have a lot of energy pent up, I believe I will be able to solve that problem, just like I have for myself.
-    </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div class="modal fade bd-example-modal-lg" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 style="text-align: center; font-family: Handlee; font-weight: bold;" class="modal-title" id="exampleModalCenterTitle">MY STORY</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">-->
+<!--        <img style="padding: 20px; height: 250px; width: 250px; border-radius: 1000px;" src="{% static 'images/101.jpg' %}" class="card-img-top" alt="...">-->
+<!--        <p>-->
+<!--         The 'brutality' of learning a combat sport like Muay Thai is truly intimidating enough to turn away anyone remotely interested in this sport. Traditional Gyms need to start realising that not everyone wants to enter the ring and compete. At OlecraFit, we believe Muay Thai is a beautiful art and everyone is missing out! We want to give everyone the opportunity to learn Muay Thai in our own special way by tailoring it for your individual learning styles. -->
+<!--        </p>-->
+<!--        <p>-->
+<!--        All that should be required of you is the willingness to learn and improve. In my eyes, the fact that you turn up wanting to improve your skillset is enough proof and that in itself, is very commendable!-->
+<!--        </p>-->
+<!--        <p>-->
+<!--        Unfit and I were a couple 10 years ago. Being a teenager and overly aware of my own physical limitations, I often complained about knee joint pains, calf tensions, and had very poor peformances in cardio-exercisies. I know we are all familiar with the term "I hate running". -->
+<!--    </p>-->
+
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <a href="{% url "shop" %}" style="background-color: #f17e5c; color: black;" class="btn">Shop</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 {%endblock%}
 
 {% block footer_js %}

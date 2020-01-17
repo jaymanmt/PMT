@@ -2,12 +2,12 @@
 
 {% load static %}
 {%block bg-img%}
-style="background-color: #373f51"
+style= "background-image: url('{% static 'images/putting_on_gloves.jpg'%}'); background-size: cover; background-position: center;  background-repeat: no-repeat;")
 {%endblock%}
 {%block content%}
-<div style="min-height: 700px; color: #ffd23f; display: flex; flex-direction: column; align-items: left; margin-left: 10%;">
+<div style="font-family: Alegreya SC; background-color: rgba(0,0,0,0.7); min-height: 700px; color: #ffd23f; display: flex; flex-direction: column; align-items: left; padding: 1em;">
     <div>
-        <h1><i class="fas fa-sitemap"></i> Transaction ID: <span style="color: white;">{{tx_id}}</span></h1>
+        <h1>Transaction ID: <span style="color: white;">{{tx_id}}</span></h1>
     </div>
     {% for item in invoice_items %}
     <div style="border-bottom: 1px #ffd23f solid; padding: 2em;">
@@ -22,8 +22,8 @@ style="background-color: #373f51"
     <div>
         Total Amount Paid: <span style="color: white;">$ {% widthratio user_transaction.charge.amount 100 1 %}</span>
     </div>
-    <div style="margin-top: 1.5em;">
-        <h3>If you have any questions regarding your transactions, feel free to contact me! <a href="#"><i style="color: #ffd23f;"class="fas fa-user"></i></a></h3>
+    <div style="margin-top: 2em; color: white; text-align: center;">
+        <h3>If you have any questions regarding your transactions, feel free to contact us <a style="color: #ec4e20" href="{% url "contactPage" %}">here</a></h3>
     </div>
 </div>
 

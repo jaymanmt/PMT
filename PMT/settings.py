@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'shop',
     'basket',
     'payment',
-    'administrator'
+    'administrator',
+    'story'
 ]
 
 MIDDLEWARE = [
@@ -177,3 +178,7 @@ STATICFILES_DIRS = [
 ]
 
 DATABASES = {'default': dj_database_url.parse(os.environ['PG_HEROKU'])}
+
+MAPBOX_ACCESS_TOKEN=os.environ["MAPBOX_ACCESS_TOKEN"]
+
+COMPANY_EMAIL=os.environ["COMPANY_EMAIL"]

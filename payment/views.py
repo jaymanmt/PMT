@@ -22,9 +22,9 @@ def calculate_bkt_cost(request):
     for each_item in all_basket_items:
         number_of_items+= each_item.quantity_to_buy
         total_cost+=each_item.calculate_total()
-    
+    #discount applied if no. of packages purchased exceeds 5
     if number_of_items >= 5:
-        total_cost = total_cost * 0.9
+        total_cost = total_cost * 0.95
     
     return total_cost
 
@@ -36,7 +36,7 @@ def check_ref_code(request, ref_code):
     else:
         return JsonResponse({"status":False})
 
-#function to pass into payment for backend
+#function to pass into payment for implementing 5% discount for coupon code! 
 def check_ref_code_payment(request):
     ref_code = request.POST.get('ref_code')
     referral_codes = ReferralCode.objects.filter(discount=ref_code)
@@ -141,7 +141,7 @@ def pay_here(request):
                     amount = int(request.POST['total_cost_for_payment'])
                     check_ref_code = check_ref_code_payment(request)
                     if check_ref_code == True:
-                        amount = amount*0.9
+                        amount = amount*0.95
 
                     customer = stripe.Charge.create(
                         amount = int(amount),
@@ -181,24 +181,25 @@ def pay_here(request):
                         
                         if transaction.owner == request.user: 
 
-                            subject = "Your Order has been received! "
+                            subject = "Transaction: #{}:Your Order has been received! ".format(transaction.id)
                             text_content = """
+Hi {},
+
 Thank you for your prompt payment, this email is to confirm your order and payment of SGD {} on {}.
                         
 Your limited time discount code is {}.
                         
-You can refer a friend to receive that 10% off or use it yourself. It expires on {}.
+You can refer a friend to receive that 5% off or use it yourself. Please note that it expires on {}.
 
-I will be in contact with you within 1-2 business days to organise a suitable schedule, venue and timing with you.
+We will be in contact with you within 1-2 business days. 
                         
-In the meantime, please update your profile on your account. The more information I have, the more effective I can design a personalised Muay Thai Training/Nutrition Session for you. 
+In the meantime, please update your profile on your account such has a brief overview of your goals, previous injuries, schedule etc. The more information we have, the more effective we can design a well personalised session for you. 
                         
-If you have any questions, feel free to get in contact with me at 8783 5456.
+If you have any questions, feel free to get in contact with us at olecrafit@gmail.com.
                         
 Regards,
-Jerald
-Admin @PMTT
-                            """.format(transaction_charge_display, transaction.charge.date, unique_code, expiry_date)
+Admin @OlecraFit
+                            """.format(transaction.owner, transaction_charge_display, transaction.charge.date, unique_code, expiry_date)
                             sender = "no-reply@mail.sgmuaythai.org"
                             payee = payee_email
                             msg = EmailMultiAlternatives(subject, text_content, sender, [payee])
@@ -222,7 +223,7 @@ Regards,
 Admin @PMTT
                             """.format(transaction_charge_display, transaction.charge.date, transaction.owner.first_name, transaction.owner.last_name, transaction.owner.email, transaction.owner.mobile, transaction.charge.street_address1, transaction.charge.street_address2, unique_code, expiry_date)
                             sender2 = "no-reply@mail.sgmuaythai.org"
-                            administrator = "jeraldtanxh@hotmail.com"
+                            administrator = "olecrafit@gmail.com"
                             msg2 = EmailMultiAlternatives(subject2, text_content2, sender2, [administrator])
                             msg2.send()
                         

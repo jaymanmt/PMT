@@ -177,3 +177,20 @@ All icons gotten from Fontawesome. [Link](https://fontawesome.com/icons?d=galler
 Food Photo by Pexels. [Link](https://www.pexels.com/)
 
 Hero image and rest of photos gotten through licensed adobe stock photos. [Link](https://stock.adobe.com/sg/photos)
+
+Animated Arrow by boylett from codepen
+[Link](https://codepen.io/boylett/pen/yprEOL)
+
+Photo for about page post about Nutrition: Photo by Adrienn from Pexels 
+
+git push heroku sandbox_launch:master 
+
+Sections to include:
+
+Blog
+
+How does it work? 
+
+Footer: FB, Insta, Carousell Icons, Fave deals, maybe classpass, burpple Contact us page - includes a contact form. 
+
+FAQ - opening times, change of mind, cancellations, no turn ups, postponement, need experience? 

@@ -6,7 +6,13 @@ from basket.models import basketItem
 
 def shop(request):
     items = Item.objects.filter().order_by('price')
-    
+    items_single = []
+    items_pack = []
+    for each_item in items:
+        if int(each_item.sku) < 6:
+            items_single.append(each_item)
+        if int(each_item.sku) >= 6:
+            items_pack.append(each_item)
     if request.user.is_authenticated:
         #make sure that the starter's package can only be bought once by each user
         bkt_starter_bool = True
@@ -23,12 +29,14 @@ def shop(request):
             if item.transaction.owner == request.user:
                 starter_check = True
         return render(request, 'shop/shop.template.html',{
-                "items":items,
+                "items_single":items_single,
+                "items_pack":items_pack,
                 "starter_check": starter_check,
                 'added': added,
                 'bkt_starter_bool': bkt_starter_bool
             })
     else:
         return render(request, 'shop/shop.template.html',{
-            "items":items,
+            "items_single":items_single,
+            "items_pack":items_pack
         })

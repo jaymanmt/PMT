@@ -4,20 +4,19 @@
 
 {%block bg-img%}
 {% if 'administrator' == request.user.groups.all.0.name %} 
-style="background-color: #255f85; color: black !important; background-size: cover;"
+style= "background-image: url('{% static 'images/putting_on_gloves.jpg'%}'); background-size: cover; background-position: center;  background-repeat: no-repeat;")
 {%else%}
 style="background-color: #373f51;"
 {%endif%}
 {%endblock%}
 
-{%block title%}
-<div style="font-family: Permanent Marker; margin-left: 20%; font-size: 2em; color: #ffd23f;">My Profile<button type="button" style="color:white;"class="btn btn-sm" data-placement="bottom" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services."><i class="fas fa-info-circle"></i></button></div>
-
-{%endblock%}
 
 {%block content%}
 {%if user.is_authenticated%}
-<div style="height: 190px; display:flex; justify-content: center; color: white;">
+
+<div class="container-fluid" style="background-color: rgba(0,0,0,0.7); padding: 2em; font-family: Alegreya SC; color: #ffd23f; margin-top: 80px;">
+    <div style="text-shadow: 3px 3px 2px black; font-family: Alegreya SC; margin-left: 20%; font-size: 2em; color: #ffd23f;">My Profile<button type="button" style="color: #ffd23f;"class="btn btn-sm" data-placement="bottom" data-toggle="popover" title="Your Privacy matters!" data-content="Note that your personal details will not be shared with any third parties or be used for anything apart from providing you with this business's intended services."><i class="fas fa-info-circle"></i></button></div>
+    <div style="height: 190px; display:flex; justify-content: center; color: white;">
     <form method= 'POST' enctype="multipart/form-data"> 
         <div class="col-2 text-center">
             
@@ -31,19 +30,18 @@ style="background-color: #373f51;"
                     <i class="fas fa-upload"></i>
                 </label>
                 <input style="display:none;"id="file-upload"class="edit_profile_box" type="file" name="photo"/>
-                <a style="visibility: hidden;" id="cancel-update-0"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
+                <a style="visibility: hidden; cursor: pointer;" id="cancel-update-0"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
                 <input id="upload_button" style="color: white; visibility:hidden; width: 60px;" class="update-button" value="upload" type="submit"/>
             </div>
         </div>
     </form>
 </div>
-<div class="container-fluid" style="color: #ffd23f; margin-top: 80px;">
     <!-- first row : change first name -->
     
     <div class="row justify-content-center" style="margin-bottom: 1em;">
         <div class="col-3 text-center profile-edit-col">
             <i class="fas fa-user"></i>
-            <div style="font-size: 0.7em;">First Name</div>
+            <div>First Name</div>
         </div>
         <div class="col-3 profile-edit-col" style="color: white;">
             <div style="width: 100%; text-align:left;"id="no_show_edit_1">{{get_user.first_name}}</div>
@@ -57,9 +55,9 @@ style="background-color: #373f51;"
             </div>
         </div>
 
-        <div class="col-3 text-center profile-edit-col">
-            <a style="visibility: hidden;" id="cancel-update-1"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
-            <a class="edit_profile" id="edit_profile1"><i class="fas fa-pen-nib"></i></a>
+        <div class="col-3 text-center profile-edit-col" style="font-size: 1.4em;">
+            <a style="visibility: hidden; cursor: pointer;" id="cancel-update-1"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
+            <a style="cursor: pointer;"class="edit_profile" id="edit_profile1"><i class="fas fa-pen-nib"></i></a>
         </div>
     </div>
     
@@ -68,7 +66,7 @@ style="background-color: #373f51;"
     <div class="row justify-content-center" style="margin-bottom: 1em;">
         <div class="col-3 text-center profile-edit-col">
             <i class="far fa-user"></i>
-            <div style="font-size: 0.7em;">Last Name</div>
+            <div>Last Name</div>
         </div>
         <div class="col-3 profile-edit-col" style="color: white;">
             <div style="width: 100%; text-align:left;"id="no_show_edit_2">{{get_user.last_name}}</div>
@@ -82,9 +80,9 @@ style="background-color: #373f51;"
             </div>
         </div>
 
-        <div class="col-3 text-center profile-edit-col">
-            <a style="visibility: hidden;" id="cancel-update-2"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
-            <a class="edit_profile" id="edit_profile2"><i class="fas fa-pen-nib"></i></a>
+        <div class="col-3 text-center profile-edit-col" style="font-size: 1.4em;">
+            <a style="visibility: hidden; cursor: pointer;" id="cancel-update-2"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
+            <a style="cursor: pointer;" class="edit_profile" id="edit_profile2"><i class="fas fa-pen-nib"></i></a>
         </div>
     </div>
     
@@ -93,7 +91,7 @@ style="background-color: #373f51;"
     <div class="row justify-content-center" style="margin-bottom: 1em;">
         <div class="col-3 text-center profile-edit-col">
             <i class="fas fa-phone"></i>
-            <div style="font-size: 0.7em;">Mobile</div>
+            <div>Mobile</div>
         </div>
         <div class="col-3 profile-edit-col" style="color: white;">
             <div style="width: 100%; text-align:left;"id="no_show_edit_3">{{get_user.mobile}}</div>
@@ -107,9 +105,9 @@ style="background-color: #373f51;"
             </div>
         </div>
 
-        <div class="col-3 text-center profile-edit-col">
-            <a style="visibility: hidden;" id="cancel-update-3"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
-            <a class="edit_profile" id="edit_profile3"><i class="fas fa-pen-nib"></i></a>
+        <div class="col-3 text-center profile-edit-col" style="font-size: 1.4em;">
+            <a style="visibility: hidden;cursor: pointer;" id="cancel-update-3"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
+            <a style="cursor: pointer;"class="edit_profile" id="edit_profile3"><i class="fas fa-pen-nib"></i></a>
         </div>
     </div>
     <!-- 4th row : change injuries -->
@@ -117,20 +115,20 @@ style="background-color: #373f51;"
     <div class="row justify-content-center" style="margin-bottom: 1em;">
         <div class="col-3 text-center profile-edit-col">
             <i class="fas fa-briefcase-medical"></i>
-            <div style="font-size: 0.7em;">Injuries</div>
+            <div>Injuries</div>
         </div>
         <div class="col-3 profile-edit-col" style="color: white;">
             <div style="width: 100%; text-align:left;"id="no_show_edit_6">{{get_user.injuries}}</div>
         </div>
-        <div class="col-3 text-center profile-edit-col">
-            <a style="visibility: hidden;" id="cancel-update-6"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
-            <a type="button" data-toggle="modal" data-target="#exampleModalCenter1" class="edit_profile" id="edit_profile6"><i class="fas fa-pen-nib"></i></a>
+        <div class="col-3 text-center profile-edit-col" style="font-size: 1.4em;">
+            <a style="visibility: hidden; cursor: pointer;" id="cancel-update-6"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
+            <a style="cursor: pointer;"type="button" data-toggle="modal" data-target="#exampleModalCenter1" class="edit_profile" id="edit_profile6"><i class="fas fa-pen-nib"></i></a>
         </div>
         
         <!-- Modal for editing injuries section of profile-->
         <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
-            <div style="background-color: #373f51;"  class="modal-content">
+            <div style="background-color: rgba(0,0,0,0.8);"  class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-briefcase-medical"></i> Injuries</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -156,14 +154,14 @@ style="background-color: #373f51;"
     <!-- 5th row : change self-depiction ; do not have class profile-edit-col as does not require border-bottom-->
     
     <div class="row justify-content-center">
-        <div class="col-3 text-center ">
+        <div class="col-3 text-center profile-edit-col">
             <i class="fas fa-info"></i>
-            <div style="font-size: 0.7em;">Info</div>
+            <div>Info</div>
         </div>
-        <div class="col-3" style="color: white;">
+        <div class="col-3 profile-edit-col" style="color: white;">
             <div style="width: 100%; text-align:left;" id="no_show_edit_7">{{get_user.self_depict}}</div>
         </div>
-        <div class="col-3 text-center ">
+        <div class="col-3 text-center profile-edit-col" style="font-size: 1.4em;">
             <a style="visibility: hidden;" id="cancel-update-6"><i style="color: #ec4e20;" class="fas fa-times-circle"></i></a>
             <a type="button" data-toggle="modal" data-target="#exampleModalCenter2" class="edit_profile" id="edit_profile7"><i class="fas fa-pen-nib"></i></a>
         </div>
@@ -171,7 +169,7 @@ style="background-color: #373f51;"
         <!-- Modal for editing injuries section of profile-->
         <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
-            <div style="background-color: #373f51;"  class="modal-content">
+            <div style="background-color: rgba(0,0,0,0.8);"  class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-info"></i> Additional Information</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
