@@ -39,7 +39,7 @@ style= "background-image: url('{% static 'images/wrapping-hands-guy.jpg'%}'); ba
                     <i style="color: #ec4e20;"class="fas fa-carrot"></i>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">Register an account</p>
+                    <p style="margin-left: 1em;">Find out about our sessions to see which suits you best <button type="button" style="color:#ec4e20;"class="btn btn-sm" data-toggle="popover" title="We recommend!" data-content="For Fitness Training, we recommend you start off with an affordable Olecra Intro session, followed by 3 sessions of Olecra 101 to focus on various basic techniques. Once your foundation is laid out nicely, we recommend you move on to Standard Personalised Training Sessions which will be fully customised for you">recommendations?</button></p>
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -47,7 +47,7 @@ style= "background-image: url('{% static 'images/wrapping-hands-guy.jpg'%}'); ba
                     <i style="color: #ec4e20;"class="fas fa-carrot"></i>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">Add your favourite sessions to your basket</p>
+                    <p style="margin-left: 1em;">Send an enquiry to us <a style= "color:#ec4e20 ;" href="{% url "contactPage" %}">here</a>. We recommend you touch on your general fitness goals, schedule and choose which session(s) you are interested in</p>
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -55,7 +55,16 @@ style= "background-image: url('{% static 'images/wrapping-hands-guy.jpg'%}'); ba
                     <i style="color: #ec4e20;"class="fas fa-carrot"></i>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">Make payment through the payment platform provided. You may also choose to opt for PayNow or Bank Transfer, please send a form <a style="color: #ec4e20;"href="{% url "shop" %}">here</a> if you wish to use a different payment method </p>
+                    <p style="margin-left: 1em;">We will be in contact within 1-2 business days after your enquiry to discuss more into your goals, arrange a suitable schedule for you and answer any other questions you might have. </p>
+                </td>
+            </tr>
+            
+            <tr style="font-size: 1.2em;">
+                <td style="vertical-align: top;">
+                    <i style="color: #ec4e20;"class="fas fa-carrot"></i>
+                </td>
+                <td>
+                    <p style="margin-left: 1em;">You are ready to get started!  </p>
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -63,7 +72,7 @@ style= "background-image: url('{% static 'images/wrapping-hands-guy.jpg'%}'); ba
                     <i style="color: #ec4e20;"class="fas fa-carrot"></i>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">We will be in contact within 1-2 business days. </p>
+                    <p style="margin-left: 1em;">Muay Thai Sessions will be held at Platinum Fitness Singapore near Tanjong Pagar MRT which contains all the necessary equipment to get you started</p>
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -71,35 +80,11 @@ style= "background-image: url('{% static 'images/wrapping-hands-guy.jpg'%}'); ba
                     <i style="color: #ec4e20;"class="fas fa-carrot"></i>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">Update your profile so we know a little more about you beforehand. You can write about anything related to your well-being! We recommend you talk about your goals, any past injuries, and what your schedule is like</p>
-                </td>
-            </tr>
-            <tr style="font-size: 1.2em;">
-                <td style="vertical-align: top;">
-                    <i style="color: #ec4e20;"class="fas fa-carrot"></i>
-                </td>
-                <td>
-                    <p style="margin-left: 1em;">When we contact you, we will discuss more into your goals, arrange a suitable schedule for you and answer any other questions you might have</p>
-                </td>
-            </tr>
-            <tr style="font-size: 1.2em;">
-                <td style="vertical-align: top;">
-                    <i style="color: #ec4e20;"class="fas fa-carrot"></i>
-                </td>
-                <td>
-                    <p style="margin-left: 1em;">For Muay Thai Sessions, it will be held at Platinum Fitness Singapore near Tanjong Pagar MRT which contains all the necessary equipment to get you started</p>
-                </td>
-            </tr>
-            <tr style="font-size: 1.2em;">
-                <td style="vertical-align: top;">
-                    <i style="color: #ec4e20;"class="fas fa-carrot"></i>
-                </td>
-                <td>
-                    <p style="margin-left: 1em;">For Nutrition Sessions, the date,time and venue are flexible. </p>
+                    <p style="margin-left: 1em;">Nutrition Sessions, the date,time and venue are flexible. </p>
                 </td>
             </tr>
         </table>
-            <a style= "font-family: Farro; background-color:rgb(236,78,32); border-radius: 5px; border: 1px #ec4e20 solid; color: white; margin-top: 2em;" id="s-nav-link" class="nav-link" {%if user.is_authenticated%}href="{% url "shop" %}" {%else%}href="{% url "login" %}" {%endif%}>Get Started</a>
+            <a style= "font-family: Farro; background-color:rgb(236,78,32); border-radius: 5px; border: 1px #ec4e20 solid; color: white; margin-top: 2em;" id="s-nav-link" class="nav-link" {%if user.is_authenticated%}href="{% url "shop" %}" {%else%}href="{% url "shop" %}" {%endif%}>Get Started</a>
         </div>
         
     <hr style="margin-top: 50px; margin-bottom: 50px;">
@@ -212,5 +197,8 @@ style= "background-image: url('{% static 'images/wrapping-hands-guy.jpg'%}'); ba
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
 </script>
 {%endblock%}

@@ -10,12 +10,12 @@ style= "background-image: url('{% static 'images/glove-laugh.jpg'%}'); backgroun
         {%if user.is_authenticated%}
         <div style="text-align: center; font-family: Farro;">Buy any 5 packages and get 10% off the total cost today!</div>
         {% else %}
-        <div style="text-align: center; font-family: Farro;">Register and get 10% off your introductory session!</div>
+        <div style="text-align: center; font-family: Farro;">Limited Time Only! 10% off your introductory session!</div>
         {% endif %}
         {%if user.is_authenticated%}
         <div style="margin-left: 1em; text-align: center; font-family: Farro;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "shop"%}"> Shop </a></div>
         {% else %}
-        <div style="margin-left: 1em; text-align: center; font-family: Farro;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "login"%}"> Get Started </a></div>
+        <div style="margin-left: 1em; text-align: center; font-family: Farro;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "contactPage"%}"> Get Started </a></div>
         {% endif %}
     </div>
 </div>
@@ -45,25 +45,25 @@ style= "background-image: url('{% static 'images/glove-laugh.jpg'%}'); backgroun
 <div data-aos="fade-up"
      data-aos-duration="2000" style="font-size: 1.3em; padding: 3em; padding-top: 1em;">
   <h1 style="font-family: Alegreya SC; color: #ec4e20;">Why OlecraFit?</h1>
-  <p style="margin-top: 2em;">
-    Here at OlecraFit, we recognise the problems in modern society and we strive to re-evaluate and re-define what Fitness should mean for everybody:
+  <p style="margin-top: 2em; font-family: Alegreya SC; font-weight: bold; font-size: 1.1em;">
+    We recognise and strive to solve problems with modern society:
   </p>
-  <table>
+  <table style="font-family: Alegreya SC;">
     <tr>
-      <td style="vertical-align: top;">
-        <i class="far fa-circle" style="font-size: 1.4em; color: #ec4e20; padding-right: 10px; vertical-align: top;"></i>
+      <td class="home-page-points" style="vertical-align: center;">
+        <i class="far fa-circle" style="font-size: 0.8em; color: #ec4e20; padding-right: 10px; vertical-align: top;"></i>
       </td>
       <td>
-        <p>Persuasive advertising and celebrity/model endorsements have us all brainwashed.... fitness is NOT a ripped beach body nor is it large chunks of muscle.</p>
+        <p>Persuasive advertising have us brainwashed... fitness is NOT a ripped beach body nor a large chunk of muscle.</p>
         
       </td>
     </tr>
     <tr>
-      <td style="vertical-align: top; margin-top: 20px;">
-        <i class="far fa-circle" style="font-size: 1.4em; color: #ec4e20; padding-right: 10px;"></i>
+      <td class="home-page-points" style="vertical-align: center; margin-top: 20px;">
+        <i class="far fa-circle" style="font-size: 0.8em; color: #ec4e20; padding-right: 10px;"></i>
       </td>
       <td>
-        <p>Breakthroughs in transport technology and task automation have most of us desk-bound and not having the need to walk more than 15-30mins on a typical work day. </p>
+        <p>Transport technology and task automation have us desk-bound and not having to walk more than 15-30mins on a typical day. </p>
         
       </td>
     </tr>

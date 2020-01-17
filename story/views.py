@@ -4,6 +4,7 @@ from .forms import ContactForm
 from django.core.exceptions import ValidationError
 from django.core.mail import EmailMultiAlternatives
 from django.contrib import messages
+from shop.models import Item
 
 def howItWorks(request):
     
@@ -31,6 +32,7 @@ def faqPage(request):
     return render(request, 'story/faq.html')
     
 def contactPage(request):
+    items = Item.objects.filter().order_by('price')
     
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
@@ -40,6 +42,7 @@ def contactPage(request):
                 contact_number = request.POST["contact_number"]
                 email = request.POST["email"]
                 message = request.POST["message"]
+                interest = request.POST.getlist("session-name")
                 subject = "An Enquiry has been received! "
                 text_content = """
 Enquiry POC Name: {}
@@ -49,10 +52,14 @@ Enquiry POC Contact: {}
 Enquiry POC Email: {}
 
 Enquiry POC Message: {} 
+
+Interested in the following classes:
+
+{}
                         
 Regards,
 Admin @OlecraFit
-                """.format(name, contact_number, email, message)
+                """.format(name, contact_number, email, message, interest)
                 sender = "no-reply@mail.sgmuaythai.org"
                 administrator = settings.COMPANY_EMAIL
                 msg = EmailMultiAlternatives(subject, text_content, sender, [administrator])
@@ -67,5 +74,6 @@ Admin @OlecraFit
     else:
         contact_form = ContactForm()
         return render(request, 'story/contactform.html',{
-            "contact_form" : contact_form
+            "contact_form" : contact_form,
+            "items":items
         })

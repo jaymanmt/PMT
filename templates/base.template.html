@@ -52,10 +52,10 @@
                     </li>
                     {%if not user.is_authenticated%}
                     <li style= "color: white" class="nav-item">
-                        <a style= "color: white" class="nav-link" href="{% url "shop" %}">Book</a>
+                        <a style= "color: white" class="nav-link" href="{% url "shop" %}">Sessions</a>
                     </li>
                     <li class="nav-item">
-                        <a style= "background-color:rgb(236,78,32); border-radius: 5px; border: 1px #ec4e20 solid; color: white" id="s-nav-link" class="nav-link" href="{% url "login" %}">Get Started</a>
+                        <a style= "background-color:rgb(236,78,32); border-radius: 5px; border: 1px #ec4e20 solid; color: white" id="s-nav-link" class="nav-link" href="{% url "contactPage" %}">Get Started</a>
                     </li>
                     {%endif%}
                     

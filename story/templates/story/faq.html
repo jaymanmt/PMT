@@ -1,7 +1,7 @@
 {%extends 'base.template.html'%}
 {%load static%}
 {%block bg-img%}
-style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size: cover; background-position: center;  background-repeat: no-repeat;")
+style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size: cover; background-position: center;  background-repeat: repeat-x;")
 {%endblock%}
 {%block content%}
 <div id="height-img-mobile" style="min-height: 350px;">
@@ -13,18 +13,27 @@ style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size
 {%block content2%}
 <div style="padding: 5em;">
     <h3 data-aos="fade-up"
-     data-aos-duration="2500" style="color: #ec4e20; font-weight: bold;">
-        <i style="color: #ec4e20"class="far fa-question-circle"></i> COMMONLY ASKED QUESTIONS:
+     data-aos-duration="1500" style="color: #ec4e20; font-weight: bold;">
+        COMMONLY ASKED QUESTIONS:
     </h3>
+    <p>
+  
+  
+</p>
+
     <div data-aos="fade-up"
-     data-aos-duration="2500" class="row" style="margin-top: 35px;">
+     data-aos-duration="1500" class="row" style="margin-top: 35px;">
         <table>
-            <tr style="font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">
+            <tr style=" padding: 0.3em; font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">
                 <td style="vertical-align: top;">
-                    1) 
+                    <a style="text-decoration: none; color: #ec4e20;" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
+                        <i class="fas fa-plus"></i>
+                    </a>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">Do I need to be fit or have experience in combat sports to be OlecraFit?</p>
+                    <a  style="text-decoration: none; color: black;" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
+                        <p style="margin-left: 1em;">Do I need to be fit or have experience in combat sports to be OlecraFit?</p>
+                    </a>
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -32,15 +41,25 @@ style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size
                     
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">No you dont. At OlecraFit, we pride ourselves on our mission that everyone can be fit and feel great in their very own bodies. Our services fully cater to any able-bodied person and we will work with you step-by-step along the way to achieve your goals, while accomplishing our mission. That being said, if you have previous injuries / current injuries that can affect your training, we stress that you declare that to us on your profile details, enquiry form or when we are in contact with you because your health is the TOP PRIORITY in our training services.</p>
+                    <div class="collapse" id="collapse1">
+                      <div class="">
+                        <p style="margin-left: 1em;">No you dont. At OlecraFit, we pride ourselves on our mission that everyone can be fit and feel great in their very own bodies. Our services fully cater to any able-bodied person and we will work with you step-by-step along the way to achieve your goals, while accomplishing our mission. That being said, if you have previous injuries / current injuries that can affect your training, we stress that you declare that to us on your profile details, enquiry form or when we are in contact with you because your health is the TOP PRIORITY in our training services.</p>
+                      </div>
+                      <hr>
+                    </div>
                 </td>
             </tr>
             <tr style="font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">
                 <td style="vertical-align: top;">
-                    2) 
+                    <a style="text-decoration: none; color: #ec4e20;" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
+                        <i class="fas fa-plus"></i>
+                    </a>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">Do I buy individual sessions or the training packages?</p>
+                    <a  style="text-decoration: none; color: black;" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
+                        <p style="margin-left: 1em;">Should I go with individual sessions or the training packages?</p>
+                    </a>
+                    
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -48,15 +67,25 @@ style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size
                     
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">Buying our training packages will help you save up to 15% in the long run! If you are new to our services, we recommend that you start off with our limited one-time 10% off Olecra Intro Session before buying a package so you know you are comfortable with our services. If you are interested in both Training and Nutrition Services, we will recommend the Olecra Starters Package so you can save while taking steps to be healthier. Check out our shop <a style="color: #ec4e20;"href="{% url "shop" %}">here</a>.</p>
+                    <div class="collapse" id="collapse2">
+                      <div>
+                        <p style="margin-left: 1em;">Buying our training packages will help you save up to 15% in the long run! If you are new to our services, we recommend that you start off with our limited one-time 10% off Olecra Intro Session before buying a package so you know you are comfortable with our services. If you are interested in both Training and Nutrition Services, we will recommend the Olecra Starters Package so you can save while taking steps to be healthier. Check out our shop <a style="color: #ec4e20;"href="{% url "shop" %}">here</a>.</p>
+                      </div>
+                      <hr>
+                    </div>
+                    
                 </td>
             </tr>
             <tr style="font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">
                 <td style="vertical-align: top;">
-                    3) 
+                    <a style="text-decoration: none; color: #ec4e20;" data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
+                        <i class="fas fa-plus"></i>
+                    </a>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">What are your opening times?</p>
+                    <a  style="text-decoration: none; color: black;" data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3">
+                        <p style="margin-left: 1em;">What are your opening times?</p>
+                    </a>
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -64,15 +93,25 @@ style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size
                     
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">We do not have set opening times as our everyday schedule is based on the existing clientbase at that time. In order to cater to all our client's diverse schedules, We have partnered with a 24/7 gym, Platinum Fitness Singapore, to ensure quality services, facilities, equipment, convenient and centralised location for you.</p>
+                    <div class="collapse" id="collapse3">
+                      <div>
+                        <p style="margin-left: 1em;">We do not have set opening times as our everyday schedule is based on the existing clientbase at that time. In order to cater to all our client's diverse schedules, We have partnered with a 24/7 gym, Platinum Fitness Singapore, to ensure quality services, facilities, equipment, convenient and centralised location for you.</p>
+                      </div>
+                      <hr>
+                    </div>
                 </td>
             </tr>
             <tr style="font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">
                 <td style="vertical-align: top;">
-                    4) 
+                    <a style="text-decoration: none; color: #ec4e20;" data-toggle="collapse" href="#collapse4" role="button" aria-expanded="false" aria-controls="collapse4">
+                        <i class="fas fa-plus"></i>
+                    </a>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">I want to adjust my order / get a refund</p>
+                    <a  style="text-decoration: none; color: black;" data-toggle="collapse" href="#collapse4" role="button" aria-expanded="false" aria-controls="collapse4">
+                        <p style="margin-left: 1em;">Payment</p>
+                    </a>
+                    
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -80,15 +119,24 @@ style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size
                     
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">After you have made your purchase, your email will receive the transaction's number and our official email account details. Just send us an email quoting that transaction number and we will do our best to respond to you as soon as we can. </p>
+                    <div class="collapse" id="collapse4">
+                      <div>
+                        <p style="margin-left: 1em;">In order to protect our scheduling and planning costs, we will require a 50% confirmation deposit to be made at least 48hours before your session. To provide payment transparency, we recommend PayNow or a Bank Transfer </p>
+                      </div>
+                      <hr>
+                    </div>
                 </td>
             </tr>
             <tr style="font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">
                 <td style="vertical-align: top;">
-                    5) 
+                    <a style="text-decoration: none; color: #ec4e20;" data-toggle="collapse" href="#collapse5" role="button" aria-expanded="false" aria-controls="collapse5">
+                        <i class="fas fa-plus"></i>
+                    </a>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">I have some special circumstances regarding my fitness / health / schedule etc and am not sure if this is the right service for me</p>
+                    <a  style="text-decoration: none; color: black;" data-toggle="collapse" href="#collapse5" role="button" aria-expanded="false" aria-controls="collapse5">
+                        <p style="margin-left: 1em;">I have some special circumstances regarding my fitness / health / schedule etc and am not sure if this is the right service for me</p>
+                    </a>
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -96,15 +144,25 @@ style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size
                     
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">We recognise that everyone has their individual concerns and cirucumstances, so just send us an enquiry form <a style="color: #ec4e20" href="{% url "contactPage" %}">here</a> telling us your concerns and we will respond as soon as we can to resolve your uncertainties.</p>
+                    <div class="collapse" id="collapse5">
+                      <div>
+                        <p style="margin-left: 1em;">We acknowledge that everyone has their individual concerns and cirucumstances, so just send us an enquiry form <a style="color: #ec4e20" href="{% url "contactPage" %}">here</a> telling us your concerns and we will respond as soon as we can to resolve your uncertainties.</p>
+                      </div>
+                      <hr>
+                    </div>
                 </td>
             </tr>
             <tr style="font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">
                 <td style="vertical-align: top;">
-                    6) 
+                    <a style="text-decoration: none; color: #ec4e20;" data-toggle="collapse" href="#collapse6" role="button" aria-expanded="false" aria-controls="collapse6">
+                        <i class="fas fa-plus"></i>
+                    </a>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">I dont't have my own gear.</p>
+                    <a  style="text-decoration: none; color: black;" data-toggle="collapse" href="#collapse6" role="button" aria-expanded="false" aria-controls="collapse6">
+                        <p style="margin-left: 1em;">I don't have my own gear.</p>
+                    </a>
+                    
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -112,15 +170,24 @@ style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size
                     
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">We provide all the equipment you need to have a proper session with us as well as fresh towels for use at the shower facilties provided. All you need is your water bottle, sports attire (wear shorts above knee length), and spare clothes. </p>
+                    <div class="collapse" id="collapse6">
+                      <div>
+                        <p style="margin-left: 1em;">We provide all the equipment you need to have a proper session with us as well as fresh towels for use at the shower facilties provided. All you need is your water bottle, sports attire (wear shorts above knee length), and spare clothes. </p>
+                      </div>
+                      <hr>
+                    </div>
                 </td>
             </tr>
             <tr style="font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">
                 <td style="vertical-align: top;">
-                    7) 
+                    <a style="text-decoration: none; color: #ec4e20;" data-toggle="collapse" href="#collapse7" role="button" aria-expanded="false" aria-controls="collapse7">
+                        <i class="fas fa-plus"></i>
+                    </a>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">Do you selling muay thai / boxing equipment?</p>
+                    <a  style="text-decoration: none; color: black;" data-toggle="collapse" href="#collapse7" role="button" aria-expanded="false" aria-controls="collapse7">
+                        <p style="margin-left: 1em;">Do you sell muay thai / boxing equipment?</p>
+                    </a>
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -128,15 +195,24 @@ style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size
                     
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">We are not an apparel retailer and not a distributor. However, we want to highlight the importance of investing in your own gear and purchasing equipment of appropriate quality. We can recommend certain products that we have had good experience with and for your convenience, help you purchase them at a small fee. </p>
+                    <div class="collapse" id="collapse7">
+                      <div>
+                        <p style="margin-left: 1em;">We are not an apparel retailer and not a distributor. However, we want to highlight the importance of investing in your own gear and purchasing equipment of appropriate quality. We can recommend certain products that we have good experience with and for your convenience, help you purchase them at a small fee. </p>
+                      </div>
+                      <hr>
+                    </div>
                 </td>
             </tr>
             <tr style="font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">
                 <td style="vertical-align: top;">
-                    8) 
+                    <a style="text-decoration: none; color: #ec4e20;" data-toggle="collapse" href="#collapse8" role="button" aria-expanded="false" aria-controls="collapse8">
+                        <i class="fas fa-plus"></i>
+                    </a>
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">Last minute Postponements / Cancellations</p>
+                    <a  style="text-decoration: none; color: black;" data-toggle="collapse" href="#collapse8" role="button" aria-expanded="false" aria-controls="collapse8">
+                        <p style="margin-left: 1em;">Last minute Postponements / Cancellations</p>
+                    </a>
                 </td>
             </tr>
             <tr style="font-size: 1.2em;">
@@ -144,25 +220,39 @@ style= "background-image: url('{% static 'images/faq_2.jpg'%}'); background-size
                     
                 </td>
                 <td>
-                    <p style="margin-left: 1em;">Please postpone / cancel your session at least 48 hours in advance so we can avoid inconveniences to our other clients. We also understand that emergencies occur and will evaluate last minute cancellations on a case-by-case basis. While we try to as reasonable as possible, we will reserve the right not to provide any refund for the session if notice was given less than 48hours before the session.</p>
+                    <div class="collapse" id="collapse8">
+                      <div>
+                        <p style="margin-left: 1em;">Please postpone / cancel your session at least 48 hours in advance so we can avoid inconveniences to our other clients. We also understand that emergencies occur and will evaluate last minute cancellations on a case-by-case basis. While we try to as reasonable as possible, we will reserve the right not to provide any refund for the session's deposit if notice was given less than 48hours before the session.</p>
+                      </div>
+                      <hr>
+                    </div>
                 </td>
             </tr>
-            <tr style="font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">
-                <td style="vertical-align: top;">
-                    9) 
-                </td>
-                <td>
-                    <p style="margin-left: 1em;">Keeping track of multiple purchases</p>
-                </td>
-            </tr>
-            <tr style="font-size: 1.2em;">
-                <td style="vertical-align: top;">
+            <!--<tr style="font-size: 1.2em; font-family: Alegreya SC; font-weight: bold;">-->
+            <!--    <td style="vertical-align: top;">-->
+            <!--        <a style="text-decoration: none; color: #ec4e20;" data-toggle="collapse" href="#collapse9" role="button" aria-expanded="false" aria-controls="collapse9">-->
+            <!--            <i class="fas fa-plus"></i>-->
+            <!--        </a>-->
+            <!--    </td>-->
+            <!--    <td>-->
+            <!--        <a  style="text-decoration: none; color: black;" data-toggle="collapse" href="#collapse9" role="button" aria-expanded="false" aria-controls="collapse9">-->
+            <!--            <p style="margin-left: 1em;">Keeping track of multiple purchases</p>-->
+            <!--        </a>-->
+            <!--    </td>-->
+            <!--</tr>-->
+            <!--<tr style="font-size: 1.2em;">-->
+            <!--    <td style="vertical-align: top;">-->
                     
-                </td>
-                <td>
-                    <p style="margin-left: 1em;">You will have access to your order history on your profile. Once your purchase has been made, it will show up there with a status of 'Approved' and once all the sessions in your purchase has completed, its status will update to 'Delivered'</p>
-                </td>
-            </tr>
+            <!--    </td>-->
+            <!--    <td>-->
+            <!--        <div class="collapse" id="collapse9">-->
+            <!--          <div>-->
+            <!--            <p style="margin-left: 1em;">You will have access to your order history on your profile. Once your purchase has been made, it will show up there with a status of 'Approved' and once all the sessions in your purchase has completed, the status will update to 'Delivered'</p>-->
+            <!--          </div>-->
+            <!--          <hr>-->
+            <!--        </div>-->
+            <!--    </td>-->
+            <!--</tr>-->
         </table> 
     </div>
 </div>

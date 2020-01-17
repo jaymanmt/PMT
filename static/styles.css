@@ -33,6 +33,9 @@
     #packagesection{
         padding: 0px !important;
     }
+    .home-page-points{
+        vertical-align: top !important;
+    }
 }
 
 /*bg img navbar mobile responsiveness*/
@@ -93,6 +96,7 @@
     background-color: rgb(234, 130, 32) !important;
     text-align: center;
 }
+
 
 /* same hover function for contact form submit button but remove margin-left*/
 #contact-form-link{
