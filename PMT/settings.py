@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["olecrafit.herokuapp.com","sgmuaythai.herokuapp.com","www.sgmuaythai.org", "6d36a1919bc843a498ae983b9dca4512.vfs.cloud9.us-east-1.amazonaws.com"]
 
