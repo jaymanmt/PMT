@@ -141,6 +141,9 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
 )
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+
 LOGIN_REDIRECT_URL = '/accounts/login'
 LOGIN_URL = '/accounts/login'
 LOGOUT_REDIRECT_URL = '/accounts/logout'
