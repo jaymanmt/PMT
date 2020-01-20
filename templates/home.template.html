@@ -8,28 +8,28 @@ style= "background-image: url('{% static 'images/glove-laugh.jpg'%}'); backgroun
 <div style="display:flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 18%;margin-bottom: 18%;">
     <div id="hero-banner" style="margin-left: 0.5em; margin-right: 0.5em;flex-wrap: wrap;display: flex; flex-direction: row; border-radius: 5px; background-color:rgba(0,0,0,0.5); padding: 20px; color: #ffd23f; font-size: 1.7em;">
         {%if user.is_authenticated%}
-        <div style="text-align: center; font-family: Farro;">Buy any 5 packages and get 10% off the total cost today!</div>
+        <div class="pushButtonLeft" style="text-align: center; font-family: Farro;">Buy any 5 packages and get 10% off the total cost today!</div>
         {% else %}
-        <div style="text-align: center; font-family: Farro;">Limited Time Only! 10% off your introductory session!</div>
+        <div class="pushButtonLeft" style="text-align: center; font-family: Farro;">Limited Time Only! 10% off your introductory session!</div>
         {% endif %}
         {%if user.is_authenticated%}
-        <div style="margin-left: 1em; text-align: center; font-family: Farro;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "shop"%}"> Shop </a></div>
+        <div class="pushButtonLeft" style="text-align: center; font-family: Farro;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "shop"%}"> Shop </a></div>
         {% else %}
-        <div style="margin-left: 1em; text-align: center; font-family: Farro;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "contactPage"%}"> Get Started </a></div>
+        <div class="pushButtonLeft" style="text-align: center; font-family: Farro;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "contactPage"%}"> Get Started </a></div>
         {% endif %}
     </div>
 </div>
 <div>
 <div id="hero-banner-alt" style="margin-left: 0.5em; margin-right: 0.5em;flex-wrap: wrap;display: none; flex-direction: row; border-radius: 5px; background-color:rgba(0,0,0,0.5); padding: 20px; color: #ffd23f; font-size: 2em;">
         {%if user.is_authenticated%}
-        <div style="text-align: center;">Buy any 5 packages and get 10% off the total cost today!</div>
+        <div class="pushButtonLeft" style="text-align: center; font-family: Farro;">Buy any 5 packages and get 10% off the total cost today!</div>
         {% else %}
-        <div style="text-align: center;">Get limited time one-off deal 10% off the introductory session!</div>
+        <div class="pushButtonLeft" style="text-align: center; font-family: Farro;">Limited Time Only! 10% off your introductory session!</div>
         {% endif %}
         {%if user.is_authenticated%}
-        <div style="margin-left: 1em; text-align: center;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "shop"%}"> Shop </a></div>
+        <div class="pushButtonLeft" style="text-align: center;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "shop"%}"> Shop </a></div>
         {% else %}
-        <div style="margin-left: 1em; text-align: center;"><a id="cta" style="box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "register"%}"> Get Started </a></div>
+        <div class="pushButtonLeft" style="text-align: center;"><a id="cta" style="font-family: Farro; box-shadow: 3px 3px 5px; color:black; padding: 8px; text-decoration:none;"href="{%url "contactPage"%}"> Get Started </a></div>
         {% endif %}
     </div>
 </div>
@@ -46,24 +46,24 @@ style= "background-image: url('{% static 'images/glove-laugh.jpg'%}'); backgroun
      data-aos-duration="2000" style="font-size: 1.3em; padding: 3em; padding-top: 1em;">
   <h1 style="font-family: Alegreya SC; color: #ec4e20;">Why OlecraFit?</h1>
   <p style="margin-top: 2em; font-family: Alegreya SC; font-weight: bold; font-size: 1.1em;">
-    We recognise and strive to solve problems with modern society:
+    We have identified problems with modern society and we have the solution:
   </p>
   <table style="font-family: Alegreya SC;">
-    <tr>
+    <tr style="height: 50px; ">
       <td class="home-page-points" style="vertical-align: center;">
-        <i class="far fa-circle" style="font-size: 0.8em; color: #ec4e20; padding-right: 10px; vertical-align: top;"></i>
+        <i class="far fa-circle" style="font-size: 1em; color: #ec4e20; padding-right: 10px; vertical-align: center;"></i>
       </td>
       <td>
-        <p>Persuasive advertising have us brainwashed... fitness is NOT a ripped beach body nor a large chunk of muscle.</p>
+        Persuasive advertising have us brainwashed... fitness is NOT a ripped beach body nor a large chunk of muscle.
         
       </td>
     </tr>
-    <tr>
-      <td class="home-page-points" style="vertical-align: center; margin-top: 20px;">
-        <i class="far fa-circle" style="font-size: 0.8em; color: #ec4e20; padding-right: 10px;"></i>
+    <tr style="height: 50px; ">
+      <td class="home-page-points" style="vertical-align: center;">
+        <i class="far fa-circle" style="font-size: 1em; color: #ec4e20; padding-right: 10px;"></i>
       </td>
       <td>
-        <p>Transport technology and task automation have us desk-bound and not having to walk more than 15-30mins on a typical day. </p>
+        Transport technology and task automation have us desk-bound and not having to walk more than 15-30mins on a typical day.
         
       </td>
     </tr>
@@ -72,9 +72,13 @@ style= "background-image: url('{% static 'images/glove-laugh.jpg'%}'); backgroun
   
 </div>
 <hr>
-<h3 style="margin: 1.3em; text-align: center; font-family: Alegreya SC; color: #ec4e20;">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  <h3 style="margin: 1.3em; text-align: center; font-family: Alegreya SC; color: #ec4e20;">
   What fitness means to us is YOU feeling GREAT in YOUR body. At OlecraFit, we can get you there!
-</h3>
+  </h3>
+  <a id="callToHow" style="font-size: 2.5em; width: 100px; text-align: center; font-family: Farro; color:black; padding: 8px; text-decoration:none;"href="{%url "howItWorks"%}"> <i style="color: #ec4e20" class="fas fa-play"></i> </a>
+</div>
+
 {% endblock %}
 
 {%block footer%}

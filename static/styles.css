@@ -13,7 +13,11 @@
     }
     
 }
-
+@media only screen and (max-width: 770px){
+    #cta{
+        font-size: 0.6em !important;
+    }
+}
 /*bg img navbar mobile responsiveness*/
 @media only screen and (max-width: 750px){
     #bg-img{
@@ -36,6 +40,7 @@
     .home-page-points{
         vertical-align: top !important;
     }
+    
 }
 
 /*bg img navbar mobile responsiveness*/
@@ -47,11 +52,11 @@
         display: inline-block !important;
     }
     .blog-content-item{
-        width: 350px !important;
+        width: 305px !important;
     }
     .blog-content-img{
         height: 233px !important;
-        width: 350px !important;
+        width: 305px !important;
     }
     #about-blog-section{
         border: 1px #ec4e20 solid !important;
@@ -68,6 +73,13 @@
     .blog-content-info{
         width: 370px;
     }
+    .pushButtonLeft{
+        margin-left: 0 !important;
+    }
+}
+
+.pushButtonLeft{
+    margin-left: 1em;
 }
 
 /* navbar link hover and transition features */
@@ -220,6 +232,7 @@
     color: #d1ac34 !important;
 }
 
+
 #payment-pointer{
     animation-name: pointing;
     animation-duration: 3s;
@@ -234,6 +247,16 @@
     75% {transform: translateX(8px)}
     100% {transform: translateX(0px)}
 }
+#callToHow{
+    animation: bounce 0.5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bounce { 
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+} 
 
 /* styling for edit profile input fields  */
 

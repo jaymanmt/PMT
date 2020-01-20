@@ -14,8 +14,8 @@ style= "background-image: url('{% static 'images/faq.jpg'%}'); background-size: 
 {%block content2%}
 <div data-aos="fade-up"
      data-aos-duration="2500" id="individualsection" style="font-weight: bold; font-family: Alegreya SC; padding:2.5em;text-align: center; color: #ec4e20;">
-    <h1 style="font-size: 3em;">Getting Started<button type="button" style="vertical-align: bottom; color:#ec4e20; font-size: 0.3em;"class="btn btn-sm" data-toggle="popover" title="Tell us about you" data-content="You can write about anything related to your well-being so we know a little more about you beforehand. We recommend topics such as your wellness-goals, any past injuries, and what your schedule will be like"><i class="fas fa-info-circle"></i></button></h1>
-    
+    <h1 style="font-size: 3em;">Getting Started</h1>
+    <button data-placement="bottom" type="button" style="vertical-align: bottom; color:#ec4e20; font-size: 1em;"class="btn btn-sm" data-toggle="popover" title="Tell us about you" data-content="You can write about anything related to your well-being so we know a little more about you beforehand. We recommend topics such as your wellness-goals, any past injuries, and what your schedule will be like"><i class="fas fa-info-circle"></i></button>
 </div>
 <div data-aos="fade-up"
      data-aos-duration="2500" style="display: flex; justify-content: center; align-items: center; font-family: Alegreya SC; margin-bottom: 50px;">
@@ -28,9 +28,10 @@ style= "background-image: url('{% static 'images/faq.jpg'%}'); background-size: 
     <div class="form-group">
         <p style="font-size: 1.1em;">I am interested in: </p>
         {%for i in items%}
-        <div style="border-color: transparent;" class="form-control">
-            <input class="form-check-input" type="checkbox" name="session-name" value="{{i}}"></input>
+        <div style="border-color: transparent; display: flex; flex-direction: column; align-items: space-evenly;" class="form-control">
             <label class="form-check-label">{{i}}</label>
+            <input class="form-check-input" style="padding-bottom: 30px;margin-left: 200px;" type="checkbox" name="session-name" value="{{i}}"></input>
+            
         </div>
         {%endfor%}
         <a style= "color: #ec4e20; font-size: 0.7em; height: 40px;" target="_blank" href="{% url "shop" %}">Session Details</a>
