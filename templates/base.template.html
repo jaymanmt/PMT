@@ -25,10 +25,10 @@
 <body style="width:100%; font-family: Handlee; letter-spacing: 1px; line-spacing: 3px;">
     <div id="bg-img" {%block bg-img%}{%endblock%}>
         
-        <nav id="nav-color-change" class="navbar navbar-expand-lg navbar-dark" style="z-index: 6;background-color: rgba(0,0,0,0.2); font-family: Farro; font-size:1em;" role="navigation">
+        <nav id="nav-color-change" class="navbar navbar-expand-lg navbar-dark" style="z-index: 6;background-color: rgba(0,0,0,0.2); font-family: Farro; font-size:1em; height: 130px;" role="navigation">
             <div style="display:flex; flex-direction: column;">
-                <a style= "font-size: 2em; font-family: Handlee; padding-top: 30px; padding-bottom: 0; padding-left: 20px; color: white" class="navbar-brand" href="{% url 'home' %}">OlecraFit</a>
-                <a href="{% url 'home' %}" style= "font-family: Handlee; margin-bottom: 50px;font-size: 0.8em; color: white" class="nav-link"></a>
+                <a style= "font-size: 2em; font-family: Farro; padding-bottom: 0; padding-left: 20px; color: white" class="navbar-brand" href="{% url 'home' %}">OlecraFit</a>
+                <!--<a href="{% url 'home' %}" style= "font-family: Farro; margin-bottom: 50px;font-size: 0.8em; color: white" class="nav-link"></a>-->
             </div>
             
             
@@ -118,10 +118,10 @@
         </div>
         <div class="nav navbar-nav ml-auto" style="margin-right: 2em; color: black; font-size: 2em;">
             <li style= "color: white" class="nav-item">
-                <a style= "color: black" class="nav-link" href="{% url "blogPage" %}"><i class="fab fa-facebook-square"></i></a>
+                <a style= "color: black" class="nav-link" href="https://www.facebook.com/olecrafit"><i class="fab fa-facebook-square"></i></a>
             </li>
             <li style= "color: white" class="nav-item">
-                <a style= "color: black" class="nav-link" href="{% url "howItWorks" %}"><i class="fab fa-instagram"></i> </a>
+                <a style= "color: black" class="nav-link" href="https://www.instagram.com/olecrafit/"><i class="fab fa-instagram"></i> </a>
             </li>
             
         </div>
