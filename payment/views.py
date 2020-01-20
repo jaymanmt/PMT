@@ -200,7 +200,7 @@ If you have any questions, feel free to get in contact with us at olecrafit@gmai
 Regards,
 Admin @OlecraFit
                             """.format(transaction.owner, transaction_charge_display, transaction.charge.date, unique_code, expiry_date)
-                            sender = "no-reply@mail.sgmuaythai.org"
+                            sender = "admin@mail.olecrafit.com"
                             payee = payee_email
                             msg = EmailMultiAlternatives(subject, text_content, sender, [payee])
                             msg.send()
@@ -222,7 +222,7 @@ Please organise a suitable schedule, venue and timing with client within 1-2 bus
 Regards,
 Admin @PMTT
                             """.format(transaction_charge_display, transaction.charge.date, transaction.owner.first_name, transaction.owner.last_name, transaction.owner.email, transaction.owner.mobile, transaction.charge.street_address1, transaction.charge.street_address2, unique_code, expiry_date)
-                            sender2 = "no-reply@mail.sgmuaythai.org"
+                            sender2 = "admin@mail.olecrafit.com"
                             administrator = "olecrafit@gmail.com"
                             msg2 = EmailMultiAlternatives(subject2, text_content2, sender2, [administrator])
                             msg2.send()

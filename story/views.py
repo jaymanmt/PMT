@@ -60,7 +60,7 @@ Interested in the following classes:
 Regards,
 Admin @OlecraFit
                 """.format(name, contact_number, email, message, interest)
-                sender = "no-reply@mail.sgmuaythai.org"
+                sender = "admin@mail.olecrafit.com"
                 administrator = settings.COMPANY_EMAIL
                 msg = EmailMultiAlternatives(subject, text_content, sender, [administrator])
                 msg.send()
