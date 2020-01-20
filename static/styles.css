@@ -251,6 +251,7 @@
     animation: bounce 0.5s;
     animation-direction: alternate;
     animation-iteration-count: infinite;
+    animation-delay: 20s;
 }
 
 @keyframes bounce { 
