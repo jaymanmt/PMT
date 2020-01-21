@@ -17,18 +17,18 @@ style= "background-image: url('{% static 'images/stretching.jpg'%}'); background
     </div>
     
     <h1 data-aos="fade-up"
-     data-aos-duration="2500" id="individualsection" style="font-size: 3em; font-weight: bold; font-family: Alegreya SC; padding:2.5em; text-align: center; color: #ec4e20;">Individual Sessions</h1>
+     data-aos-duration="2500" id="individualsection" style="font-size: 3em; font-weight: bold; font-family: Montserrat; padding:2.5em; text-align: center; color: #ec4e20;">Individual Sessions</h1>
     <div data-aos="fade-up"
      data-aos-duration="2500"class="flex-container" style="display:flex; flex-direction:row; flex-wrap: wrap; justify-content: space-around;">
         {%for i in items_single%}
         
         <div class="card" style="box-shadow: 3px 3px 5px; background-color: transparent; flex-basis: 400px; margin:12px; width:100%; text-align: center; {%if starter_check and i.sku == '000001' %}display:none;{%endif%}">
             
-            <div style="font-family: Alegreya SC;min-height: 185px; background-color: #4f93bf; padding:12px;">
+            <div style="min-height: 185px; background-color: #4f93bf; padding:12px;">
                 <h2 style="font-weight: bold;"class="card-title">{{i.product_name}}</h2>
                 <h5>{{i.sessions}} session(s)</h5>
             </div>
-            <hr style="margin:0; padding:0; background-color: black;">
+            <hr style="margin:0; padding:0; background-color: black; font-weight: bold;">
             <div class="card-body" style="font-size: 1.2em; min-height: 400px; background-color: rgba(0,0,0,0.6); color: white;">
                 <h2>${% if i.sku == "000001" %}<strike>100</strike>{%endif%} {% widthratio i.price 100 1 %}</h2>
                 <p class="card-text">{{i.description}}</p>
@@ -57,14 +57,14 @@ style= "background-image: url('{% static 'images/stretching.jpg'%}'); background
         <a href="#individualsection"style="text-decoration: none; margin-top: 5em;;" class="button"><svg><g><line x2="227.62" y1="31.28" y2="31.28"></line><polyline points="222.62 25.78 228.12 31.28 222.62 36.78"></polyline><circle cx="224.67" cy="30.94" r="30.5" transform="rotate(180 224.67 30.94) scale(1, -1) translate(0, -61)"></circle></g></svg><font style="font-family: Handlee; color: #ec4e20; font-size: 0.8em;">Back to Individual Sessions</font></a>
     </div>
     <h1 id="packagesection" data-aos="fade-up"
-     data-aos-duration="1000"style="font-size: 3em; font-weight: bold; font-family: Alegreya SC; padding: 2.5em;text-align: center; color: #ec4e20;">Training Packages</h1>
+     data-aos-duration="1000"style="font-size: 3em; font-weight: bold;padding: 2.5em;text-align: center; color: #ec4e20;">Training Packages</h1>
     <div data-aos="fade-up"
      data-aos-duration="1000"class="flex-container" style="display:flex; flex-direction:row; flex-wrap: wrap; justify-content: space-around;">
         {%for i in items_pack%}
         
         <div class="card" style="box-shadow: 3px 3px 5px; background-color: transparent; flex-basis: 400px; margin:12px; width:100%; text-align: center; {%if starter_check and i.sku == '000001' %}display:none;{%endif%}">
             
-            <div style="font-family: Alegreya SC; min-height: 185px; background-color: #ffd23f; padding:12px;">
+            <div style="font-weight: bold; min-height: 185px; background-color: #ffd23f; padding:12px;">
                 <h2 style="font-weight: bold;"class="card-title">{{i.product_name}}</h2>
                 <h5>{{i.sessions}} session(s)</h5>
             </div>

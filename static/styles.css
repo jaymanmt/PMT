@@ -21,7 +21,7 @@
 /*bg img navbar mobile responsiveness*/
 @media only screen and (max-width: 750px){
     #bg-img{
-        background-size:contain !important;
+        
         background-position: top !important;
         background-attachment: scroll !important;
     }
@@ -42,6 +42,8 @@
     }
     
 }
+
+
 
 /*bg img navbar mobile responsiveness*/
 @media only screen and (max-width: 600px){
